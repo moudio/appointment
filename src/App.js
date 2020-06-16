@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Cars from './containers/Cars';
+import { connect } from 'react-redux';
 function App() {
   return (
     <div className="App">
@@ -9,4 +10,7 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {};
+
+const mapDispatchToProps = (props) => {};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
