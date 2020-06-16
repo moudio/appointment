@@ -13,7 +13,8 @@ function App({ cars, getCars }) {
 
   return (
     <div className="App">
-      <h1>Hello</h1>
+      {console.log(cars)}
+      {cars.isFetching ? <h1>Fetching</h1> : <h1>Not fetching</h1>}
     </div>
   );
 }
@@ -25,6 +26,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getCars: dispatch(fetchCars),
+  getCars: () => dispatch(fetchCars()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

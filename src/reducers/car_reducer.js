@@ -1,5 +1,6 @@
 const defaultState = {
   cars: ['hello'],
+  isFetching: false,
 };
 
 const carsReducer = (state = defaultState, action) => {
