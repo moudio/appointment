@@ -1,29 +1,30 @@
-import { React, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Cars from './containers/Cars';
 import { connect } from 'react-redux';
-function App() {
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { fetchCars } from './actions/actions';
+
+function App({ cars, getCars }) {
   useEffect(() => {
     getCars();
   });
 
-  function getCars() {
-    axios.get('/api/v1/cars').then((response) => console.log(response.data));
-  }
-
   return (
     <div className="App">
-      <Cars />
+      <h1>Hello</h1>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    cars: state.cars,
+    cars: state,
   };
 };
 
-const mapDispatchToProps = (dipsatch) => {};
+const mapDispatchToProps = (dispatch) => ({
+  getCars: dispatch(fetchCars),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(App);

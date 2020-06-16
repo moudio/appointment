@@ -1,9 +1,13 @@
 const defaultState = {
-  cars: [],
+  cars: ['hello'],
 };
 
 const carsReducer = (state = defaultState, action) => {
   switch (action.type) {
+    case 'Hello':
+      return state;
+    default:
+      return state;
   }
 };
 
