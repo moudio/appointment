@@ -7,7 +7,10 @@ export default class Cars extends Component {
   };
 
   getCars() {
-    axios.get('/api/v1/cars');
+    axios
+      .get('/api/v1/cars')
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   }
 
   componentDidMount() {
