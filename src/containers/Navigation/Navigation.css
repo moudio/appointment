@@ -51,3 +51,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.Navigation ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.Navigation ul li a:hover {
+  text-decoration: underline;
+}
