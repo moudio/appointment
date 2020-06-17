@@ -12,16 +12,20 @@ export const fetchCars = () => (dispatch) => {
 
   axios
     .get('http://localhost:3001/api/v1/cars')
-    .then((cars) => {
-      dispatch({
-        type: FETCH_SUCCESS,
-        cars: cars.data,
-      });
-    })
-    .catch((error) => {
-      console.log("Can't access the api");
-      dispatch({
-        type: FETCH_FAILURE,
-      });
-    });
+    .then((cars) =>
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_SUCCESS,
+          cars: cars.data,
+        });
+      }, 1000)
+    )
+    .catch((error) =>
+      setTimeout(() => {
+        console.log("Can't access the api");
+        dispatch({
+          type: FETCH_FAILURE,
+        });
+      }, 1000)
+    );
 };
