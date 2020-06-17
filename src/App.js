@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Cars from './containers/Cars';
+import Login from './components/Login/Login';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { fetchCars } from './actions/actions';
@@ -17,8 +18,11 @@ function App({ cars, getCars }) {
     <Router>
       <div className="App" data-testid="App">
         <Switch>
-          <Route path="/">
+          <Route path="/" exact component={Cars}>
             <Cars />
+          </Route>
+          <Route path="/login" exact component={Login}>
+            <Login />
           </Route>
         </Switch>
       </div>
