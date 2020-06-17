@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { Route, BrowserRouter as Router, Link, Switch } from 'react-router-dom';
 import './Navigation.css';
 export class Navigation extends Component {
   constructor(props) {
@@ -56,7 +57,9 @@ export class Navigation extends Component {
             )}
           </div>
           <ul className="menu-list disappear">
-            <li>Home</li>
+            <li>
+              <a href="/home">Home</a>
+            </li>
             <li>About</li>
             <li>Menu</li>
             <li>Contact</li>

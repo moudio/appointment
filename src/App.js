@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import Cars from './containers/Cars';
-import Login from './components/Login/Login';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { fetchCars } from './actions/actions';
+import Cars from './containers/Cars';
+import Login from './components/Login/Login';
+import Navigation from './containers/Navigation/Navigation';
 import loadingGif from './Images/loading.gif';
 
 function App({ cars, getCars }) {
@@ -17,6 +18,7 @@ function App({ cars, getCars }) {
   return (
     <Router>
       <div className="App" data-testid="App">
+        <Navigation />
         <Switch>
           <Route path="/" exact component={Cars}>
             <Cars />

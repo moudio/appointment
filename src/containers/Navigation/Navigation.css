@@ -26,6 +26,10 @@
 .menu-icon {
   font-size: 50px;
   text-align: right;
+  color: black;
+}
+
+.menu-icon .close {
   color: white;
 }
 
