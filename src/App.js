@@ -5,16 +5,26 @@ import Cars from './containers/Cars';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { fetchCars } from './actions/actions';
+import loadingGif from './Images/loading.gif';
 
 function App({ cars, getCars }) {
   useEffect(() => {
-    getCars();
+    // if (cars['cars'] && cars['cars'].length >= 0) {
+    //   getCars();
+    // }
   });
 
   return (
     <div className="App">
-      {console.log(cars)}
-      {cars.isFetching ? <h1>Fetching</h1> : <h1>Not fetching</h1>}
+      {cars.isFetching ? (
+        <>
+          <h1>Fetching</h1> <img src={loadingGif} alt="loading" />{' '}
+        </>
+      ) : (
+        <h1>Not fetching</h1>
+      )}
+      {console.log('state ', cars)}
+      <button onClick={() => getCars()}>Click to fetch</button>
     </div>
   );
 }

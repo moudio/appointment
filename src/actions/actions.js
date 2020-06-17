@@ -11,19 +11,17 @@ export const fetchCars = () => (dispatch) => {
   });
 
   axios
-    .get('http://localhost:3001/cars')
+    .get('http://localhost:3001/api/v1/cars')
     .then((cars) => {
       dispatch({
         type: FETCH_SUCCESS,
         cars: cars.data,
-        loading: false,
       });
     })
     .catch((error) => {
-      console.log(error);
+      console.log("Can't access the api");
       dispatch({
         type: FETCH_FAILURE,
-        loading: false,
       });
     });
 };
