@@ -58,13 +58,13 @@ export class Navigation extends Component {
           </div>
           <ul className="menu-list disappear">
             <li>
-              <Link to="/">Home</Link>
+              <a href="/">Home</a>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <a href="/login">Login</a>
             </li>
             <li>
-              <Link>Logout</Link>
+              <a href="/logout">Logout</a>
             </li>
           </ul>
         </nav>
