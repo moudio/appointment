@@ -1,11 +1,11 @@
 import * as ACTION_TYPE from '../actions/actions';
 
-const defaultState = {
+export const defaultState = {
   cars: [],
   isFetching: false,
 };
 
-const carsReducer = (state = defaultState, action) => {
+export const carsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ACTION_TYPE.IS_FETCHING:
       return {
@@ -30,5 +30,3 @@ const carsReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
-export default carsReducer;
