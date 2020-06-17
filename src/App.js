@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import './App.css';
 import Cars from './containers/Cars';
 import { connect } from 'react-redux';
@@ -15,17 +14,15 @@ function App({ cars, getCars }) {
   });
 
   return (
-    <div className="App" data-testid="App">
-      {cars.isFetching ? (
-        <>
-          <h1>Fetching</h1> <img src={loadingGif} alt="loading" />{' '}
-        </>
-      ) : (
-        <h1>Not fetching</h1>
-      )}
-      {console.log('state ', cars)}
-      <button onClick={() => getCars()}>Click to fetch</button>
-    </div>
+    <Router>
+      <div className="App" data-testid="App">
+        <Switch>
+          <Route path="/">
+            <Cars />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
