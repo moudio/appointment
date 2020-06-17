@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import './App.css';
-import Cars from './containers/Cars';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { fetchCars } from './actions/actions';
+import Cars from './containers/Cars';
+import Login from './components/Login/Login';
+import Navigation from './containers/Navigation/Navigation';
 import loadingGif from './Images/loading.gif';
 
 function App({ cars, getCars }) {
@@ -15,17 +16,19 @@ function App({ cars, getCars }) {
   });
 
   return (
-    <div className="App" data-testid="App">
-      {cars.isFetching ? (
-        <>
-          <h1>Fetching</h1> <img src={loadingGif} alt="loading" />{' '}
-        </>
-      ) : (
-        <h1>Not fetching</h1>
-      )}
-      {console.log('state ', cars)}
-      <button onClick={() => getCars()}>Click to fetch</button>
-    </div>
+    <Router>
+      <div className="App" data-testid="App">
+        <Navigation />
+        <Switch>
+          <Route path="/" exact component={Cars}>
+            <Cars />
+          </Route>
+          <Route path="/login" exact component={Login}>
+            <Login />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
