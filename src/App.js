@@ -15,7 +15,7 @@ function App({ cars, getCars }) {
   });
 
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       {cars.isFetching ? (
         <>
           <h1>Fetching</h1> <img src={loadingGif} alt="loading" />{' '}
