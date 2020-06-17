@@ -1,0 +1,49 @@
+.Navigation {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+}
+
+.full-width {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.Navigation ul {
+  position: absolute;
+  list-style-type: none;
+  font-size: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.Navigation ul li {
+  padding: 20px 0;
+  color: white;
+}
+
+.menu-icon {
+  font-size: 50px;
+  text-align: right;
+  color: white;
+}
+
+.menu-icon svg {
+  padding: 20px;
+}
+
+.menu-icon .breadcrumb,
+.menu-icon .close {
+  cursor: pointer;
+}
+
+.disappear {
+  left: 100px;
+}
+
+.appear {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
