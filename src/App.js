@@ -6,13 +6,11 @@ import { fetchCars } from './actions/actions';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
 import Navigation from './containers/Navigation/Navigation';
-import loadingGif from './Images/loading.gif';
 
 function App({ cars, getCars }) {
   useEffect(() => {
-    // getCars();
-  });
-  console.log('cars is ', cars);
+    getCars();
+  }, []);
 
   return (
     <Router>
@@ -21,6 +19,7 @@ function App({ cars, getCars }) {
         <Switch>
           <Route path="/" exact component={Cars}>
             <Cars cars={cars['cars']} />
+            <button onClick={() => getCars()}>Fetch me</button>
           </Route>
           <Route path="/login" exact component={Login}>
             <Login />
