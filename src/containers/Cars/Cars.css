@@ -36,3 +36,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+.loading-div img {
+  max-width: 45px;
+}

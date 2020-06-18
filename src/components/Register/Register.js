@@ -3,10 +3,10 @@ import './Register.css';
 import Background from '../../Images/range_background.jpg';
 function Register() {
   return (
-    <div>
-      <div className="container">
+    <div className="register">
+      <div className="container registration-container">
         <div className="row ">
-          <div className="col-md-4 py-5 bg-primary text-white text-center ">
+          <div className="col-md-4 py-5 sidebar text-white text-center ">
             <div className=" ">
               <div className="card-body">
                 <h2 className="py-3">Registration</h2>
@@ -50,7 +50,7 @@ function Register() {
               </div>
 
               <div className="form-row">
-                <button type="button" className="btn btn-danger">
+                <button type="button" className="btn btn-black">
                   Create Account
                 </button>
               </div>
