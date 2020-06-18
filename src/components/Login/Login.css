@@ -1,0 +1,28 @@
+.login-div {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: black;
+  width: 40%;
+}
+
+.form-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-black {
+  background-color: black;
+  color: white;
+}
+
+@media (min-width: 750px) {
+  form {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

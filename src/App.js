@@ -11,7 +11,7 @@ function App({ cars, getCars }) {
   useEffect(() => {
     getCars();
   }, []);
-
+  console.log('cars is ', cars);
   return (
     <Router>
       <div className="App" data-testid="App">
@@ -19,7 +19,6 @@ function App({ cars, getCars }) {
         <Switch>
           <Route path="/" exact component={Cars}>
             <Cars cars={cars['cars']} />
-            <button onClick={() => getCars()}>Fetch me</button>
           </Route>
           <Route path="/login" exact component={Login}>
             <Login />

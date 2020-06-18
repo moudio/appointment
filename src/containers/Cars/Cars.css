@@ -28,3 +28,11 @@ button {
   cursor: pointer;
   font-size: 0.85em;
 }
+
+.loading-div {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

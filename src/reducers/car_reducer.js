@@ -26,7 +26,6 @@ export const carsReducer = (state = defaultState, action) => {
       };
 
     default:
-      console.log('default', action);
       return state;
   }
 };

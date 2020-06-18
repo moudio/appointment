@@ -31,7 +31,9 @@ class Cars extends React.Component {
             }}
           />
         ) : (
-          <img src={Loading} alt="Loading" />
+          <div className="loading-div">
+            <img src={Loading} alt="Loading" className="loading-cars" />
+          </div>
         )}
       </>
     );
