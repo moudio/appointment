@@ -9,11 +9,9 @@ import Navigation from './containers/Navigation/Navigation';
 import loadingGif from './Images/loading.gif';
 
 function App({ cars, getCars }) {
-  // useEffect(() => {
-  //   if (cars['cars'] && cars['cars'].length >= 0) {
-  //     getCars();
-  //   }
-  // });
+  useEffect(() => {
+    // getCars();
+  });
   console.log('cars is ', cars);
 
   return (

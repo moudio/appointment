@@ -1,30 +1,53 @@
-body {
-  font-family: arial, helvetica;
+.section-velar {
+  background-image: url('../../Images/velar.png');
 }
 
-h3 {
-  font-size: 5em;
-  text-align: center;
-  color: #fff;
-  font-weight: 700;
+.section-evoque {
+  background-image: url('../../Images/evoque.png');
 }
 
-#section1 {
-  color: #fff;
+.section-sport {
+  background-image: url('../../Images/sport.png');
 }
 
-.fp-section {
-  text-align: center;
+.section-discovery {
+  background-image: url('../../Images//discovery.png');
 }
 
-button {
-  padding: 0.93em 1.87em;
-  background: #35495e;
-  border-radius: 5px;
-  border-color: transparent;
-  display: block;
-  color: #fff;
+.section-velar,
+.section-evoque,
+.section-sport,
+.section-discovery {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.inner-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
   margin: 0 auto;
-  cursor: pointer;
-  font-size: 0.85em;
+}
+
+.content {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.picture {
+  width: 60%;
+  height: 100vh;
+}
+
+@media (max-width: 900px) {
+  .picture {
+    width: 100%;
+  }
+  .content {
+    width: 100%;
+  }
 }
