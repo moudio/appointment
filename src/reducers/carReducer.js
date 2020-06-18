@@ -6,6 +6,7 @@ export const defaultCarState = {
 };
 
 export const carsReducer = (state = defaultCarState, action) => {
+  console.log('car reducer called');
   switch (action.type) {
     case ACTION_TYPE.IS_FETCHING:
       return {

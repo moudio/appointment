@@ -7,12 +7,17 @@ import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Navigation from './containers/Navigation/Navigation';
-
-function App({ cars, getCars }) {
+import { loginStatus } from './actions/actions';
+function App({ cars, getCars, userStatus }) {
   useEffect(() => {
-    getCars();
+    async function waitLoginStatusCall() {
+      await loginStatus();
+      if (userStatus.isLoggedIn) {
+        getCars();
+      }
+    }
+    waitLoginStatusCall();
   }, []);
-  console.log('cars is ', cars);
   return (
     <Router>
       <div className="App" data-testid="App">
@@ -35,12 +40,13 @@ function App({ cars, getCars }) {
 
 const mapStateToProps = (state) => {
   return {
-    cars: state,
+    cars: state.carsReducer,
+    userStatus: state.userReducer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getCars: () => dispatch(fetchCars()),
-  // loginStatus: () => dispatch(loginStatus()),
+  loginStatus: () => dispatch(loginStatus()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -30,7 +30,7 @@ export const fetchCars = () => (dispatch) => {
     );
 };
 
-export const loginStatus = (dispatch) => {
+export const loginStatus = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING,
   });
