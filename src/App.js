@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { fetchCars } from './actions/actions';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import Navigation from './containers/Navigation/Navigation';
 
 function App({ cars, getCars }) {
@@ -17,11 +18,14 @@ function App({ cars, getCars }) {
       <div className="App" data-testid="App">
         <Navigation />
         <Switch>
-          <Route path="/" exact component={Cars}>
+          <Route path="/" exact>
             <Cars cars={cars['cars']} />
           </Route>
-          <Route path="/login" exact component={Login}>
+          <Route path="/login" exact>
             <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
           </Route>
         </Switch>
       </div>
