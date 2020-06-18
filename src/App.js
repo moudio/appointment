@@ -41,5 +41,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getCars: () => dispatch(fetchCars()),
+  // loginStatus: () => dispatch(loginStatus()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

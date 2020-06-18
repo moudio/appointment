@@ -7,7 +7,6 @@ export const IS_FETCHING = 'IS_FETCHING';
 export const fetchCars = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING,
-    loading: true,
   });
 
   axios
@@ -22,10 +21,32 @@ export const fetchCars = () => (dispatch) => {
     )
     .catch((error) =>
       setTimeout(() => {
-        console.log("Can't access the api");
         dispatch({
           type: FETCH_FAILURE,
         });
       }, 1000)
     );
+};
+
+export const loginStatus = (dispatch) => {
+  dispatch({
+    type: IS_FETCHING,
+  });
+
+  axios
+    .get('http://localhost:3001/loggin_status')
+    .then((status) =>
+      setTimeout(() => {
+        dispatch({
+          type: LOGIN_STATUS,
+        });
+      }, 1000)
+    )
+    .catch((error) => {
+      setTimeout(() => {
+        dispatch({
+          type: FAIL_STATUS_FETCH,
+        });
+      });
+    });
 };

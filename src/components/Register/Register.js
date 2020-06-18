@@ -1,12 +1,11 @@
 import React from 'react';
 import './Register.css';
-import Background from '../../Images/range_background.jpg';
 function Register() {
   return (
     <div className="register">
       <div className="container registration-container">
         <div className="row ">
-          <div className="col-md-4 py-5 sidebar text-white text-center ">
+          <div className="col-md-4 py-5 registration-sidebar text-white text-center ">
             <div className=" ">
               <div className="card-body">
                 <h2 className="py-3">Registration</h2>
@@ -16,12 +15,12 @@ function Register() {
           </div>
           <div className="col-md-8 py-5 border">
             <h4 className="pb-4">Please fill with your details</h4>
-            <form>
+            <form action="http://localhost:3001/api/v1/users" method="POST">
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <input
-                    id="Username"
-                    name="Username"
+                    id="username"
+                    name="user[username]"
                     placeholder="Username"
                     className="form-control"
                     type="text"
@@ -32,6 +31,7 @@ function Register() {
                 <div className="form-group col-md-12">
                   <input
                     type="password"
+                    name="user[password]"
                     className="form-control"
                     id="inputpassword"
                     placeholder="Password"
@@ -42,6 +42,7 @@ function Register() {
                 <div className="form-group col-md-12">
                   <input
                     type="password"
+                    name="user[password_confirmation]"
                     className="form-control"
                     id="inputpassword"
                     placeholder="Password Confirmation"
@@ -50,7 +51,7 @@ function Register() {
               </div>
 
               <div className="form-row">
-                <button type="button" className="btn btn-black">
+                <button type="submit" className="btn btn-black">
                   Create Account
                 </button>
               </div>
