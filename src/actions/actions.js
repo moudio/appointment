@@ -7,6 +7,8 @@ export const LOGIN_STATUS = 'LOGIN_STATUS';
 export const FAIL_STATUS_FETCH = 'FAIL_STATUS_FETCH';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const SIGNUP_SUCCES = 'SIGNUP_SUCCESS';
+export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -83,7 +85,17 @@ export const signupUser = (user) => (dispatch) => {
       { withCredentials: true }
     )
     .then((response) => {
-      console.log(response);
+      if (response.data.status === 'created') {
+        dispatch({
+          type: SIGNUP_SUCCES,
+          data: response.data,
+        });
+      } else {
+        dispatch({
+          type: SIGNUP_ERROR,
+          data: response.data,
+        });
+      }
     })
     .catch((error) => console.log(error));
 };
