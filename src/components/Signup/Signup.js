@@ -1,15 +1,19 @@
 import React from 'react';
 import './Signup.css';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { handleSignup } from '../../actions/actions';
 
-function Register() {
+function Register({ signupUser }) {
   function handleSignup(e) {
+    e.preventDefault();
     const user = {
-      username: document.querySelector('#username'),
-      password: document.querySelector('#password'),
-      password_confirmation: document.querySelector('#passwordConfirmation'),
+      username: document.querySelector('#username').value,
+      password: document.querySelector('#password').value,
+      password_confirmation: document.querySelector('#passwordConfirmation')
+        .value,
     };
+    signupUser(user);
   }
 
   return (
@@ -26,7 +30,7 @@ function Register() {
           </div>
           <div className="col-md-8 py-5 border">
             <h4 className="pb-4">Please fill with your details</h4>
-            <form action="http://localhost:3001/api/v1/users" method="POST">
+            <form onSubmit={() => handleSignup()}>
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <input
@@ -76,4 +80,14 @@ function Register() {
   );
 }
 
-export default Register;
+const mapStateToProps = (state) => ({
+  userStatus: state.usersReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signupUser: () => {
+    dispatch(handleSignup);
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -74,3 +74,11 @@ export const handleLogin = (user) => (dispatch) => {
     })
     .catch((error) => console.log('api errors', error));
 };
+
+export const handleSignup = (user) => (dispatch) => {
+  axios
+    .post('http://localhost:3001:signup', { user }, { withCredentials: true })
+    .then((response) => {
+      console.log(response);
+    });
+};
