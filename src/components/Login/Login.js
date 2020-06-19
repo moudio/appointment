@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Alert from './Alert/Alert';
 import { handleLogin } from '../../actions/actions';
-import userReducer from '../../reducers/userReducer';
 
-function Login(props) {
+function Login({ handleLogin, userInfos }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       username: document.querySelector("input[type='text']").value,
       password: document.querySelector("input[type='password']").value,
     };
-    props.handleLogin(user);
+    handleLogin(user);
   };
-  console.log('PROPS', props);
+
+  console.log('USERINFONS', userInfos);
+
+  const handleErrors = (errors) => {};
+
   return (
     <>
       <div className="login-div">
@@ -24,7 +27,6 @@ function Login(props) {
         </div>
         <div className="form-container">
           <form onSubmit={handleSubmit}>
-            {props.alert ? <Alert /> : null}
             <div className="form-group">
               <label>User Name</label>
               <input

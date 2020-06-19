@@ -6,6 +6,7 @@ export const IS_FETCHING = 'IS_FETCHING';
 export const LOGIN_STATUS = 'LOGIN_STATUS';
 export const FAIL_STATUS_FETCH = 'FAIL_STATUS_FETCH';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -65,7 +66,10 @@ export const handleLogin = (user) => (dispatch) => {
           data: response.data,
         });
       } else {
-        console.log(response);
+        dispatch({
+          type: LOGIN_ERROR,
+          data: response.data,
+        });
       }
     })
     .catch((error) => console.log('api errors', error));

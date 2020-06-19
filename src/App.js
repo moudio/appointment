@@ -13,9 +13,8 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
 
-function App({
-  cars, getCars, userStatus, checkLoginStatus,
-}) {
+function App({ cars, getCars, userStatus, checkLoginStatus }) {
+  console.log(userStatus);
   useEffect(() => {
     if (userStatus.isLoggedIn) {
       getCars();

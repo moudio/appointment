@@ -18,6 +18,12 @@ const userReducer = (state = defaultUserState, action) => {
         user: action.data.user,
         isLoggedIn: true,
       };
+    case ACTION_TYPE.LOGIN_ERROR:
+      return {
+        ...state,
+        errors: action.data.errors,
+        isLoggedIn: false,
+      };
     default:
       return state;
   }
