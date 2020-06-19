@@ -33,7 +33,7 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
             ) : (
               <Redirect
                 push
-                to={{ pathname: '/login', state: { alert: true } }}
+                to={{ pathname: '/login', state: { alert: 'hello' } }}
               />
             )}
           </Route>
