@@ -1,6 +1,8 @@
 import React from 'react';
 import './Login.css';
-function Login() {
+import Alert from './Alert/Alert';
+function Login(props) {
+  console.log('props', props.location);
   return (
     <>
       <div className="login-div">
@@ -9,6 +11,7 @@ function Login() {
         </div>
         <div className="form-container">
           <form>
+            {props.alert ? <Alert /> : null}
             <div className="form-group">
               <label>User Name</label>
               <input

@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { fetchCars } from './actions/actions';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
@@ -26,7 +31,10 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
             {userStatus.isLoggedIn ? (
               <Cars cars={cars['cars']} />
             ) : (
-              <Login alert={true} />
+              <Redirect
+                push
+                to={{ pathname: '/login', state: { alert: true } }}
+              />
             )}
           </Route>
           <Route path="/login" exact>
