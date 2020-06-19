@@ -5,15 +5,22 @@ const defaultUserState = {
   isLoggedIn: false,
 };
 
-export const userReducer = (state = defaultUserState, action) => {
-  console.log(action);
+const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
     case ACTION_TYPE.LOGIN_STATUS:
       return {
         ...state,
         isLoggedIn: true,
       };
+    case ACTION_TYPE.USER_LOGGED_IN:
+      return {
+        ...state,
+        user: action.data.user,
+        isLoggedIn: true,
+      };
     default:
       return state;
   }
 };
+
+export default userReducer;

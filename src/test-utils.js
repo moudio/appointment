@@ -13,7 +13,7 @@ function render(
     initialState = reducerInitialState,
     store = createStore(carsReducer, initialState),
     ...renderOptions
-  } = []
+  } = [],
 ) {
   function Wrapper({ children }) {
     return <Provider store={store}>{children}</Provider>;

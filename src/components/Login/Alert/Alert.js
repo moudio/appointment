@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import 'react-bootstrap';
+
 function Alert() {
   useEffect(() => {}, []);
   return (
@@ -9,7 +10,9 @@ function Alert() {
         role="alert"
         data-dismiss="alert"
       >
-        <strong>Holy guacamole!</strong> You should check in on some of those
+        <strong>Holy guacamole!</strong>
+        {' '}
+        You should check in on some of those
         fields below.
         <button
           type="button"

@@ -2,6 +2,7 @@ import React from 'react';
 import './Signup.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 function Register() {
   return (
     <div className="register">

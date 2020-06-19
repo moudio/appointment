@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import reducer from './reducers/index';
 import './index.css';
 import App from './App';
+
 const store = createStore(reducer, applyMiddleware(thunk));
 ReactDOM.render(
   <React.StrictMode>
@@ -13,5 +14,5 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

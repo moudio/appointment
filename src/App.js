@@ -7,13 +7,15 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { fetchCars } from './actions/actions';
+import { fetchCars, loginStatus } from './actions/actions';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
-import { loginStatus } from './actions/actions';
-function App({ cars, getCars, userStatus, checkLoginStatus }) {
+
+function App({
+  cars, getCars, userStatus, checkLoginStatus,
+}) {
   useEffect(() => {
     if (userStatus.isLoggedIn) {
       getCars();
@@ -26,7 +28,7 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
         <Switch>
           <Route path="/" exact>
             {userStatus.isLoggedIn ? (
-              <Cars cars={cars['cars']} />
+              <Cars cars={cars.cars} />
             ) : (
               <Redirect
                 push
@@ -46,12 +48,10 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    cars: state.carsReducer,
-    userStatus: state.userReducer,
-  };
-};
+const mapStateToProps = (state) => ({
+  cars: state.carsReducer,
+  userStatus: state.userReducer,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getCars: () => dispatch(fetchCars()),

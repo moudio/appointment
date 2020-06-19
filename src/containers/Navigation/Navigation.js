@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { Route, BrowserRouter as Router, Link, Switch } from 'react-router-dom';
+import {
+  Route, BrowserRouter as Router, Link, Switch,
+} from 'react-router-dom';
 import './Navigation.css';
+
 export class Navigation extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +17,13 @@ export class Navigation extends Component {
   toggleIcon() {
     this.state.menu === 'breadcrumb'
       ? this.setState({
-          menu: 'close',
-        })
+        menu: 'close',
+      })
       : this.setState({
-          menu: 'breadcrumb',
-        });
+        menu: 'breadcrumb',
+      });
   }
+
   toggleMenu() {
     const menu = document.querySelector('.menu-list');
     if (!menu.classList.contains('appear')) {
