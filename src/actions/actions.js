@@ -9,23 +9,28 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const fetchCars = () => (dispatch) => {
+  console.log('Fetchars called');
   dispatch({
     type: IS_FETCHING,
   });
 
   axios
     .get('http://localhost:3001/api/v1/cars')
-    .then((cars) => setTimeout(() => {
-      dispatch({
-        type: FETCH_SUCCESS,
-        cars: cars.data,
-      });
-    }, 1000))
-    .catch(() => setTimeout(() => {
-      dispatch({
-        type: FETCH_FAILURE,
-      });
-    }, 1000));
+    .then((cars) =>
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_SUCCESS,
+          cars: cars.data,
+        });
+      }, 1000)
+    )
+    .catch(() =>
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_FAILURE,
+        });
+      }, 1000)
+    );
 };
 
 export const loginStatus = () => (dispatch) => {

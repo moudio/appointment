@@ -15,13 +15,7 @@ import Navigation from './containers/Navigation/Navigation';
 
 function App({ cars, userStatus }) {
   console.log('userStatus from App', userStatus);
-  useEffect(() => {
-    console.log('useEffect');
-    if (userStatus.isLoggedIn) {
-      console.log('true');
-      getCars();
-    }
-  }, []);
+
   return (
     <Router>
       <div className="App" data-testid="App">
