@@ -25,6 +25,24 @@ const userReducer = (state = defaultUserState, action) => {
         errors: action.data.errors,
         isLoggedIn: false,
       };
+
+    case ACTION_TYPE.SIGNUP_SUCCES:
+      console.log('SUCCESS', action);
+      return {
+        ...state,
+        errors: [],
+        isLoggedIn: false,
+        user: action.data.user,
+        status: action.data.status,
+      };
+    case ACTION_TYPE.SIGNUP_ERROR:
+      console.log(action);
+      return {
+        ...state,
+        errors: action.data.errors,
+        isLoggedIn: false,
+        status: action.data.status,
+      };
     default:
       return state;
   }

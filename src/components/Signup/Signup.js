@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Signup.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signupUser } from '../../actions/actions';
+import Errors from '../Errors/Errors';
 
-function Register({ dispatchSignup }) {
+function Register({ dispatchSignup, signupStatus }) {
+  useEffect(() => {
+    console.log('useEffect');
+    if (signupStatus.status === 'created') {
+      console.log('Signed in!');
+    }
+  });
   function handleSignup(e) {
     e.preventDefault();
     const user = {
@@ -16,6 +23,7 @@ function Register({ dispatchSignup }) {
     dispatchSignup(user);
   }
 
+  console.log('state for signup', signupStatus);
   return (
     <div className="register">
       <div className="container registration-container">
@@ -31,6 +39,9 @@ function Register({ dispatchSignup }) {
           <div className="col-md-8 py-5 border">
             <h4 className="pb-4">Please fill with your details</h4>
             <form onSubmit={handleSignup}>
+              {signupStatus && signupStatus.status === 500 ? (
+                <Errors errors={signupStatus.errors} />
+              ) : null}
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <input
@@ -81,7 +92,7 @@ function Register({ dispatchSignup }) {
 }
 
 const mapStateToProps = (state) => ({
-  userStatus: state.usersReducer,
+  signupStatus: state.userReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
