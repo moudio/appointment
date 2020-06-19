@@ -11,7 +11,6 @@ import { fetchCars } from '../../actions/actions';
 
 function Cars(props) {
   useEffect(() => {
-    console.log('component did mount for cars');
     props.getAllCars();
   }, []);
 

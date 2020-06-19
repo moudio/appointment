@@ -9,7 +9,6 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const fetchCars = () => (dispatch) => {
-  console.log('Fetchars called');
   dispatch({
     type: IS_FETCHING,
   });

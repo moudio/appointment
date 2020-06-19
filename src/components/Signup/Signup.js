@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Register() {
+  function handleSignup(e) {
+    const user = {
+      username: document.querySelector('#username'),
+      password: document.querySelector('#password'),
+      password_confirmation: document.querySelector('#passwordConfirmation'),
+    };
+  }
+
   return (
     <div className="register">
       <div className="container registration-container">
@@ -23,7 +31,7 @@ function Register() {
                 <div className="form-group col-md-12">
                   <input
                     id="username"
-                    name="user[username]"
+                    name="username"
                     placeholder="Username"
                     className="form-control"
                     type="text"
@@ -34,9 +42,9 @@ function Register() {
                 <div className="form-group col-md-12">
                   <input
                     type="password"
-                    name="user[password]"
+                    name="password"
                     className="form-control"
-                    id="inputpassword"
+                    id="password"
                     placeholder="Password"
                   />
                 </div>
@@ -45,9 +53,9 @@ function Register() {
                 <div className="form-group col-md-12">
                   <input
                     type="password"
-                    name="user[password_confirmation]"
+                    name="password_confirmation"
                     className="form-control"
-                    id="inputpassword"
+                    id="passwordConfirmation"
                     placeholder="Password Confirmation"
                   />
                 </div>

@@ -16,10 +16,8 @@ function Login(props) {
     props.handleLogin(user);
   };
 
-  console.log('USERINFONS', props.userInfos.errors);
-
   if (props.userInfos.isLoggedIn) {
-    props.history.push('/');
+    props.history.push('/user');
   }
   return (
     <>
