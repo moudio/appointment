@@ -16,35 +16,37 @@ const userReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+        isChecking: false,
       };
     case ACTION_TYPE.USER_LOGGED_IN:
       return {
         ...state,
         user: action.data.user,
         isLoggedIn: true,
-        errors: null,
+        loginErrors: [],
+        isChecking: false,
       };
     case ACTION_TYPE.LOGIN_ERROR:
       return {
         ...state,
-        errors: action.data.errors,
+        loginErrors: action.data.errors,
         isLoggedIn: false,
+        isChecking: false,
       };
 
     case ACTION_TYPE.SIGNUP_SUCCES:
       return {
         ...state,
-        errors: [],
+        signupErrors: [],
         isLoggedIn: true,
         user: action.data.user,
         status: action.data.status,
         isChecking: false,
       };
     case ACTION_TYPE.SIGNUP_ERROR:
-      console.log(action);
       return {
         ...state,
-        errors: action.data.errors,
+        signupErrors: action.data.errors,
         isLoggedIn: false,
         status: action.data.status,
         isChecking: false,

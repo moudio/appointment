@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Alert from './Alert/Alert';
 import Errors from '../Errors/Errors';
 import { handleLogin } from '../../actions/actions';
+import loading from '../../Images/loading.gif';
 
 function Login(props) {
   const handleSubmit = (e) => {
@@ -27,8 +28,11 @@ function Login(props) {
         </div>
         <div className="form-container">
           <form onSubmit={handleSubmit}>
-            {props.userInfos.errors ? (
-              <Errors errors={props.userInfos.errors} />
+            {props.userInfos.loginErrors ? (
+              <Errors errors={props.userInfos.loginErrors} />
+            ) : null}
+            {props.userInfos.isChecking ? (
+              <img src={loading} alt="loading" className="loading-gif" />
             ) : null}
             <div className="form-group">
               <label>User Name</label>

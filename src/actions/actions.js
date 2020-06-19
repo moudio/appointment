@@ -59,20 +59,25 @@ export const loginStatus = () => (dispatch) => {
 };
 
 export const handleLogin = (user) => (dispatch) => {
+  dispatch({
+    type: IS_FETCHING,
+  });
   axios
     .post('http://localhost:3001/login', { user }, { withCredentials: true })
     .then((response) => {
-      if (response.data.logged_in === true) {
-        dispatch({
-          type: USER_LOGGED_IN,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: LOGIN_ERROR,
-          data: response.data,
-        });
-      }
+      setTimeout(() => {
+        if (response.data.logged_in === true) {
+          dispatch({
+            type: USER_LOGGED_IN,
+            data: response.data,
+          });
+        } else {
+          dispatch({
+            type: LOGIN_ERROR,
+            data: response.data,
+          });
+        }
+      }, 1000);
     })
     .catch((error) => console.log('api errors', error));
 };

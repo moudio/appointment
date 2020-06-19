@@ -39,7 +39,7 @@ function Register({ dispatchSignup, signupStatus, history }) {
             <h4 className="pb-4">Please fill with your details</h4>
             <form onSubmit={handleSignup}>
               {signupStatus.status === 500 ? (
-                <Errors errors={signupStatus.errors} />
+                <Errors errors={signupStatus.signupErrors} />
               ) : null}
               {signupStatus.isChecking ? (
                 <img src={loading} alt="loading" className="loading-gif" />
