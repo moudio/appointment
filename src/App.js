@@ -7,16 +7,18 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { fetchCars, loginStatus } from './actions/actions';
+import { loginStatus } from './actions/actions';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
 
-function App({ cars, getCars, userStatus, checkLoginStatus }) {
-  console.log(userStatus);
+function App({ cars, userStatus }) {
+  console.log('userStatus from App', userStatus);
   useEffect(() => {
+    console.log('useEffect');
     if (userStatus.isLoggedIn) {
+      console.log('true');
       getCars();
     }
   }, []);
@@ -35,9 +37,11 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
               />
             )}
           </Route>
-          <Route path="/login" exact>
-            <Login />
-          </Route>
+          <Route
+            path="/login"
+            render={(props) => <Login {...props} />}
+            exact
+          ></Route>
           <Route path="/signup" exact>
             <Signup />
           </Route>
@@ -53,7 +57,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCars: () => dispatch(fetchCars()),
   checkLoginStatus: () => dispatch(loginStatus()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

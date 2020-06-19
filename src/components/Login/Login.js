@@ -3,22 +3,24 @@ import './Login.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Alert from './Alert/Alert';
+import Errors from '../Errors/Errors';
 import { handleLogin } from '../../actions/actions';
 
-function Login({ handleLogin, userInfos }) {
+function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       username: document.querySelector("input[type='text']").value,
       password: document.querySelector("input[type='password']").value,
     };
-    handleLogin(user);
+    props.handleLogin(user);
   };
 
-  console.log('USERINFONS', userInfos);
+  console.log('USERINFONS', props.userInfos.errors);
 
-  const handleErrors = (errors) => {};
-
+  if (props.userInfos.isLoggedIn) {
+    props.history.push('/');
+  }
   return (
     <>
       <div className="login-div">
@@ -27,6 +29,9 @@ function Login({ handleLogin, userInfos }) {
         </div>
         <div className="form-container">
           <form onSubmit={handleSubmit}>
+            {props.userInfos.errors ? (
+              <Errors errors={props.userInfos.errors} />
+            ) : null}
             <div className="form-group">
               <label>User Name</label>
               <input

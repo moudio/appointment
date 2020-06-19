@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ReactFullpage from '@fullpage/react-fullpage';
 import { Header, Footer, SectionsContainer, Section } from 'react-fullpage';
 import './Cars.css';
 import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading.gif';
+import { fetchCars } from '../../actions/actions';
 
 class Cars extends React.Component {
   static propTypes = {
@@ -12,6 +14,7 @@ class Cars extends React.Component {
   };
 
   render() {
+    console.log('inside cars');
     return (
       <>
         {this.props.cars && this.props.cars.length > 0 ? (
@@ -39,5 +42,13 @@ class Cars extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  carsState: state.carsReducer,
+});
 
-export default Cars;
+const mapDispatchToProps = (dispatch) => ({
+  getAllCars: () => {
+    dispatch(getCars());
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Cars);
