@@ -1,0 +1,25 @@
+.user-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.profile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 80vh;
+  width: 90%;
+}
+
+.picture-div {
+  width: 150px;
+  margin: 0 20px;
+}
+
+.profile .picture-img {
+  border-radius: 50%;
+  width: 100%;
+}
