@@ -4,6 +4,14 @@ import Alert from './Alert/Alert';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      errors: '',
+    };
+  }
   handleSubmit(e) {
     e.preventDefault();
   }

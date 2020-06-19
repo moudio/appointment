@@ -17,9 +17,6 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
   useEffect(() => {
     if (userStatus.isLoggedIn) {
       getCars();
-    } else {
-      console.log('no');
-      console.log(userStatus);
     }
   }, []);
   return (
