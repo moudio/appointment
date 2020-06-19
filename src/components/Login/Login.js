@@ -14,6 +14,16 @@ class Login extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    const { username, password } = this.state;
+    let user = {
+      username: username,
+      password: password,
+    };
+    axios
+      .post('http://localhost:3001/login', { user }, { withCredentials: true })
+      .then((response) => {
+        console.log(response);
+      });
   }
   render() {
     return (
