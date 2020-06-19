@@ -1,4 +1,4 @@
-import axios from 'axios';
+import * as ACTION_TYPE from '../actions/actions';
 
 const defaultUserState = {
   user: {},
@@ -6,6 +6,14 @@ const defaultUserState = {
 };
 
 export const userReducer = (state = defaultUserState, action) => {
-  console.log('user reducer is called');
-  return state;
+  console.log(action);
+  switch (action.type) {
+    case ACTION_TYPE.LOGIN_STATUS:
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    default:
+      return state;
+  }
 };

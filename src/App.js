@@ -8,15 +8,14 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Navigation from './containers/Navigation/Navigation';
 import { loginStatus } from './actions/actions';
-function App({ cars, getCars, userStatus }) {
+function App({ cars, getCars, userStatus, checkLoginStatus }) {
   useEffect(() => {
-    async function waitLoginStatusCall() {
-      await loginStatus();
-      if (userStatus.isLoggedIn) {
-        getCars();
-      }
+    if (userStatus.isLoggedIn) {
+      getCars();
+    } else {
+      console.log('no');
+      console.log(userStatus);
     }
-    waitLoginStatusCall();
   }, []);
   return (
     <Router>
@@ -24,7 +23,11 @@ function App({ cars, getCars, userStatus }) {
         <Navigation />
         <Switch>
           <Route path="/" exact>
-            <Cars cars={cars['cars']} />
+            {userStatus.isLoggedIn ? (
+              <Cars cars={cars['cars']} />
+            ) : (
+              <Login alert={true} />
+            )}
           </Route>
           <Route path="/login" exact>
             <Login />
@@ -47,6 +50,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getCars: () => dispatch(fetchCars()),
-  loginStatus: () => dispatch(loginStatus()),
+  checkLoginStatus: () => dispatch(loginStatus()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

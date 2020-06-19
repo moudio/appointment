@@ -7,6 +7,7 @@ export const LOGIN_STATUS = 'LOGIN_STATUS';
 export const FAIL_STATUS_FETCH = 'FAIL_STATUS_FETCH';
 
 export const fetchCars = () => (dispatch) => {
+  console.log('user is logged in, fecthing cars');
   dispatch({
     type: IS_FETCHING,
   });
@@ -31,20 +32,23 @@ export const fetchCars = () => (dispatch) => {
 };
 
 export const loginStatus = () => (dispatch) => {
+  console.log('Login status called');
   dispatch({
     type: IS_FETCHING,
   });
 
   axios
-    .get('http://localhost:3001/loggin_status')
-    .then((status) =>
+    .get('http://localhost:3001/logged_in')
+    .then((status) => {
       setTimeout(() => {
         dispatch({
           type: LOGIN_STATUS,
+          data: status.data,
         });
-      }, 1000)
-    )
+      }, 1000);
+    })
     .catch((error) => {
+      console.log(error);
       setTimeout(() => {
         dispatch({
           type: FAIL_STATUS_FETCH,
