@@ -1,5 +1,7 @@
 import React from 'react';
-import './Register.css';
+import './Signup.css';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 function Register() {
   return (
     <div className="register">
@@ -54,6 +56,8 @@ function Register() {
                 <button type="submit" className="btn btn-black">
                   Create Account
                 </button>
+                or
+                <Link to="/login">Login</Link>
               </div>
             </form>
           </div>

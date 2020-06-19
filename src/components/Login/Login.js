@@ -1,8 +1,12 @@
 import React from 'react';
 import './Login.css';
 import Alert from './Alert/Alert';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 class Login extends React.Component {
-  handleSubmit(e) {}
+  handleSubmit(e) {
+    e.preventDefault();
+  }
   render() {
     return (
       <>
@@ -32,9 +36,7 @@ class Login extends React.Component {
               <button type="submit" className="btn btn-black">
                 Login
               </button>
-              <button type="submit" className="btn btn-secondary">
-                Register
-              </button>
+              <Link to="/signup">Create Account</Link>
             </form>
           </div>
         </div>

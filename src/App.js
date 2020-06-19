@@ -10,7 +10,7 @@ import {
 import { fetchCars } from './actions/actions';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
-import Register from './components/Register/Register';
+import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
 import { loginStatus } from './actions/actions';
 function App({ cars, getCars, userStatus, checkLoginStatus }) {
@@ -40,8 +40,8 @@ function App({ cars, getCars, userStatus, checkLoginStatus }) {
           <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/register" exact>
-            <Register />
+          <Route path="/signup" exact>
+            <Signup />
           </Route>
         </Switch>
       </div>
