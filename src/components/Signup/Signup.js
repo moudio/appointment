@@ -2,9 +2,9 @@ import React from 'react';
 import './Signup.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { handleSignup } from '../../actions/actions';
+import { signupUser } from '../../actions/actions';
 
-function Register({ signupUser }) {
+function Register({ dispatchSignup }) {
   function handleSignup(e) {
     e.preventDefault();
     const user = {
@@ -13,7 +13,7 @@ function Register({ signupUser }) {
       password_confirmation: document.querySelector('#passwordConfirmation')
         .value,
     };
-    signupUser(user);
+    dispatchSignup(user);
   }
 
   return (
@@ -30,7 +30,7 @@ function Register({ signupUser }) {
           </div>
           <div className="col-md-8 py-5 border">
             <h4 className="pb-4">Please fill with your details</h4>
-            <form onSubmit={() => handleSignup()}>
+            <form onSubmit={handleSignup}>
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <input
@@ -85,8 +85,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  signupUser: () => {
-    dispatch(handleSignup);
+  dispatchSignup: (user) => {
+    dispatch(signupUser(user));
   },
 });
 
