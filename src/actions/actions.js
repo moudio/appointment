@@ -78,6 +78,9 @@ export const handleLogin = (user) => (dispatch) => {
 };
 
 export const signupUser = (user) => (dispatch) => {
+  dispatch({
+    type: IS_FETCHING,
+  });
   axios
     .post(
       'http://localhost:3001/api/v1/users',
@@ -85,17 +88,19 @@ export const signupUser = (user) => (dispatch) => {
       { withCredentials: true }
     )
     .then((response) => {
-      if (response.data.status === 'created') {
-        dispatch({
-          type: SIGNUP_SUCCES,
-          data: response.data,
-        });
-      } else {
-        dispatch({
-          type: SIGNUP_ERROR,
-          data: response.data,
-        });
-      }
+      setTimeout(() => {
+        if (response.data.status === 'created') {
+          dispatch({
+            type: SIGNUP_SUCCES,
+            data: response.data,
+          });
+        } else {
+          dispatch({
+            type: SIGNUP_ERROR,
+            data: response.data,
+          });
+        }
+      }, 1000);
     })
     .catch((error) => console.log(error));
 };

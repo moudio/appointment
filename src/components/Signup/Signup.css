@@ -20,3 +20,8 @@ img {
 .registration-sidebar {
   background: black;
 }
+
+img.loading-gif {
+  max-width: 40px;
+  margin: 20px;
+}

@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signupUser } from '../../actions/actions';
 import Errors from '../Errors/Errors';
+import loading from '../../Images/loading.gif';
 
-function Register({ dispatchSignup, signupStatus }) {
+function Register({ dispatchSignup, signupStatus, history }) {
   useEffect(() => {
-    console.log('useEffect');
     if (signupStatus.status === 'created') {
-      console.log('Signed in!');
+      history.push('/user');
     }
   });
   function handleSignup(e) {
@@ -23,7 +23,6 @@ function Register({ dispatchSignup, signupStatus }) {
     dispatchSignup(user);
   }
 
-  console.log('state for signup', signupStatus);
   return (
     <div className="register">
       <div className="container registration-container">
@@ -39,8 +38,11 @@ function Register({ dispatchSignup, signupStatus }) {
           <div className="col-md-8 py-5 border">
             <h4 className="pb-4">Please fill with your details</h4>
             <form onSubmit={handleSignup}>
-              {signupStatus && signupStatus.status === 500 ? (
+              {signupStatus.status === 500 ? (
                 <Errors errors={signupStatus.errors} />
+              ) : null}
+              {signupStatus.isChecking ? (
+                <img src={loading} alt="loading" className="loading-gif" />
               ) : null}
               <div className="form-row">
                 <div className="form-group col-md-12">

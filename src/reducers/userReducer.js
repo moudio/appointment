@@ -7,6 +7,11 @@ const defaultUserState = {
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
+    case ACTION_TYPE.IS_FETCHING:
+      return {
+        ...state,
+        isChecking: true,
+      };
     case ACTION_TYPE.LOGIN_STATUS:
       return {
         ...state,
@@ -27,13 +32,13 @@ const userReducer = (state = defaultUserState, action) => {
       };
 
     case ACTION_TYPE.SIGNUP_SUCCES:
-      console.log('SUCCESS', action);
       return {
         ...state,
         errors: [],
-        isLoggedIn: false,
+        isLoggedIn: true,
         user: action.data.user,
         status: action.data.status,
+        isChecking: false,
       };
     case ACTION_TYPE.SIGNUP_ERROR:
       console.log(action);
@@ -42,6 +47,7 @@ const userReducer = (state = defaultUserState, action) => {
         errors: action.data.errors,
         isLoggedIn: false,
         status: action.data.status,
+        isChecking: false,
       };
     default:
       return state;
