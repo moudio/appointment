@@ -9,15 +9,15 @@ import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading.gif';
 import { fetchCars } from '../../actions/actions';
 
-function Cars(props) {
+function Cars({ cars, carsState, getAllCars }) {
   useEffect(() => {
-    props.getAllCars();
+    getAllCars();
   }, []);
 
   console.log('inside cars');
   return (
     <>
-      {props.cars && props.cars.length > 0 ? (
+      {cars && cars.length > 0 && !carsState.isFetching ? (
         <ReactFullpage
           scrollOverflow={true}
           sectionsColor={['#4BBFC3', '#7BAABE', 'whitesmoke', '#81e4da']}
@@ -26,7 +26,7 @@ function Cars(props) {
           render={({ state, fullpageApi }) => {
             return (
               <div id="fullpage-wrapper">
-                {props.cars.map((car) => {
+                {cars.map((car) => {
                   return <Car car={car} />;
                 })}
               </div>

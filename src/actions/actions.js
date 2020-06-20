@@ -9,6 +9,7 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const SIGNUP_SUCCES = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+export const FETCHING_CAR = 'FETCHING_CAR';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -112,13 +113,16 @@ export const signupUser = (user) => (dispatch) => {
 };
 
 export const getOneCar = (carId) => (dispatch) => {
+  console.log('get one car called with carId ', carId);
   dispatch({
-    type: FETCHING_CAR,
+    type: IS_FETCHING,
   });
   setTimeout(() => {
     axios
       .get(`http://localhost:3001/api/v1/cars/${carId}`)
-      .then((response) => console.log(response))
+      .then((response) =>
+        console.log('response from one car with id', carId, response)
+      )
       .catch((error) => console.log(error));
   }, 1000);
 };

@@ -9,6 +9,7 @@ export const carsReducer = (state = defaultCarState, action) => {
   console.log('car reducer called');
   switch (action.type) {
     case ACTION_TYPE.IS_FETCHING:
+      console.log('CAR IS FETCHING');
       return {
         ...state,
         isFetching: true,

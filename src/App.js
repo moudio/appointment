@@ -16,6 +16,7 @@ import User from './components/User/User';
 
 function App({ cars, userStatus }) {
   console.log('userStatus from App', userStatus);
+  console.log('carsStatus from App', cars);
 
   return (
     <Router>
