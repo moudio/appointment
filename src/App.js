@@ -53,6 +53,9 @@ function App({ cars, userStatus }) {
               />
             )}
           </Route>
+          <Route exact path="/car">
+            <h1>Your car</h1>
+          </Route>
         </Switch>
       </div>
     </Router>

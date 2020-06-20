@@ -1,5 +1,6 @@
 import React from 'react';
 import './Car.css';
+import { Link } from 'react-router-dom';
 
 function Car({ car }) {
   return (
@@ -10,7 +11,7 @@ function Car({ car }) {
           <h2>{car.model}</h2>
           <p>{car.description}</p>
           <button type="button" className="book-ride">
-            Book a ride
+            <Link to="/car">Book a ride</Link>
           </button>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './User.css';
+import UserCars from '../UserCars/UserCars';
 import profile from '../../Images/profile.jpg';
+
 function User({ userStatus }) {
   const { user, cars } = userStatus;
   console.log('user is ', user);
@@ -32,7 +34,9 @@ function User({ userStatus }) {
           </div>
           <div className="books">
             {cars && cars.length > 0 ? (
-              <h1>your cars</h1>
+              <>
+                <UserCars cars={cars} />
+              </>
             ) : (
               <h2>
                 You have no bookings yet, <Link to="/">create one!</Link>{' '}
