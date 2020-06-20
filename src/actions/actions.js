@@ -65,6 +65,7 @@ export const handleLogin = (user) => (dispatch) => {
   axios
     .post('http://localhost:3001/login', { user }, { withCredentials: true })
     .then((response) => {
+      console.log(response);
       setTimeout(() => {
         if (response.data.logged_in === true) {
           dispatch({
