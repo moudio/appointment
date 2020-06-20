@@ -110,3 +110,15 @@ export const signupUser = (user) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const getOneCar = (carId) => (dispatch) => {
+  dispatch({
+    type: FETCHING_CAR,
+  });
+  setTimeout(() => {
+    axios
+      .get(`http://localhost:3001/api/v1/cars/${carId}`)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  }, 1000);
+};
