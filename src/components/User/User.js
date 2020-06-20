@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './User.css';
 import profile from '../../Images/profile.jpg';
-function User({ user }) {
+function User({ userStatus }) {
+  const { user, cars } = userStatus;
   console.log('user is ', user);
   return (
     <div className="user-div">
@@ -30,7 +31,7 @@ function User({ user }) {
             </Router>
           </div>
           <div className="books">
-            {user.cars && user.cars.length > 0 ? (
+            {cars && cars.length > 0 ? (
               <h1>your cars</h1>
             ) : (
               <h2>

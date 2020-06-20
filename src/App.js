@@ -45,7 +45,7 @@ function App({ cars, userStatus }) {
 
           <Route exact path="/user">
             {userStatus.isLoggedIn ? (
-              <User user={userStatus.user} />
+              <User userStatus={userStatus} />
             ) : (
               <Redirect
                 push
