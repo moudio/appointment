@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Car.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getOneCar } from '../../actions/actions';
-function Car({ car, getCar }) {
+import { useHistory } from 'react-router-dom';
+function Car({ car, getCar, carsReducer }) {
+  useEffect(() => {
+    if (carsReducer.showCar) {
+      const history = useHistory();
+      history.push('/car');
+    }
+  }, []);
+
   return (
     <div className="section">
       <div className="inner-section">
@@ -23,12 +31,12 @@ function Car({ car, getCar }) {
     </div>
   );
 }
-// const mapStateToProps = (state) => ({
-//   carsReducer: state.carsReducer,
-// });
+const mapStateToProps = (state) => ({
+  carsReducer: state.carsReducer,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getCar: (carId) => dispatch(getOneCar(carId)),
 });
 
-export default connect(null, mapDispatchToProps)(Car);
+export default connect(mapStateToProps, mapDispatchToProps)(Car);

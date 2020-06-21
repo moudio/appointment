@@ -9,8 +9,7 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const SIGNUP_SUCCES = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
-export const FETCHING_CAR = 'FETCHING_CAR';
-
+export const ONE_CAR_FETCH_SUCCESS = 'ONE_CAR_FETCH_SUCCESS';
 export const fetchCars = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING,
@@ -18,21 +17,17 @@ export const fetchCars = () => (dispatch) => {
 
   axios
     .get('http://localhost:3001/api/v1/cars')
-    .then((cars) =>
-      setTimeout(() => {
-        dispatch({
-          type: FETCH_SUCCESS,
-          cars: cars.data,
-        });
-      }, 1000)
-    )
-    .catch(() =>
-      setTimeout(() => {
-        dispatch({
-          type: FETCH_FAILURE,
-        });
-      }, 1000)
-    );
+    .then((cars) => setTimeout(() => {
+      dispatch({
+        type: FETCH_SUCCESS,
+        cars: cars.data,
+      });
+    }, 1000))
+    .catch(() => setTimeout(() => {
+      dispatch({
+        type: FETCH_FAILURE,
+      });
+    }, 1000));
 };
 
 export const loginStatus = () => (dispatch) => {
@@ -92,7 +87,7 @@ export const signupUser = (user) => (dispatch) => {
     .post(
       'http://localhost:3001/api/v1/users',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
     .then((response) => {
       setTimeout(() => {
@@ -120,9 +115,10 @@ export const getOneCar = (carId) => (dispatch) => {
   setTimeout(() => {
     axios
       .get(`http://localhost:3001/api/v1/cars/${carId}`)
-      .then((response) =>
-        console.log('response from one car with id', carId, response)
-      )
+      .then((response) => dispatch({
+        type: ONE_CAR_FETCH_SUCCESS,
+        carToShow: response.data,
+      }))
       .catch((error) => console.log(error));
   }, 1000);
 };

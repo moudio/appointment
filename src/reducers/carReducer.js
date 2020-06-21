@@ -19,6 +19,7 @@ export const carsReducer = (state = defaultCarState, action) => {
         ...state,
         cars: action.cars,
         isFetching: false,
+        isChecking: false,
       };
     case ACTION_TYPE.FETCH_FAILURE:
       return {
@@ -26,7 +27,12 @@ export const carsReducer = (state = defaultCarState, action) => {
         cars: null,
         isFetching: action.isFetching,
       };
-
+    case ACTION_TYPE.ONE_CAR_FETCH_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        carToShow: action.carToShow,
+      };
     default:
       return state;
   }

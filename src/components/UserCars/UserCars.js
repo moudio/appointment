@@ -11,7 +11,7 @@ function UserCars({ cars }) {
           <div className="car_model">
             <h3>{car.model}</h3>
           </div>
-          <div className="car-picture"></div>
+          <div className="car-picture" />
         </div>
       ))}
       <Link to="/">See all cars</Link>

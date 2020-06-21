@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Switch, Link,
+} from 'react-router-dom';
 import './User.css';
 import UserCars from '../UserCars/UserCars';
 import profile from '../../Images/profile.jpg';
@@ -39,7 +41,10 @@ function User({ userStatus }) {
               </>
             ) : (
               <h2>
-                You have no bookings yet, <Link to="/">create one!</Link>{' '}
+                You have no bookings yet,
+                {' '}
+                <Link to="/">create one!</Link>
+                {' '}
               </h2>
             )}
           </div>

@@ -3,13 +3,17 @@ import React, { Component, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactFullpage from '@fullpage/react-fullpage';
-import { Header, Footer, SectionsContainer, Section } from 'react-fullpage';
+import {
+  Header, Footer, SectionsContainer, Section,
+} from 'react-fullpage';
 import './Cars.css';
 import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading.gif';
 import { fetchCars } from '../../actions/actions';
 
-function Cars({ cars, carsState, getAllCars, history }) {
+function Cars({
+  cars, carsState, getAllCars, history,
+}) {
   useEffect(() => {
     getAllCars();
   }, []);
@@ -22,19 +26,15 @@ function Cars({ cars, carsState, getAllCars, history }) {
     <>
       {cars && cars.length > 0 && !carsState.isFetching ? (
         <ReactFullpage
-          scrollOverflow={true}
+          scrollOverflow
           sectionsColor={['#4BBFC3', '#7BAABE', 'whitesmoke', '#81e4da']}
-          continuousVertical={true}
+          continuousVertical
           navigation
-          render={({ state, fullpageApi }) => {
-            return (
-              <div id="fullpage-wrapper">
-                {cars.map((car) => {
-                  return <Car car={car} />;
-                })}
-              </div>
-            );
-          }}
+          render={({ state, fullpageApi }) => (
+            <div id="fullpage-wrapper">
+              {cars.map((car) => <Car car={car} />)}
+            </div>
+          )}
         />
       ) : (
         <div className="loading-div">

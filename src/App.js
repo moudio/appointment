@@ -14,9 +14,9 @@ import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
 import User from './components/User/User';
 
-function App({ cars, userStatus }) {
+function App({ carsState, userStatus }) {
   console.log('userStatus from App', userStatus);
-  console.log('carsStatus from App', cars);
+  console.log('carsStatus from App', carsState);
 
   return (
     <Router>
@@ -25,7 +25,7 @@ function App({ cars, userStatus }) {
         <Switch>
           <Route path="/" exact>
             {userStatus.isLoggedIn ? (
-              <Cars cars={cars.cars} />
+              <Cars cars={carsState.cars} />
             ) : (
               <Redirect
                 push
@@ -33,16 +33,12 @@ function App({ cars, userStatus }) {
               />
             )}
           </Route>
+          <Route exact path="/login" render={(props) => <Login {...props} />} />
           <Route
-            path="/login"
-            render={(props) => <Login {...props} />}
             exact
-          ></Route>
-          <Route
             path="/signup"
-            exact
             render={(props) => <Signup {...props} />}
-          ></Route>
+          />
 
           <Route exact path="/user">
             {userStatus.isLoggedIn ? (
@@ -64,7 +60,7 @@ function App({ cars, userStatus }) {
 }
 
 const mapStateToProps = (state) => ({
-  cars: state.carsReducer,
+  carsState: state.carsReducer,
   userStatus: state.userReducer,
 });
 
