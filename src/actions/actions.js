@@ -130,12 +130,13 @@ export const getOneCar = (carId) => (dispatch) => {
 };
 
 export const createBooking = (book) => (dispatch) => {
+  console.log('create booking called');
   axios
     .post(
       'http://localhost:3001/api/v1/books/',
       { book },
       { withCredentials: true }
     )
-    .then((response) => console.log(response));
-    .catch(error => console.log(error))
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
 };

@@ -1,8 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './CarBooking.css';
+
 import { createBooking } from '../../actions/actions';
-function CarBooking({ car, carReducer, startDate }) {
+function CarBooking({ car, postBooking, user }) {
+  function handleBooking() {
+    const book = {
+      booking_date: document.querySelector('#date').value,
+      car_id: car.id,
+      user_id: user.id,
+    };
+    console.log('book object');
+    console.log(book);
+    postBooking(book);
+  }
   return (
     <div className="carBooking">
       <div className={`car-img ${car.alt}`}></div>
@@ -22,7 +33,7 @@ function CarBooking({ car, carReducer, startDate }) {
           <button
             className="book"
             onClick={() => {
-              console.log('hello');
+              handleBooking();
             }}
           >
             Book a drive
@@ -33,12 +44,13 @@ function CarBooking({ car, carReducer, startDate }) {
   );
 }
 const mapDispatchToProps = (dispatch) => ({
-  handleBooking: (book) => {
-    createBooking(book);
+  postBooking: (book) => {
+    dispatch(createBooking(book));
   },
 });
 const mapStateToProps = (state) => ({
-  carReducer: state.carReducer,
+  carsState: state.carReducer,
+  user: state.userReducer.user,
 });
 
-export default connect(mapStateToProps, mapStateToProps)(CarBooking);
+export default connect(mapStateToProps, mapDispatchToProps)(CarBooking);
