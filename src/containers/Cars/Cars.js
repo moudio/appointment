@@ -3,23 +3,21 @@ import React, { Component, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactFullpage from '@fullpage/react-fullpage';
-import {
-  Header, Footer, SectionsContainer, Section,
-} from 'react-fullpage';
+import { Header, Footer, SectionsContainer, Section } from 'react-fullpage';
+import { useHistory } from 'react-router-dom';
 import './Cars.css';
 import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading.gif';
 import { fetchCars } from '../../actions/actions';
 
-function Cars({
-  cars, carsState, getAllCars, history,
-}) {
+function Cars({ cars, carsState, getAllCars }) {
   useEffect(() => {
     getAllCars();
   }, []);
 
-  if (carsState.showCar) {
-    history.push('/car');
+  const history = useHistory();
+  if (carsState.carToShow) {
+    history.push(`/range-rover-${carsState.carToShow.alt}`);
   }
 
   return (
@@ -32,7 +30,9 @@ function Cars({
           navigation
           render={({ state, fullpageApi }) => (
             <div id="fullpage-wrapper">
-              {cars.map((car) => <Car car={car} />)}
+              {cars.map((car) => (
+                <Car car={car} />
+              ))}
             </div>
           )}
         />

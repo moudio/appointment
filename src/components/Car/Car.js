@@ -3,15 +3,7 @@ import './Car.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getOneCar } from '../../actions/actions';
-import { useHistory } from 'react-router-dom';
 function Car({ car, getCar, carsReducer }) {
-  useEffect(() => {
-    if (carsReducer.showCar) {
-      const history = useHistory();
-      history.push('/car');
-    }
-  }, []);
-
   return (
     <div className="section">
       <div className="inner-section">
