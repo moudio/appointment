@@ -5,11 +5,38 @@
   align-items: center;
 }
 
-.car-img.velar {
-  background-image: url('../../Images/velar.png');
-  width: 50%;
+.car-img {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  width: 50%;
+}
+
+.car-img.velar {
+  background-image: url('../../Images/velar.png');
+}
+
+.car-img.evoque {
+  background-image: url('../../Images/evoque.png');
+}
+
+.car-img.sport {
+  background-image: url('../../Images/sport.png');
+}
+
+.car-img.discovery {
+  background-image: url('../../Images/discovery.png');
+}
+
+.carBooking ul {
+  list-style-type: none;
+}
+
+.carBooking ul li:nth-of-type(2n) {
+  background-color: rebeccapurple;
+}
+
+.carBooking ul li:nth-of-type(2n + 1) {
+  background-color: lightgray;
 }
