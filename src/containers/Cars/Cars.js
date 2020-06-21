@@ -9,12 +9,15 @@ import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading.gif';
 import { fetchCars } from '../../actions/actions';
 
-function Cars({ cars, carsState, getAllCars }) {
+function Cars({ cars, carsState, getAllCars, history }) {
   useEffect(() => {
     getAllCars();
   }, []);
 
-  console.log('inside cars');
+  if (carsState.showCar) {
+    history.push('/car');
+  }
+
   return (
     <>
       {cars && cars.length > 0 && !carsState.isFetching ? (
