@@ -13,6 +13,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
 import User from './components/User/User';
+import CarBooking from './components/CarBooking/CarBooking';
 
 function App({ carsState, userStatus }) {
   console.log('userStatus from App', userStatus);
@@ -50,9 +51,14 @@ function App({ carsState, userStatus }) {
               />
             )}
           </Route>
-          <Route exact path="/car">
-            <h1>Your car</h1>
-          </Route>
+
+          <Route
+            exact
+            path="/cars/:car"
+            render={(props) => (
+              <CarBooking {...props} car={carsState.carToShow} />
+            )}
+          ></Route>
         </Switch>
       </div>
     </Router>

@@ -17,7 +17,7 @@ function Cars({ cars, carsState, getAllCars }) {
 
   const history = useHistory();
   if (carsState.carToShow) {
-    history.push(`/range-rover-${carsState.carToShow.alt}`);
+    history.push(`/cars/range-rover-${carsState.carToShow.alt}`);
   }
 
   return (

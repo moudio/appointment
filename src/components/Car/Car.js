@@ -3,7 +3,7 @@ import './Car.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getOneCar } from '../../actions/actions';
-function Car({ car, getCar, carsReducer }) {
+function Car({ car, getCar }) {
   return (
     <div className="section">
       <div className="inner-section">
