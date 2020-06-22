@@ -51,14 +51,20 @@ function App({ carsState, userStatus }) {
               />
             )}
           </Route>
-
-          <Route
-            exact
-            path="/cars/:car"
-            render={(props) => (
-              <CarBooking {...props} car={carsState.carToShow} />
-            )}
-          ></Route>
+          {userStatus.isLoggedIn ? (
+            <Route
+              exact
+              path="/cars/:car"
+              render={(props) => (
+                <CarBooking {...props} car={carsState.carToShow} />
+              )}
+            ></Route>
+          ) : (
+            <Redirect
+              push
+              to={{ pathname: '/login', state: { alert: 'hello' } }}
+            />
+          )}
         </Switch>
       </div>
     </Router>
