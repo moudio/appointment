@@ -11,9 +11,10 @@ function CarBooking({ car, postBooking, user, carsState }) {
   }
   function handleBooking() {
     const book = {
-      booking_date: document.querySelector('#date').value,
       car_id: car.id,
       user_id: user.id,
+      booking_date: document.querySelector('#date').value,
+      city: document.querySelector('#city').value,
     };
     console.log('book object');
     console.log(book);
@@ -34,7 +35,8 @@ function CarBooking({ car, postBooking, user, carsState }) {
           </ul>
           <label htmlFor="date">Pick a date</label>
           <input type="date" name="date" id="date" />
-          <select name="cities" id="cities">
+          <label htmlFor="city"> Choose a city </label>
+          <select name="city" id="city">
             <option value="Dakar" selected>
               Dakar
             </option>
