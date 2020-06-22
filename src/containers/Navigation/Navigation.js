@@ -71,12 +71,12 @@ export class Navigation extends Component {
             )}
             {this.props.logged_in ? (
               <li>
-                <Link onClick={this.props.handleLogout}>Logout</Link>
+                <Link to="/user">Your Account</Link>
               </li>
             ) : null}
             {this.props.logged_in ? (
               <li>
-                <Link to="/user">Your Account</Link>
+                <Link onClick={this.props.handleLogout}>Logout</Link>
               </li>
             ) : null}
           </ul>

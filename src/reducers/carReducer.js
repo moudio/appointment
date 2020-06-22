@@ -6,10 +6,8 @@ export const defaultCarState = {
 };
 
 export const carsReducer = (state = defaultCarState, action) => {
-  console.log('car reducer called');
   switch (action.type) {
     case ACTION_TYPE.IS_FETCHING:
-      console.log('CAR IS FETCHING');
       return {
         ...state,
         isFetching: true,
@@ -34,10 +32,22 @@ export const carsReducer = (state = defaultCarState, action) => {
         carToShow: action.carToShow,
       };
 
+    case ACTION_TYPE.CREATING_BOOKING:
+      return {
+        ...state,
+        creating_booking: true,
+      };
+
     case ACTION_TYPE.BOOKING_CREATED:
       return {
         ...state,
         booking_created: true,
+      };
+
+    case ACTION_TYPE.BOOKING_FALSE:
+      return {
+        ...state,
+        booking_created: false,
       };
 
     default:

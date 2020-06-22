@@ -11,7 +11,10 @@ export const SIGNUP_SUCCES = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const ONE_CAR_FETCH_SUCCESS = 'ONE_CAR_FETCH_SUCCESS';
 export const BOOKING_CREATED = 'BOOKING_CREATED';
+export const CREATING_BOOKING = 'CREATING_BOOKING';
+export const BOOKING_FALSE = 'BOOKING_FALSE';
 export const LOGGED_OUT = 'LOGGED_OUT';
+
 export const fetchCars = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING,
@@ -131,24 +134,27 @@ export const getOneCar = (carId) => (dispatch) => {
 };
 
 export const createBooking = (book) => (dispatch) => {
-  console.log('create booking called');
-  axios
-    .post(
-      'http://localhost:3001/api/v1/books/',
-      { book },
-      { withCredentials: true }
-    )
-    .then((response) => {
-      dispatch({
-        type: BOOKING_CREATED,
-      });
-    })
-    .catch((error) => console.log(error));
+  dispatch({
+    type: CREATING_BOOKING,
+  });
+
+  setTimeout(() => {
+    axios
+      .post(
+        'http://localhost:3001/api/v1/books/',
+        { book },
+        { withCredentials: true }
+      )
+      .then(() => {
+        dispatch({
+          type: BOOKING_CREATED,
+        });
+      })
+      .catch((error) => console.log(error));
+  }, 1000);
 };
 
 export const logout = () => (dispatch) => {
-  console.log('logging out..');
-
   axios
     .delete('http://localhost:3001/logout')
     .then((response) => {
@@ -158,4 +164,10 @@ export const logout = () => (dispatch) => {
       });
     })
     .catch((error) => console.log(error));
+};
+
+export const makeBookingPropertyFalse = () => {
+  dispatch({
+    type: BOOKING_FALSE,
+  });
 };

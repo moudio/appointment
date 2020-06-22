@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { createBooking } from '../../actions/actions';
 import './CarBooking.css';
 
-import { createBooking } from '../../actions/actions';
 function CarBooking({ car, postBooking, user, carsState, history }) {
   async function handleBooking() {
     const book = {
@@ -12,11 +12,10 @@ function CarBooking({ car, postBooking, user, carsState, history }) {
       booking_date: document.querySelector('#date').value,
       city: document.querySelector('#city').value,
     };
-    console.log('book object');
-    console.log(book);
     await postBooking(book);
     if (carsState.booking_created) {
       history.push('/user');
+      removeBookingCreated();
     }
   }
   return (
@@ -55,12 +54,20 @@ function CarBooking({ car, postBooking, user, carsState, history }) {
           </button>
         </div>
       </div>
+      {/* {carsState.creating_booking ? (
+        <div className="creating-booking">
+          <h2>Creating Your Booking...</h2>
+        </div>
+      ) : null} */}
     </div>
   );
 }
 const mapDispatchToProps = (dispatch) => ({
   postBooking: (book) => {
     dispatch(createBooking(book));
+  },
+  removeBookingCreated: () => {
+    dispatch(makeBookingPropertyFalse());
   },
 });
 const mapStateToProps = (state) => ({
