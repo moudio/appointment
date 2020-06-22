@@ -11,6 +11,7 @@ export const SIGNUP_SUCCES = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const ONE_CAR_FETCH_SUCCESS = 'ONE_CAR_FETCH_SUCCESS';
 export const BOOKING_CREATED = 'BOOKING_CREATED';
+export const LOGGED_OUT = 'LOGGED_OUT';
 export const fetchCars = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING,
@@ -148,8 +149,13 @@ export const createBooking = (book) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   console.log('logging out..');
+
   axios
     .delete('http://localhost:3001/logout')
-    .then((response) => console.log(response))
+    .then((response) => {
+      dispatch({
+        type: LOGGED_OUT,
+      });
+    })
     .catch((error) => console.log(error));
 };
