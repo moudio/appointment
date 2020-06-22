@@ -5,10 +5,7 @@ import './CarBooking.css';
 
 import { createBooking } from '../../actions/actions';
 function CarBooking({ car, postBooking, user, carsState, history }) {
-  if (carsState.booking_created) {
-    history.push('/user');
-  }
-  function handleBooking() {
+  async function handleBooking() {
     const book = {
       car_id: car.id,
       user_id: user.id,
@@ -17,7 +14,10 @@ function CarBooking({ car, postBooking, user, carsState, history }) {
     };
     console.log('book object');
     console.log(book);
-    postBooking(book);
+    await postBooking(book);
+    if (carsState.booking_created) {
+      history.push('/user');
+    }
   }
   return (
     <div className="carBooking">
