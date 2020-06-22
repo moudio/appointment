@@ -30,6 +30,7 @@ export const carsReducer = (state = defaultCarState, action) => {
         ...state,
         isFetching: false,
         carToShow: action.carToShow,
+        redirect: true,
       };
 
     case ACTION_TYPE.CREATING_BOOKING:
@@ -49,7 +50,11 @@ export const carsReducer = (state = defaultCarState, action) => {
         ...state,
         booking_created: false,
       };
-
+    case ACTION_TYPE.REDIRECT_FALSE:
+      return {
+        ...state,
+        redirect: false,
+      };
     default:
       return state;
   }

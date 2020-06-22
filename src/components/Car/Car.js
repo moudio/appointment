@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Car.css';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { getOneCar } from '../../actions/actions';
+import { getOneCar, redirectFalse } from '../../actions/actions';
 
-function Car({ car, getCar, carsState, history }) {
-  async function manageOneCarFetch(carId) {
+function Car({ car, getCar, carsState, history, makeRedirectFalse }) {
+  function manageOneCarFetch(carId) {
     getCar(carId);
   }
-
-  if (carsState.carToShow) {
+  if (carsState.carToShow && carsState.redirect) {
+    makeRedirectFalse();
     history.push(`/cars/range-rover-${carsState.carToShow.alt}`);
   }
+
   return (
     <div className="section">
       <div className="inner-section">
@@ -39,6 +39,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getCar: (carId) => dispatch(getOneCar(carId)),
+  makeRedirectFalse: () => dispatch(redirectFalse()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Car));

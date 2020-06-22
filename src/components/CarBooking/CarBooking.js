@@ -1,23 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createBooking } from '../../actions/actions';
+import { createBooking, makeBookingPropertyFalse } from '../../actions/actions';
 import './CarBooking.css';
 
-function CarBooking({ car, postBooking, user, carsState, history }) {
-  async function handleBooking() {
+function CarBooking({
+  car,
+  postBooking,
+  user,
+  carsState,
+  history,
+  removeBookingCreated,
+}) {
+  function handleBooking() {
     const book = {
       car_id: car.id,
       user_id: user.id,
       booking_date: document.querySelector('#date').value,
       city: document.querySelector('#city').value,
     };
-    await postBooking(book);
-    if (carsState.booking_created) {
-      history.push('/user');
-      removeBookingCreated();
-    }
+    postBooking(book);
   }
+
+  if (carsState.booking_created) {
+    history.push('/user');
+    removeBookingCreated();
+  }
+
   return (
     <div className="carBooking">
       <div className={`car-img ${car.alt}`}></div>

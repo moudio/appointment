@@ -13,6 +13,7 @@ export const ONE_CAR_FETCH_SUCCESS = 'ONE_CAR_FETCH_SUCCESS';
 export const BOOKING_CREATED = 'BOOKING_CREATED';
 export const CREATING_BOOKING = 'CREATING_BOOKING';
 export const BOOKING_FALSE = 'BOOKING_FALSE';
+export const REDIRECT_FALSE = 'REDIRECT_FALSE';
 export const LOGGED_OUT = 'LOGGED_OUT';
 
 export const fetchCars = () => (dispatch) => {
@@ -127,6 +128,7 @@ export const getOneCar = (carId) => (dispatch) => {
         dispatch({
           type: ONE_CAR_FETCH_SUCCESS,
           carToShow: response.data,
+          redirect: true,
         })
       )
       .catch((error) => console.log(error));
@@ -166,8 +168,10 @@ export const logout = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const makeBookingPropertyFalse = () => {
-  dispatch({
-    type: BOOKING_FALSE,
-  });
-};
+export const makeBookingPropertyFalse = () => ({
+  type: BOOKING_FALSE,
+});
+
+export const redirectFalse = () => ({
+  type: REDIRECT_FALSE,
+});
