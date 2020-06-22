@@ -16,7 +16,7 @@ function CarBooking({
     const book = {
       car_id: car.id,
       user_id: user.id,
-      booking_date: document.querySelector('#date').value,
+      date: document.querySelector('#date').value,
       city: document.querySelector('#city').value,
     };
     postBooking(book);

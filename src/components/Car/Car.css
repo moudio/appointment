@@ -43,6 +43,10 @@
   height: 100vh;
 }
 
+.car-details {
+  padding-left: 0;
+}
+
 @media (max-width: 900px) {
   .picture {
     width: 100%;

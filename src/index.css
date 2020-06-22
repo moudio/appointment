@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
 html {
   overflow-x: hidden;
 }
@@ -12,5 +13,5 @@ body {
 }
 
 code {
-  font-family: 'Racing Sans One', cursive !important;
+  font-family: 'Days One', sans-serif !important;
 }

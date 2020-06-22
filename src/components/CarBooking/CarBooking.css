@@ -33,6 +33,14 @@
   list-style-type: none;
 }
 
+.carBooking ul {
+  padding-left: 0;
+}
+
+.carBooking ul li {
+  height: 40px;
+}
+
 .carBooking ul li:nth-of-type(2n) {
   background-color: rebeccapurple;
 }

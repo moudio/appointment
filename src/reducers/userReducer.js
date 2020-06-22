@@ -26,6 +26,7 @@ const userReducer = (state = defaultUserState, action) => {
         loginErrors: [],
         isChecking: false,
         cars: action.data.cars,
+        books: action.data.books,
       };
     case ACTION_TYPE.LOGIN_ERROR:
       return {
