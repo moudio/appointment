@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import {
-  Route, BrowserRouter as Router, Link, Switch,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { logout } from '../../actions/actions';
 import './Navigation.css';
 
 export class Navigation extends Component {
@@ -17,11 +17,11 @@ export class Navigation extends Component {
   toggleIcon() {
     this.state.menu === 'breadcrumb'
       ? this.setState({
-        menu: 'close',
-      })
+          menu: 'close',
+        })
       : this.setState({
-        menu: 'breadcrumb',
-      });
+          menu: 'breadcrumb',
+        });
   }
 
   toggleMenu() {
@@ -62,13 +62,13 @@ export class Navigation extends Component {
           </div>
           <ul className="menu-list disappear">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <a href="/logout">Logout</a>
+              <Link onClick={this.props.handleLogout}>Logout</Link>
             </li>
           </ul>
         </nav>
@@ -77,4 +77,10 @@ export class Navigation extends Component {
   }
 }
 
-export default Navigation;
+const mapDispatchToProps = (dispatch) => ({
+  handleLogout: () => {
+    dispatch(logout());
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Navigation);

@@ -145,3 +145,11 @@ export const createBooking = (book) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const logout = () => (dispatch) => {
+  console.log('logging out..');
+  axios
+    .delete('http://localhost:3001/logout')
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
+};
