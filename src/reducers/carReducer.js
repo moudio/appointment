@@ -33,6 +33,13 @@ export const carsReducer = (state = defaultCarState, action) => {
         isFetching: false,
         carToShow: action.carToShow,
       };
+
+    case ACTION_TYPE.BOOKING_CREATED:
+      return {
+        ...state,
+        booking_created: true,
+      };
+
     default:
       return state;
   }

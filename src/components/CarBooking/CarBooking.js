@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './CarBooking.css';
 
 import { createBooking } from '../../actions/actions';
-function CarBooking({ car, postBooking, user }) {
+function CarBooking({ car, postBooking, user, carsState }) {
+  const history = useHistory();
+  if (carsState.booking_created) {
+    history.push('/user');
+  }
   function handleBooking() {
     const book = {
       booking_date: document.querySelector('#date').value,
@@ -29,7 +34,16 @@ function CarBooking({ car, postBooking, user }) {
           </ul>
           <label htmlFor="date">Pick a date</label>
           <input type="date" name="date" id="date" />
-
+          <select name="cities" id="cities">
+            <option value="Dakar" selected>
+              Dakar
+            </option>
+            <option value="Paris">Paris</option>
+            <option value="New York">New York</option>
+            <option value="Beijing">Beijing</option>
+            <option value="Berlin">Berlin</option>
+            <option value="London">London</option>
+          </select>
           <button
             className="book"
             onClick={() => {
@@ -49,7 +63,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 const mapStateToProps = (state) => ({
-  carsState: state.carReducer,
+  carsState: state.carsReducer,
   user: state.userReducer.user,
 });
 

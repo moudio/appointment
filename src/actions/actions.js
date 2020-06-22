@@ -10,6 +10,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const SIGNUP_SUCCES = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const ONE_CAR_FETCH_SUCCESS = 'ONE_CAR_FETCH_SUCCESS';
+export const BOOKING_CREATED = 'BOOKING_CREATED';
 export const fetchCars = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING,
@@ -137,6 +138,10 @@ export const createBooking = (book) => (dispatch) => {
       { book },
       { withCredentials: true }
     )
-    .then((response) => console.log(response))
+    .then((response) => {
+      dispatch({
+        type: BOOKING_CREATED,
+      });
+    })
     .catch((error) => console.log(error));
 };
