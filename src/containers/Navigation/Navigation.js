@@ -62,14 +62,18 @@ export class Navigation extends Component {
           </div>
           <ul className="menu-list disappear">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Cars</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link onClick={this.props.handleLogout}>Logout</Link>
-            </li>
+            {this.props.logged_in ? null : (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
+            {this.props.logged_in ? (
+              <li>
+                <Link onClick={this.props.handleLogout}>Logout</Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
       </>
@@ -77,10 +81,14 @@ export class Navigation extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  logged_in: state.userReducer.isLoggedIn,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   handleLogout: () => {
     dispatch(logout());
   },
 });
 
-export default connect(null, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
