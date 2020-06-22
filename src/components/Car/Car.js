@@ -2,8 +2,18 @@ import React, { useEffect } from 'react';
 import './Car.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { getOneCar } from '../../actions/actions';
-function Car({ car, getCar }) {
+
+function Car({ car, getCar, carsState, history }) {
+  async function manageOneCarFetch(carId) {
+    getCar(carId);
+  }
+
+  if (carsState.carToShow) {
+    history.push(`/cars/range-rover-${carsState.carToShow.alt}`);
+  }
   return (
     <div className="section">
       <div className="inner-section">
@@ -14,7 +24,7 @@ function Car({ car, getCar }) {
           <button
             type="button"
             className="book-ride"
-            onClick={() => getCar(car.id)}
+            onClick={() => manageOneCarFetch(car.id)}
           >
             Book a ride
           </button>
@@ -24,11 +34,11 @@ function Car({ car, getCar }) {
   );
 }
 const mapStateToProps = (state) => ({
-  carsReducer: state.carsReducer,
+  carsState: state.carsReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCar: (carId) => dispatch(getOneCar(carId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Car);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Car));

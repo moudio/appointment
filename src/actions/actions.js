@@ -114,7 +114,6 @@ export const signupUser = (user) => (dispatch) => {
 };
 
 export const getOneCar = (carId) => (dispatch) => {
-  console.log('get one car called with carId ', carId);
   dispatch({
     type: IS_FETCHING,
   });

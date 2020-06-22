@@ -4,21 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactFullpage from '@fullpage/react-fullpage';
 import { Header, Footer, SectionsContainer, Section } from 'react-fullpage';
-import { useHistory } from 'react-router-dom';
 import './Cars.css';
 import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading.gif';
 import { fetchCars } from '../../actions/actions';
 
-function Cars({ cars, carsState, getAllCars }) {
+function Cars({ carsState, cars, history, getAllCars }) {
   useEffect(() => {
     getAllCars();
   }, []);
-
-  const history = useHistory();
-  if (carsState.carToShow) {
-    history.push(`/cars/range-rover-${carsState.carToShow.alt}`);
-  }
 
   return (
     <>

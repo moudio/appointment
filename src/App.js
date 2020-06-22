@@ -16,24 +16,24 @@ import User from './components/User/User';
 import CarBooking from './components/CarBooking/CarBooking';
 
 function App({ carsState, userStatus }) {
-  console.log('userStatus from App', userStatus);
-  console.log('carsStatus from App', carsState);
-
   return (
     <Router>
       <div className="App" data-testid="App">
         <Navigation />
         <Switch>
-          <Route path="/" exact>
-            {userStatus.isLoggedIn ? (
-              <Cars cars={carsState.cars} />
-            ) : (
-              <Redirect
-                push
-                to={{ pathname: '/login', state: { alert: 'hello' } }}
-              />
-            )}
-          </Route>
+          {userStatus.isLoggedIn ? (
+            <Route
+              exact
+              path="/"
+              render={(props) => <Cars cars={carsState.cars} {...props} />}
+            />
+          ) : (
+            <Route
+              exact
+              path="/login"
+              render={(props) => <Login {...props} />}
+            />
+          )}
           <Route exact path="/login" render={(props) => <Login {...props} />} />
           <Route
             exact

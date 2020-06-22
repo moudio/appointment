@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './CarBooking.css';
 
 import { createBooking } from '../../actions/actions';
-function CarBooking({ car, postBooking, user, carsState }) {
-  const history = useHistory();
+function CarBooking({ car, postBooking, user, carsState, history }) {
   if (carsState.booking_created) {
     history.push('/user');
   }
@@ -69,4 +68,7 @@ const mapStateToProps = (state) => ({
   user: state.userReducer.user,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CarBooking);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(CarBooking));
