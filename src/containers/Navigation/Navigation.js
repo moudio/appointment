@@ -74,6 +74,11 @@ export class Navigation extends Component {
                 <Link onClick={this.props.handleLogout}>Logout</Link>
               </li>
             ) : null}
+            {this.props.logged_in ? (
+              <li>
+                <Link to="/user">Your Account</Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
       </>

@@ -45,10 +45,7 @@ function App({ carsState, userStatus }) {
             {userStatus.isLoggedIn ? (
               <User userStatus={userStatus} />
             ) : (
-              <Redirect
-                push
-                to={{ pathname: '/login', state: { alert: 'hello' } }}
-              />
+              <Redirect push to={{ pathname: '/login' }} />
             )}
           </Route>
           {userStatus.isLoggedIn ? (
@@ -60,10 +57,7 @@ function App({ carsState, userStatus }) {
               )}
             ></Route>
           ) : (
-            <Redirect
-              push
-              to={{ pathname: '/login', state: { alert: 'hello' } }}
-            />
+            <Redirect push to={{ pathname: '/login' }} />
           )}
         </Switch>
       </div>
