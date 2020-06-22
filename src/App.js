@@ -15,7 +15,7 @@ import Navigation from './containers/Navigation/Navigation';
 import User from './components/User/User';
 import CarBooking from './components/CarBooking/CarBooking';
 
-function App({ carsState, userStatus }) {
+function App({ carsState, userStatus, history }) {
   return (
     <Router>
       <div className="App" data-testid="App">

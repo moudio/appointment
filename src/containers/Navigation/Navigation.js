@@ -24,13 +24,29 @@ export class Navigation extends Component {
         });
   }
 
+  closeOnListClick() {
+    const allNavLinks = Array.from(
+      document.querySelectorAll('ul.menu-list li a')
+    );
+    allNavLinks.forEach((navLink) => {
+      navLink.addEventListener('click', () => {
+        const menu = document.querySelector('.menu-list');
+        if (menu.classList.contains('appear')) {
+          this.toggleMenu();
+          this.toggleIcon();
+        }
+      });
+    });
+  }
+
   toggleMenu() {
     const menu = document.querySelector('.menu-list');
     if (!menu.classList.contains('appear')) {
       document.querySelector('.Navigation').classList.add('full-width');
       menu.classList.remove('disappear');
       menu.classList.add('appear');
-    } else {
+      this.closeOnListClick();
+    } else if (menu.classList.contains('appear')) {
       menu.classList.remove('appear');
       menu.classList.add('disappear');
       document.querySelector('.Navigation').classList.remove('full-width');
