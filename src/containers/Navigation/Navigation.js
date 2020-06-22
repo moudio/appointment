@@ -52,7 +52,7 @@ export class Navigation extends Component {
               />
             ) : (
               <AiOutlineClose
-                className="close"
+                className="close-icon"
                 onClick={() => {
                   this.toggleMenu();
                   this.toggleIcon();
