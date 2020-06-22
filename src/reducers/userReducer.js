@@ -53,6 +53,10 @@ const userReducer = (state = defaultUserState, action) => {
         status: action.data.status,
         isChecking: false,
       };
+    case ACTION_TYPE.LOGGED_OUT:
+      return {
+        ...defaultUserState,
+      };
     default:
       return state;
   }

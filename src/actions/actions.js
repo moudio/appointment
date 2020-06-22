@@ -155,6 +155,7 @@ export const logout = () => (dispatch) => {
     .then((response) => {
       dispatch({
         type: LOGGED_OUT,
+        logged_out: response.data.logged_out,
       });
     })
     .catch((error) => console.log(error));
