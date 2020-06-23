@@ -27,6 +27,10 @@ function CarBooking({
     removeBookingCreated();
   }
 
+  if (carsState.booking_creation_fail) {
+    console.log('booking creation fail');
+  }
+
   return (
     <div className="carBooking">
       <div className={`car-img ${car.alt}`}></div>

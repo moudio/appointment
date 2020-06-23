@@ -16,3 +16,15 @@
   font-size: 13px;
   color: black;
 }
+
+.deleting-booking-spinner {
+  width: 96px;
+  height: 82px;
+}
+
+.cancel-booking-button {
+  max-height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

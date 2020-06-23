@@ -2,12 +2,18 @@ import React from 'react';
 import './UserBookings.css';
 import { Link } from 'react-router-dom';
 import { cancelBooking } from '../../actions/actions';
+import Loading from '../../Images/loading_white.gif';
 import { connect } from 'react-redux';
 
-function UserBookings({ books, cars, deleteBooking }) {
+function UserBookings({ books, cars, deleteBooking, userState }) {
   function handleCancelBooking(bookingId) {
     deleteBooking(bookingId);
   }
+
+  if (userState.book_to_destroy) {
+  }
+
+  console.log(userState);
 
   return (
     <div className="bookings">
@@ -22,11 +28,19 @@ function UserBookings({ books, cars, deleteBooking }) {
             </div>
             <div className="booking-buttons">
               <button
-                class="btn btn-danger"
+                className="btn btn-danger cancel-booking-button "
                 type="button"
                 onClick={() => handleCancelBooking(books[index].id)}
               >
-                Cancel
+                {userState.book_to_destroy === books[index].id ? (
+                  <img
+                    src={Loading}
+                    alt="Deleting booking..."
+                    className="deleting-booking-spinner"
+                  />
+                ) : (
+                  'Cancel Booking'
+                )}
               </button>
             </div>
           </div>

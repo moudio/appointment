@@ -50,6 +50,12 @@ export const carsReducer = (state = defaultCarState, action) => {
         ...state,
         booking_created: false,
       };
+    case ACTION_TYPE.BOOKING_CREATION_FAIL:
+      return {
+        ...state,
+        message: 'You cannot create the same booking for that car',
+        booking_creation_fail: true,
+      };
     case ACTION_TYPE.REDIRECT_FALSE:
       return {
         ...state,

@@ -54,10 +54,18 @@ const userReducer = (state = defaultUserState, action) => {
         status: action.data.status,
         isChecking: false,
       };
+
+    case ACTION_TYPE.DELETING_BOOKING:
+      return {
+        ...state,
+        deleting_booking: true,
+        book_to_destroy: action.book_to_destroy,
+      };
     case ACTION_TYPE.LOGGED_OUT:
       return {
         ...defaultUserState,
       };
+
     default:
       return state;
   }

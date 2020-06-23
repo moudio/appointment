@@ -15,6 +15,9 @@ export const CREATING_BOOKING = 'CREATING_BOOKING';
 export const BOOKING_FALSE = 'BOOKING_FALSE';
 export const REDIRECT_FALSE = 'REDIRECT_FALSE';
 export const LOGGED_OUT = 'LOGGED_OUT';
+export const DELETING_BOOKING = 'DELETING_BOOKING';
+export const BOOK_DELETED = 'BOOK_DELETED';
+export const BOOKING_CREATION_FAIL = 'BOOKING_CREATION_FAIL';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -146,12 +149,17 @@ export const createBooking = (book) => (dispatch) => {
         { book },
         { withCredentials: true }
       )
-      .then(() => {
-        dispatch({
-          type: BOOKING_CREATED,
-        });
-      })
-      .catch((error) => console.log(error));
+      .then((response) => {
+        if (response.data.status === 'book_created') {
+          dispatch({
+            type: BOOKING_CREATED,
+          });
+        } else {
+          dispatch({
+            type: BOOKING_CREATION_FAIL,
+          });
+        }
+      });
   }, 1000);
 };
 
@@ -176,9 +184,13 @@ export const redirectFalse = () => ({
 });
 
 export const cancelBooking = (bookId) => (dispatch) => {
-  axios
-    .delete(`http://localhost:3001/api/v1/books/${bookId}`)
-    .then((response) => {
-      console.log(response);
+  dispatch({
+    type: DELETING_BOOKING,
+    book_to_destroy: bookId,
+  });
+  axios.delete(`http://localhost:3001/api/v1/books/${bookId}`).then(() => {
+    dispatch({
+      type: BOOK_DELETED,
     });
+  });
 };
