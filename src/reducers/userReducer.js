@@ -7,7 +7,7 @@ const defaultUserState = {
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
-    case ACTION_TYPE.IS_FETCHING:
+    case ACTION_TYPE.IS_FETCHING_USER:
       return {
         ...state,
         isChecking: true,

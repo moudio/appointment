@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createBooking, makeBookingPropertyFalse } from '../../actions/actions';
+import Loading from '../../Images/loading_white.gif';
 import './CarBooking.css';
 
 function CarBooking({
@@ -20,6 +21,16 @@ function CarBooking({
       city: document.querySelector('#city').value,
     };
     postBooking(book);
+  }
+
+  function redirectToDashboard() {
+    history.push('/user');
+    resetBookingFail();
+  }
+
+  function redirectToCars() {
+    history.push('/');
+    resetBookingFail();
   }
 
   if (carsState.booking_created) {
@@ -67,11 +78,25 @@ function CarBooking({
           </button>
         </div>
       </div>
-      {/* {carsState.creating_booking ? (
+      {carsState.creating_booking ? (
         <div className="creating-booking">
           <h2>Creating Your Booking...</h2>
+          <div className="animation-picture">
+            <img src={Loading} alt="Creating your booking" />
+          </div>
         </div>
-      ) : null} */}
+      ) : null}
+      {carsState.booking_fail_message ? (
+        <div className="booking-fail-message">
+          <p>{carsState.booking_fail_message}</p>
+          <button class="btn btn-success" onClick={() => redirectToDashboard()}>
+            Go To Your Dashboard
+          </button>
+          <button class="btn btn-info" onClick={() => redirectToCars()}>
+            Book Other Cars
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -81,6 +106,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removeBookingCreated: () => {
     dispatch(makeBookingPropertyFalse());
+  },
+  resetBookingFail: () => {
+    dispatch(resetBookingFailParams());
   },
 });
 const mapStateToProps = (state) => ({

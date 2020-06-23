@@ -18,8 +18,6 @@ function Login(props) {
   };
 
   if (props.userInfos.isLoggedIn) {
-    console.log('logged in!');
-    console.log(props.userInfos);
     props.history.push('/user');
   }
   return (

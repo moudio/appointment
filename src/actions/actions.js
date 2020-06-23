@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
-export const IS_FETCHING = 'IS_FETCHING';
+export const IS_FETCHING_CAR = 'IS_FETCHING_CAR';
+export const IS_FETCHING_USER = 'IS_FETCHING_USER';
 export const LOGIN_STATUS = 'LOGIN_STATUS';
 export const FAIL_STATUS_FETCH = 'FAIL_STATUS_FETCH';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
@@ -21,7 +22,7 @@ export const BOOKING_CREATION_FAIL = 'BOOKING_CREATION_FAIL';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
-    type: IS_FETCHING,
+    type: IS_FETCHING_CAR,
   });
 
   axios
@@ -45,7 +46,7 @@ export const fetchCars = () => (dispatch) => {
 
 export const loginStatus = () => (dispatch) => {
   dispatch({
-    type: IS_FETCHING,
+    type: IS_FETCHING_USER,
   });
 
   axios
@@ -69,7 +70,7 @@ export const loginStatus = () => (dispatch) => {
 
 export const handleLogin = (user) => (dispatch) => {
   dispatch({
-    type: IS_FETCHING,
+    type: IS_FETCHING_USER,
   });
   axios
     .post('http://localhost:3001/login', { user }, { withCredentials: true })
@@ -93,7 +94,7 @@ export const handleLogin = (user) => (dispatch) => {
 
 export const signupUser = (user) => (dispatch) => {
   dispatch({
-    type: IS_FETCHING,
+    type: IS_FETCHING_USER,
   });
   axios
     .post(
@@ -121,7 +122,7 @@ export const signupUser = (user) => (dispatch) => {
 
 export const getOneCar = (carId) => (dispatch) => {
   dispatch({
-    type: IS_FETCHING,
+    type: IS_FETCHING_CAR,
   });
   setTimeout(() => {
     axios

@@ -13,8 +13,6 @@ function UserBookings({ books, cars, deleteBooking, userState }) {
   if (userState.book_to_destroy) {
   }
 
-  console.log(userState);
-
   return (
     <div className="bookings">
       <h1> Your Bookings </h1>

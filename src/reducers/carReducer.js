@@ -7,7 +7,7 @@ export const defaultCarState = {
 
 export const carsReducer = (state = defaultCarState, action) => {
   switch (action.type) {
-    case ACTION_TYPE.IS_FETCHING:
+    case ACTION_TYPE.IS_FETCHING_CAR:
       return {
         ...state,
         isFetching: true,
@@ -33,6 +33,12 @@ export const carsReducer = (state = defaultCarState, action) => {
         redirect: true,
       };
 
+    case ACTION_TYPE.BOOKING_FALSE:
+      return {
+        ...state,
+        booking_created: false,
+      };
+
     case ACTION_TYPE.CREATING_BOOKING:
       return {
         ...state,
@@ -43,18 +49,14 @@ export const carsReducer = (state = defaultCarState, action) => {
       return {
         ...state,
         booking_created: true,
-      };
-
-    case ACTION_TYPE.BOOKING_FALSE:
-      return {
-        ...state,
-        booking_created: false,
+        creating_booking: false,
       };
     case ACTION_TYPE.BOOKING_CREATION_FAIL:
       return {
         ...state,
-        message: 'You cannot create the same booking for that car',
+        booking_fail_message: 'You cannot create the same booking for that car',
         booking_creation_fail: true,
+        creating_booking: false,
       };
     case ACTION_TYPE.REDIRECT_FALSE:
       return {
