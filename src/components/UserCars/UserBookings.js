@@ -3,7 +3,9 @@ import './UserBookings.css';
 import { Link } from 'react-router-dom';
 
 function UserBookings({ books, cars }) {
-  function cancelBooking(bookingId) {}
+  function handleCancelBooking(bookingId) {
+    console.log('the booking to cancel is', bookingId);
+  }
 
   return (
     <div className="bookings">
@@ -17,7 +19,10 @@ function UserBookings({ books, cars }) {
               <h3>{books[index].date}</h3>
             </div>
             <div className="booking-buttons">
-              <button class="btn btn-danger" onClick={}>
+              <button
+                class="btn btn-danger"
+                onClick={() => handleCancelBooking({ index })}
+              >
                 Cancel
               </button>
             </div>
