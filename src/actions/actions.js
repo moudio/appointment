@@ -174,3 +174,11 @@ export const makeBookingPropertyFalse = () => ({
 export const redirectFalse = () => ({
   type: REDIRECT_FALSE,
 });
+
+export const cancelBooking = (bookId) => (dispatch) => {
+  axios
+    .delete(`http://localhost:3001/api/v1/books/${bookId}`)
+    .then((response) => {
+      console.log(response);
+    });
+};

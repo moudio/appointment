@@ -1,10 +1,12 @@
 import React from 'react';
 import './UserBookings.css';
 import { Link } from 'react-router-dom';
+import { cancelBooking } from '../../actions/actions';
+import { connect } from 'react-redux';
 
-function UserBookings({ books, cars }) {
+function UserBookings({ books, cars, deleteBooking }) {
   function handleCancelBooking(bookingId) {
-    console.log('the booking to cancel is', bookingId);
+    deleteBooking(bookingId);
   }
 
   return (
@@ -21,7 +23,8 @@ function UserBookings({ books, cars }) {
             <div className="booking-buttons">
               <button
                 class="btn btn-danger"
-                onClick={() => handleCancelBooking({ index })}
+                type="button"
+                onClick={() => handleCancelBooking(books[index].id)}
               >
                 Cancel
               </button>
@@ -34,4 +37,13 @@ function UserBookings({ books, cars }) {
   );
 }
 
-export default UserBookings;
+const mapStateToProps = (state) => ({
+  userState: state.userReducer,
+});
+const mapDispatchToProps = (dispatch) => ({
+  deleteBooking: (bookId) => {
+    dispatch(cancelBooking(bookId));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserBookings);
