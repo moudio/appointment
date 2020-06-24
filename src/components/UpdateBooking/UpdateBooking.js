@@ -11,14 +11,9 @@ function UpdateBooking({ userStatus, patchBook, history }) {
     datePicker.min = new Date().toISOString().split('T')[0];
   }
 
-  function redirectToDashboardAfterPatching() {
-    setTimeout(() => {
-      history.push('/user');
-    }, 2000);
-  }
   function handleUpdateBook(bookId) {
     const book = {
-      id: bookId,
+      book_id: bookId,
       date: document.querySelector('#date').value,
       city: document.querySelector('#city').value,
     };
@@ -26,7 +21,7 @@ function UpdateBooking({ userStatus, patchBook, history }) {
   }
 
   if (userStatus.redirect_after_patching) {
-    history.push('/');
+    history.push('/user');
   }
 
   return (

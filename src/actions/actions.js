@@ -247,7 +247,7 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
 
   setTimeout(() => {
     axios
-      .patch(`http://localhost:3001/api/v1/books/${book.id}`)
+      .patch(`http://localhost:3001/api/v1/books/${book.book_id}`, { book })
       .then((response) => {
         if (response.data.status === 'patched') {
           dispatch({

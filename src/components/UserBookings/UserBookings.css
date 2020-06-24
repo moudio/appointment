@@ -57,3 +57,10 @@
   text-decoration: none;
   color: white;
 }
+
+.booking-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+}
