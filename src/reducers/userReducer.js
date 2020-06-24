@@ -92,16 +92,26 @@ const userReducer = (state = defaultUserState, action) => {
     case ACTION_TYPE.FOUND_BOOK_FOR_UPDATE:
       return {
         ...state,
-        book_to_update: action.book,
-        car_to_update: action.car,
+        bookToUpdate: action.book,
+        carToUpdate: action.car,
         should_update: true,
       };
     case ACTION_TYPE.PATCHING_BOOK:
       return {
         ...state,
-        patching_book: true,
+        is_patching_book: true,
       };
-
+    case ACTION_TYPE.PATCHING_BOOK_SUCCESS:
+      return {
+        ...state,
+        is_patching_book: false,
+        patching_book_success: true,
+      };
+    case ACTION_TYPE.REDIRECT_AFTER_PATCHING:
+      return {
+        ...state,
+        redirect_after_patching: true,
+      };
     default:
       return state;
   }

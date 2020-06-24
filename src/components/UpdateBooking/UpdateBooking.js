@@ -1,33 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { patchBookFromUpdateComponent } from '../../actions/actions';
-function UpdateBooking({ book_to_update, car_to_update, patchBook }) {
+import Loading from '../../Images/loading_white.gif';
+function UpdateBooking({ userStatus, patchBook, history }) {
+  console.log(userStatus);
+  const { bookToUpdate, carToUpdate } = userStatus;
   function handleDatePicking() {
     const datePicker = document.querySelector('#date');
     datePicker.min = new Date().toISOString().split('T')[0];
   }
 
-  function handleUpdateBook() {
+  function redirectToDashboardAfterPatching() {
+    setTimeout(() => {
+      history.push('/user');
+    }, 2000);
+  }
+  function handleUpdateBook(bookId) {
     const book = {
+      id: bookId,
       date: document.querySelector('#date').value,
       city: document.querySelector('#city').value,
     };
     patchBook(book);
   }
 
+  if (userStatus.redirect_after_patching) {
+    history.push('/');
+  }
+
   return (
     <div className="carBooking">
-      <div className={`car-img ${car_to_update.alt}`}></div>
+      <div className={`car-img ${carToUpdate.alt}`}></div>
       <div className="car-content">
-        <h2>{car_to_update.model}</h2>
+        <h2>{carToUpdate.model}</h2>
         <div className="details">
           <ul class="car-details">
-            <li>Speed: {car_to_update.speed}</li>
-            <li>Acceleration: {car_to_update.acceleration}</li>
-            <li>Height: {car_to_update.height}</li>
-            <li>Width: {car_to_update.width}</li>
-            <li>Length: {car_to_update.length}</li>
+            <li>Speed: {carToUpdate.speed}</li>
+            <li>Acceleration: {carToUpdate.acceleration}</li>
+            <li>Height: {carToUpdate.height}</li>
+            <li>Width: {carToUpdate.width}</li>
+            <li>Length: {carToUpdate.length}</li>
           </ul>
           <label htmlFor="date">Pick a date</label>
           <div className="pick-date">
@@ -54,32 +67,26 @@ function UpdateBooking({ book_to_update, car_to_update, patchBook }) {
           <button
             className="book-drive-button"
             onClick={() => {
-              handleUpdateBook();
+              handleUpdateBook(bookToUpdate.id);
             }}
           >
             Update Booking
           </button>
         </div>
       </div>
-      {/* {carsState.creating_booking ? (
+      {userStatus.is_patching_book ? (
         <div className="creating-booking">
-          <h2>Creating Your Booking...</h2>
+          <h2>Updating Your Booking...</h2>
           <div className="animation-picture">
             <img src={Loading} alt="Creating your booking" />
           </div>
         </div>
-      ) : null} */}
-      {/* {carsState.booking_fail_message ? (
+      ) : null}
+      {userStatus.patching_book_success ? (
         <div className="booking-fail-message">
-          <p>{carsState.booking_fail_message}</p>
-          <button class="btn btn-success" onClick={() => redirectToDashboard()}>
-            Go To Your Dashboard
-          </button>
-          <button class="btn btn-info" onClick={() => redirectToCars()}>
-            Book Other Cars
-          </button>
+          Your booking has been successfully updated
         </div>
-      ) : null} */}
+      ) : null}
       <div className="back-to-cars-link-div">
         <Link to="/" className="back-to-cars-link">
           Back to cars
@@ -89,8 +96,7 @@ function UpdateBooking({ book_to_update, car_to_update, patchBook }) {
   );
 }
 const mapStateToProps = (state) => ({
-  book_to_update: state.userReducer.book_to_update,
-  car_to_update: state.userReducer.car_to_update,
+  userStatus: state.userReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -99,4 +105,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateBooking);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(UpdateBooking));

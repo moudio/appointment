@@ -19,7 +19,7 @@ function UserBookings({ deleteBooking, userState, updateBooking, history }) {
   }
 
   if (userState.should_update) {
-    history.push(`/update/${userState.car_to_update.alt}`);
+    history.push(`/update/${userState.carToUpdate.alt}`);
   }
 
   function handleUpdateBooking(bookingId) {

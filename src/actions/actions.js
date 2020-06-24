@@ -25,6 +25,8 @@ export const MAKE_DELETE_BOOK_PROP_FALSE = 'MAKE_DELETE_BOOK_PROP_FALSE';
 export const FETCHING_BOOK_FOR_UPDATE = 'FETCHING_BOOK_FOR_UPDATE';
 export const FOUND_BOOK_FOR_UPDATE = 'FOUND_BOOK_FOR_UPDATE';
 export const PATCHING_BOOK = 'PATCHING_BOOK';
+export const PATCHING_BOOK_SUCCESS = 'PATCHING_BOOK_SUCCESS';
+export const REDIRECT_AFTER_PATCHING = 'REDIRECT_AFTER_PATCHING';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -230,7 +232,6 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
   });
 
   axios.get(`http://localhost:3001/api/v1/books/${bookId}`).then((response) => {
-    console.log('response to update book!', response);
     dispatch({
       type: FOUND_BOOK_FOR_UPDATE,
       book: response.data.book,
@@ -243,4 +244,21 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
   dispatch({
     type: PATCHING_BOOK,
   });
+
+  setTimeout(() => {
+    axios
+      .patch(`http://localhost:3001/api/v1/books/${book.id}`)
+      .then((response) => {
+        if (response.data.status === 'patched') {
+          dispatch({
+            type: PATCHING_BOOK_SUCCESS,
+          });
+          setTimeout(() => {
+            dispatch({
+              type: REDIRECT_AFTER_PATCHING,
+            });
+          }, 2000);
+        }
+      });
+  }, 1000);
 };
