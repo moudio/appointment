@@ -232,7 +232,8 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
     console.log('response to update book!', response);
     dispatch({
       type: FOUND_BOOK_FOR_UPDATE,
-      book_to_update: response.data.books,
+      book: response.data.book,
+      car: response.data.car,
     });
   });
 };

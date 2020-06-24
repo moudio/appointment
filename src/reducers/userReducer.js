@@ -89,6 +89,14 @@ const userReducer = (state = defaultUserState, action) => {
         ...defaultUserState,
       };
 
+    case ACTION_TYPE.FOUND_BOOK_FOR_UPDATE:
+      return {
+        ...state,
+        book_to_update: action.book,
+        car_to_update: action.car,
+        should_update: true,
+      };
+
     default:
       return state;
   }

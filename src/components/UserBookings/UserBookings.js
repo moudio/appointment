@@ -6,7 +6,7 @@ import Loading from '../../Images/loading_white.gif';
 import { connect } from 'react-redux';
 import { AiOutlineFieldTime, AiTwotoneCar } from 'react-icons/ai';
 import { MdLocationCity } from 'react-icons/md';
-function UserBookings({ deleteBooking, userState, updateBooking }) {
+function UserBookings({ deleteBooking, userState, updateBooking, history }) {
   const { books, cars } = userState;
 
   function handleCancelBooking(bookingId) {
@@ -16,6 +16,10 @@ function UserBookings({ deleteBooking, userState, updateBooking }) {
     if (shouldDelete) {
       deleteBooking(bookingId);
     }
+  }
+
+  if (userState.should_update) {
+    history.push(`/update/${userState.car_to_update.alt}`);
   }
 
   function handleUpdateBooking(bookingId) {
