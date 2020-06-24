@@ -90,4 +90,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserBookings);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(UserBookings));
