@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.17",
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
@@ -11,6 +13,7 @@
     "http-proxy-middleware": "^1.0.4",
     "msw": "^0.19.3",
     "react": "^16.13.1",
+    "react-bootbox": "^1.1.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-fullpage": "^0.1.19",

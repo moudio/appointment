@@ -38,7 +38,7 @@ function CarBooking({
     resetBookingFail();
   }
 
-  if (carsState.booking_created) {
+  if (carsState.booking_created === true) {
     history.push('/user');
   }
 

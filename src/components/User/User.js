@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './User.css';
-import UserBookings from '../UserCars/UserBookings';
+import UserBookings from '../UserBookings/UserBookings';
 import profile from '../../Images/profile.jpg';
 import { connect } from 'react-redux';
 import {
   makeBookingPropertyFalse,
   fetchUserBookings,
+  makeDeleteBookPropFalse,
 } from '../../actions/actions';
-function User({ userStatus, getUserBookings }) {
+function User({
+  userStatus,
+  getUserBookings,
+  carsStatus,
+  removeBookingCreated,
+  makeDeletingBookFalse,
+}) {
   const { user, books } = userStatus;
 
   useEffect(() => {
+    console.log('useEffect called');
     getUserBookings(user.id);
   }, []);
 
+  if (carsStatus.booking_created === true) {
+    removeBookingCreated();
+  }
+
   if (userStatus.deleting_booking === false) {
     getUserBookings(user.id);
+    makeDeletingBookFalse();
   }
+
   console.log('books are ', books);
   return (
     <div className="user-div">
@@ -61,6 +75,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserBookings: (userId) => {
     dispatch(fetchUserBookings(userId));
+  },
+  makeDeletingBookFalse: () => {
+    dispatch(makeDeleteBookPropFalse());
   },
 });
 

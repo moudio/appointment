@@ -21,6 +21,12 @@ const userReducer = (state = defaultUserState, action) => {
         cars: action.cars,
         fetch_user_books: true,
       };
+
+    case ACTION_TYPE.MAKE_DELETE_BOOK_PROP_FALSE:
+      return {
+        ...state,
+        deleting_booking: 'mouha',
+      };
     case ACTION_TYPE.LOGIN_STATUS:
       return {
         ...state,

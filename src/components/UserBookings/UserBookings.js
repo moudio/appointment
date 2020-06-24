@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './UserBookings.css';
 import { Link } from 'react-router-dom';
 import { cancelBooking } from '../../actions/actions';
@@ -7,8 +7,14 @@ import { connect } from 'react-redux';
 
 function UserBookings({ deleteBooking, userState }) {
   const { books, cars } = userState;
+
   function handleCancelBooking(bookingId) {
-    deleteBooking(bookingId);
+    let shouldDelete = window.confirm(
+      'Do you really want to delete this booking?'
+    );
+    if (shouldDelete) {
+      deleteBooking(bookingId);
+    }
   }
 
   return (

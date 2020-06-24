@@ -21,6 +21,7 @@ export const BOOK_DELETED = 'BOOK_DELETED';
 export const BOOKING_CREATION_FAIL = 'BOOKING_CREATION_FAIL';
 export const RESET_BOOKING_FAIL_PARAMS = 'RESET_BOOKING_FAIL_PARAMS';
 export const FETCH_USER_BOOKS_AND_CARS = 'FETCH_USER_BOOKS_AND_CARS';
+export const MAKE_DELETE_BOOK_PROP_FALSE = 'MAKE_DELETE_BOOK_PROP_FALSE';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -214,4 +215,8 @@ export const fetchUserBookings = (userId) => (dispatch) => {
 
 export const resetBookingFailParams = () => ({
   type: RESET_BOOKING_FAIL_PARAMS,
+});
+
+export const makeDeleteBookPropFalse = () => ({
+  type: MAKE_DELETE_BOOK_PROP_FALSE,
 });
