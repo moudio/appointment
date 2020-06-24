@@ -14,6 +14,10 @@ function User({ userStatus, getUserBookings }) {
   useEffect(() => {
     getUserBookings(user.id);
   }, []);
+
+  if (userStatus.deleting_booking === false) {
+    getUserBookings(user.id);
+  }
   console.log('books are ', books);
   return (
     <div className="user-div">

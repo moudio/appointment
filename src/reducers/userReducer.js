@@ -70,6 +70,14 @@ const userReducer = (state = defaultUserState, action) => {
         deleting_booking: true,
         book_to_destroy: action.book_to_destroy,
       };
+
+    case ACTION_TYPE.BOOK_DELETED:
+      return {
+        ...state,
+        deleting_booking: false,
+        book_to_destroy: null,
+      };
+
     case ACTION_TYPE.LOGGED_OUT:
       return {
         ...defaultUserState,

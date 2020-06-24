@@ -191,18 +191,19 @@ export const cancelBooking = (bookId) => (dispatch) => {
     type: DELETING_BOOKING,
     book_to_destroy: bookId,
   });
-  axios.delete(`http://localhost:3001/api/v1/books/${bookId}`).then(() => {
-    dispatch({
-      type: BOOK_DELETED,
+  setTimeout(() => {
+    axios.delete(`http://localhost:3001/api/v1/books/${bookId}`).then(() => {
+      dispatch({
+        type: BOOK_DELETED,
+      });
     });
-  });
+  }, 1000);
 };
 
 export const fetchUserBookings = (userId) => (dispatch) => {
   axios
     .get(`http://localhost:3001/users/${userId}/books_cars`)
     .then((response) => {
-      console.log('response from fetching user books', response);
       dispatch({
         type: FETCH_USER_BOOKS_AND_CARS,
         books: response.data.books,
