@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import {
   createBooking,
   makeBookingPropertyFalse,
@@ -46,6 +46,11 @@ function CarBooking({
     console.log('booking creation fail');
   }
 
+  function handleDatePicking() {
+    let datePicker = document.querySelector('#date');
+    datePicker.min = new Date().toISOString().split('T')[0];
+  }
+
   return (
     <div className="carBooking">
       <div className={`car-img ${car.alt}`}></div>
@@ -60,20 +65,29 @@ function CarBooking({
             <li>Length: {car.length}</li>
           </ul>
           <label htmlFor="date">Pick a date</label>
-          <input type="date" name="date" id="date" />
-          <label htmlFor="city"> Choose a city </label>
-          <select name="city" id="city">
-            <option value="Dakar" selected>
-              Dakar
-            </option>
-            <option value="Paris">Paris</option>
-            <option value="New York">New York</option>
-            <option value="Beijing">Beijing</option>
-            <option value="Berlin">Berlin</option>
-            <option value="London">London</option>
-          </select>
+          <div className="pick-date">
+            <input
+              type="date"
+              name="date"
+              id="date"
+              onClick={handleDatePicking}
+            />
+          </div>
+          <div className="pick-city">
+            <label htmlFor="city"> Choose a city </label>
+            <select name="city" id="city">
+              <option value="Dakar" selected>
+                Dakar
+              </option>
+              <option value="Paris">Paris</option>
+              <option value="New York">New York</option>
+              <option value="Beijing">Beijing</option>
+              <option value="Berlin">Berlin</option>
+              <option value="London">London</option>
+            </select>
+          </div>
           <button
-            className="book"
+            className="book-drive-button"
             onClick={() => {
               handleBooking();
             }}
@@ -101,6 +115,11 @@ function CarBooking({
           </button>
         </div>
       ) : null}
+      <div className="back-to-cars-link-div">
+        <Link to="/" className="back-to-cars-link">
+          Back to cars
+        </Link>
+      </div>
     </div>
   );
 }
