@@ -1,36 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './UserBookings.css';
 import { Link } from 'react-router-dom';
 import { cancelBooking } from '../../actions/actions';
 import Loading from '../../Images/loading_white.gif';
 import { connect } from 'react-redux';
 
-function UserBookings({ books, cars, deleteBooking, userState }) {
+function UserBookings({ deleteBooking, userState }) {
+  const { books, cars } = userState;
   function handleCancelBooking(bookingId) {
     deleteBooking(bookingId);
-  }
-
-  if (userState.book_to_destroy) {
   }
 
   return (
     <div className="bookings">
       <h1> Your Bookings </h1>
-      {cars.map((car, index) => {
+      {books.map((book, index) => {
         return (
           <div className="booking">
             <div className="booking-content">
-              <h3 className="car-model">{car.model}</h3>
-              <h3 className="booking-city">{books[index].city}</h3>
-              <h3>{books[index].date}</h3>
+              <h3 className="car-model">{cars[index].model}</h3>
+              <h3 className="booking-city">{book.city}</h3>
+              <h3>{book.date}</h3>
             </div>
             <div className="booking-buttons">
               <button
                 className="btn btn-danger cancel-booking-button "
                 type="button"
-                onClick={() => handleCancelBooking(books[index].id)}
+                onClick={() => handleCancelBooking(book.id)}
               >
-                {userState.book_to_destroy === books[index].id ? (
+                {userState.book_to_destroy === book.id ? (
                   <img
                     src={Loading}
                     alt="Deleting booking..."

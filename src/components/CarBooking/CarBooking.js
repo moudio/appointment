@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createBooking, makeBookingPropertyFalse } from '../../actions/actions';
+import {
+  createBooking,
+  makeBookingPropertyFalse,
+  resetBookingFailParams,
+} from '../../actions/actions';
 import Loading from '../../Images/loading_white.gif';
 import './CarBooking.css';
 
@@ -12,6 +16,7 @@ function CarBooking({
   carsState,
   history,
   removeBookingCreated,
+  resetBookingFail,
 }) {
   function handleBooking() {
     const book = {
@@ -35,7 +40,6 @@ function CarBooking({
 
   if (carsState.booking_created) {
     history.push('/user');
-    removeBookingCreated();
   }
 
   if (carsState.booking_creation_fail) {
@@ -104,9 +108,7 @@ const mapDispatchToProps = (dispatch) => ({
   postBooking: (book) => {
     dispatch(createBooking(book));
   },
-  removeBookingCreated: () => {
-    dispatch(makeBookingPropertyFalse());
-  },
+
   resetBookingFail: () => {
     dispatch(resetBookingFailParams());
   },

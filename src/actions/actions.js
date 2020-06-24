@@ -19,6 +19,8 @@ export const LOGGED_OUT = 'LOGGED_OUT';
 export const DELETING_BOOKING = 'DELETING_BOOKING';
 export const BOOK_DELETED = 'BOOK_DELETED';
 export const BOOKING_CREATION_FAIL = 'BOOKING_CREATION_FAIL';
+export const RESET_BOOKING_FAIL_PARAMS = 'RESET_BOOKING_FAIL_PARAMS';
+export const FETCH_USER_BOOKS_AND_CARS = 'FETCH_USER_BOOKS_AND_CARS';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -195,3 +197,20 @@ export const cancelBooking = (bookId) => (dispatch) => {
     });
   });
 };
+
+export const fetchUserBookings = (userId) => (dispatch) => {
+  axios
+    .get(`http://localhost:3001/users/${userId}/books_cars`)
+    .then((response) => {
+      console.log('response from fetching user books', response);
+      dispatch({
+        type: FETCH_USER_BOOKS_AND_CARS,
+        books: response.data.books,
+        cars: response.data.cars,
+      });
+    });
+};
+
+export const resetBookingFailParams = () => ({
+  type: RESET_BOOKING_FAIL_PARAMS,
+});

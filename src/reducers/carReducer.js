@@ -33,12 +33,6 @@ export const carsReducer = (state = defaultCarState, action) => {
         redirect: true,
       };
 
-    case ACTION_TYPE.BOOKING_FALSE:
-      return {
-        ...state,
-        booking_created: false,
-      };
-
     case ACTION_TYPE.CREATING_BOOKING:
       return {
         ...state,
@@ -51,6 +45,12 @@ export const carsReducer = (state = defaultCarState, action) => {
         booking_created: true,
         creating_booking: false,
       };
+
+    case ACTION_TYPE.BOOKING_FALSE:
+      return {
+        ...state,
+        booking_created: false,
+      };
     case ACTION_TYPE.BOOKING_CREATION_FAIL:
       return {
         ...state,
@@ -58,6 +58,14 @@ export const carsReducer = (state = defaultCarState, action) => {
         booking_creation_fail: true,
         creating_booking: false,
       };
+
+    case ACTION_TYPE.RESET_BOOKING_FAIL_PARAMS:
+      return {
+        ...state,
+        booking_fail_message: null,
+        booking_creation_fail: null,
+      };
+
     case ACTION_TYPE.REDIRECT_FALSE:
       return {
         ...state,

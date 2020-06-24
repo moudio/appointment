@@ -43,7 +43,7 @@ function App({ carsState, userStatus, history }) {
 
           <Route exact path="/user">
             {userStatus.isLoggedIn ? (
-              <User userStatus={userStatus} />
+              <User />
             ) : (
               <Redirect push to={{ pathname: '/login' }} />
             )}

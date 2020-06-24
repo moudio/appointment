@@ -1,4 +1,5 @@
 import * as ACTION_TYPE from '../actions/actions';
+import { act } from 'react-dom/test-utils';
 
 const defaultUserState = {
   user: {},
@@ -11,6 +12,14 @@ const userReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         isChecking: true,
+      };
+
+    case ACTION_TYPE.FETCH_USER_BOOKS_AND_CARS:
+      return {
+        ...state,
+        books: action.books,
+        cars: action.cars,
+        fetch_user_books: true,
       };
     case ACTION_TYPE.LOGIN_STATUS:
       return {

@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './User.css';
 import UserBookings from '../UserCars/UserBookings';
 import profile from '../../Images/profile.jpg';
+import { connect } from 'react-redux';
+import {
+  makeBookingPropertyFalse,
+  fetchUserBookings,
+} from '../../actions/actions';
+function User({ userStatus, getUserBookings }) {
+  const { user, books } = userStatus;
 
-function User({ userStatus }) {
-  const { user, cars, books } = userStatus;
-  console.log(userStatus);
+  useEffect(() => {
+    getUserBookings(user.id);
+  }, []);
+  console.log('books are ', books);
   return (
     <div className="user-div">
       <div className="profile">
@@ -20,26 +28,15 @@ function User({ userStatus }) {
           </div>
         </div>
         <div className="profile-content">
-          <div className="profile-content-navigation">
-            <Router>
-              <ul className="nav-list">
-                <li>
-                  <Link to="/books">Books</Link>
-                </li>
-                <li>
-                  <Link to="/books">Books</Link>
-                </li>
-              </ul>
-            </Router>
-          </div>
+          <div className="profile-content-navigation"></div>
           <div className="books">
-            {cars && cars.length > 0 ? (
+            {books && books.length > 0 ? (
               <>
-                <UserBookings books={books} cars={cars} />
+                <UserBookings />
               </>
             ) : (
               <h2>
-                You have no bookings yet, <Link to="/">create one!</Link>{' '}
+                You have no bookings yet, <Link to="/">Create one!</Link>{' '}
               </h2>
             )}
           </div>
@@ -49,4 +46,18 @@ function User({ userStatus }) {
   );
 }
 
-export default User;
+const mapStateToProps = (state) => ({
+  carsStatus: state.carsReducer,
+  userStatus: state.userReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  removeBookingCreated: () => {
+    dispatch(makeBookingPropertyFalse());
+  },
+  getUserBookings: (userId) => {
+    dispatch(fetchUserBookings(userId));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);
