@@ -1,12 +1,12 @@
 import React from 'react';
 import './UserBookings.css';
-import { Link } from 'react-router-dom';
-import { cancelBooking } from '../../actions/actions';
+import { Link, withRouter } from 'react-router-dom';
+import { cancelBooking, bookUpdateAction } from '../../actions/actions';
 import Loading from '../../Images/loading_white.gif';
 import { connect } from 'react-redux';
 import { AiOutlineFieldTime, AiTwotoneCar } from 'react-icons/ai';
 import { MdLocationCity } from 'react-icons/md';
-function UserBookings({ deleteBooking, userState }) {
+function UserBookings({ deleteBooking, userState, updateBooking }) {
   const { books, cars } = userState;
 
   function handleCancelBooking(bookingId) {
@@ -16,6 +16,10 @@ function UserBookings({ deleteBooking, userState }) {
     if (shouldDelete) {
       deleteBooking(bookingId);
     }
+  }
+
+  function handleUpdateBooking(bookingId) {
+    updateBooking(bookingId);
   }
 
   return (
@@ -58,7 +62,7 @@ function UserBookings({ deleteBooking, userState }) {
               <button
                 className="btn btn-warning update-booking-button"
                 type="button"
-                onClick={() => hanldeUpdateBooking(book.id)}
+                onClick={() => handleUpdateBooking(book.id)}
               >
                 Update Booking
               </button>
@@ -80,6 +84,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   deleteBooking: (bookId) => {
     dispatch(cancelBooking(bookId));
+  },
+  updateBooking: (bookId) => {
+    dispatch(bookUpdateAction(bookId));
   },
 });
 

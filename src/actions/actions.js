@@ -22,6 +22,8 @@ export const BOOKING_CREATION_FAIL = 'BOOKING_CREATION_FAIL';
 export const RESET_BOOKING_FAIL_PARAMS = 'RESET_BOOKING_FAIL_PARAMS';
 export const FETCH_USER_BOOKS_AND_CARS = 'FETCH_USER_BOOKS_AND_CARS';
 export const MAKE_DELETE_BOOK_PROP_FALSE = 'MAKE_DELETE_BOOK_PROP_FALSE';
+export const FETCHING_BOOK_FOR_UPDATE = 'FETCHING_BOOK_FOR_UPDATE';
+export const FOUND_BOOK_FOR_UPDATE = 'FOUND_BOOK_FOR_UPDATE';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -220,3 +222,17 @@ export const resetBookingFailParams = () => ({
 export const makeDeleteBookPropFalse = () => ({
   type: MAKE_DELETE_BOOK_PROP_FALSE,
 });
+
+export const bookUpdateAction = (bookId) => (dispatch) => {
+  dispatch({
+    type: FETCHING_BOOK_FOR_UPDATE,
+  });
+
+  axios.get(`http://localhost:3001/api/v1/books/${bookId}`).then((response) => {
+    console.log('response to update book!', response);
+    dispatch({
+      type: FOUND_BOOK_FOR_UPDATE,
+      book_to_update: response.data.books,
+    });
+  });
+};
