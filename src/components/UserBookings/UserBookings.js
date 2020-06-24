@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { cancelBooking } from '../../actions/actions';
 import Loading from '../../Images/loading_white.gif';
 import { connect } from 'react-redux';
-
+import { AiOutlineFieldTime, AiTwotoneCar } from 'react-icons/ai';
+import { MdLocationCity } from 'react-icons/md';
 function UserBookings({ deleteBooking, userState }) {
   const { books, cars } = userState;
 
@@ -24,9 +25,19 @@ function UserBookings({ deleteBooking, userState }) {
         return (
           <div className="booking">
             <div className="booking-content">
-              <h3 className="car-model">{cars[index].model}</h3>
-              <h3 className="booking-city">{book.city}</h3>
-              <h3>{book.date}</h3>
+              <p className="car-model">
+                <AiTwotoneCar /> <span>{cars[index].model}</span>
+              </p>
+              <p className="booking-city">
+                <MdLocationCity />
+
+                <span>{book.city} </span>
+              </p>
+              <p className="booking-date">
+                {' '}
+                <AiOutlineFieldTime />
+                <span>{book.date} </span>
+              </p>
             </div>
             <div className="booking-buttons">
               <button
@@ -48,7 +59,10 @@ function UserBookings({ deleteBooking, userState }) {
           </div>
         );
       })}
-      <Link to="/">See all cars</Link>
+      <Link to="/" className="see-all-cars-link">
+        See all cars
+        {' >> '}
+      </Link>
     </div>
   );
 }

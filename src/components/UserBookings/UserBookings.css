@@ -6,15 +6,12 @@
   background: white;
   display: flex;
   justify-content: space-between;
-  height: 100px;
   border: 1px solid rgb(90, 90, 90);
   align-items: center;
   padding: 10px 20px;
   margin: 10px auto;
-}
-.booking h3 {
-  font-size: 13px;
-  color: black;
+  border-radius: 5px;
+  font-size: 20px;
 }
 
 .deleting-booking-spinner {
@@ -27,4 +24,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.booking-content {
+  width: 60%;
+  display: flex;
+  color: black;
+  flex-direction: column;
+}
+
+.booking-content span {
+  margin: 0 10px;
+}
+
+.booking-content p {
+  display: flex;
+  align-items: center;
+}
+
+.see-all-cars-link {
+  font-size: 20px;
+  padding: 10px 15px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.see-all-cars-link:hover {
+  text-decoration: none;
+  color: white;
 }
