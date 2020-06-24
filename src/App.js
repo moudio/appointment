@@ -14,6 +14,7 @@ import Signup from './components/Signup/Signup';
 import Navigation from './containers/Navigation/Navigation';
 import User from './components/User/User';
 import CarBooking from './components/CarBooking/CarBooking';
+import UpdateBooking from './components/UpdateBooking/UpdateBooking';
 
 function App({ carsState, userStatus, history }) {
   return (
@@ -59,6 +60,10 @@ function App({ carsState, userStatus, history }) {
           ) : (
             <Redirect push to={{ pathname: '/login' }} />
           )}
+          <Route exact path="/update/:car_model">
+            {' '}
+            <UpdateBooking />{' '}
+          </Route>
         </Switch>
       </div>
     </Router>
