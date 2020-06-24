@@ -55,6 +55,13 @@ function UserBookings({ deleteBooking, userState }) {
                   'Cancel Booking'
                 )}
               </button>
+              <button
+                className="btn btn-warning update-booking-button"
+                type="button"
+                onClick={() => hanldeUpdateBooking(book.id)}
+              >
+                Update Booking
+              </button>
             </div>
           </div>
         );
