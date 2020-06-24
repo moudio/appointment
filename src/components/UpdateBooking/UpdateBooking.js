@@ -1,14 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-function UpdateBooking({ book_to_update, car_to_update }) {
+import { patchBookFromUpdateComponent } from '../../actions/actions';
+function UpdateBooking({ book_to_update, car_to_update, patchBook }) {
   function handleDatePicking() {
     const datePicker = document.querySelector('#date');
     datePicker.min = new Date().toISOString().split('T')[0];
   }
 
-  function handleBookPut() {
-    console.log('hello');
+  function handleUpdateBook() {
+    const book = {
+      date: document.querySelector('#date').value,
+      city: document.querySelector('#city').value,
+    };
+    patchBook(book);
   }
 
   return (
@@ -49,7 +54,7 @@ function UpdateBooking({ book_to_update, car_to_update }) {
           <button
             className="book-drive-button"
             onClick={() => {
-              handleBookPut();
+              handleUpdateBook();
             }}
           >
             Update Booking
@@ -88,6 +93,10 @@ const mapStateToProps = (state) => ({
   car_to_update: state.userReducer.car_to_update,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  patchBook: (book) => {
+    dispatch(patchBookFromUpdateComponent(book));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateBooking);

@@ -96,6 +96,11 @@ const userReducer = (state = defaultUserState, action) => {
         car_to_update: action.car,
         should_update: true,
       };
+    case ACTION_TYPE.PATCHING_BOOK:
+      return {
+        ...state,
+        patching_book: true,
+      };
 
     default:
       return state;

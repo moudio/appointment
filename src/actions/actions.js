@@ -24,6 +24,7 @@ export const FETCH_USER_BOOKS_AND_CARS = 'FETCH_USER_BOOKS_AND_CARS';
 export const MAKE_DELETE_BOOK_PROP_FALSE = 'MAKE_DELETE_BOOK_PROP_FALSE';
 export const FETCHING_BOOK_FOR_UPDATE = 'FETCHING_BOOK_FOR_UPDATE';
 export const FOUND_BOOK_FOR_UPDATE = 'FOUND_BOOK_FOR_UPDATE';
+export const PATCHING_BOOK = 'PATCHING_BOOK';
 
 export const fetchCars = () => (dispatch) => {
   dispatch({
@@ -235,5 +236,11 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
       book: response.data.book,
       car: response.data.car,
     });
+  });
+};
+
+export const patchBookFromUpdateComponent = (book) => (dispatch) => {
+  dispatch({
+    type: PATCHING_BOOK,
   });
 };
