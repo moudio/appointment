@@ -63,3 +63,19 @@
 .Navigation ul li a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 750px) {
+  .menu-icon .breadcrumb,
+  .menu-icon .close-icon {
+    color: white;
+    font-size: 65px;
+  }
+
+  .sidebar h1 {
+    font-size: 20px;
+  }
+
+  .menu-list li a {
+    font-size: 20px;
+  }
+}

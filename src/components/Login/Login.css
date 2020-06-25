@@ -55,21 +55,8 @@
     height: 200px;
   }
 
-  .sidebar h1 {
-    font-size: 25px;
-  }
   .form-container {
     width: 100%;
     margin-top: 20px;
-  }
-
-  .Navigation .menu-icon .breadcrumb,
-  .Navigation .menu-icon .close-icon {
-    color: white;
-    font-size: 65px;
-  }
-
-  .menu-list li a {
-    font-size: 20px;
   }
 }

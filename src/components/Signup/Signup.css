@@ -8,7 +8,7 @@ img {
   align-items: center;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../../Images/range_background.jpg');
+    url('../../Images/signup_background.jpeg');
   background-position: center;
   background-size: cover;
 }
@@ -24,4 +24,10 @@ img {
 img.loading-gif {
   max-width: 40px;
   margin: 20px;
+}
+
+@media (max-width: 767px) {
+  .register {
+    height: 100%;
+  }
 }
