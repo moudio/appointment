@@ -1,19 +1,13 @@
-import React, { Component, useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactFullpage from '@fullpage/react-fullpage';
-import {
-  Header, Footer, SectionsContainer, Section,
-} from 'react-fullpage';
 import './Cars.css';
 import Car from '../../components/Car/Car';
 import Loading from '../../Images/loading_white.gif';
 import { fetchCars } from '../../actions/actions';
 
-function Cars({
-  carsState, cars, history, getAllCars,
-}) {
+function Cars({ carsState, cars, getAllCars }) {
   useEffect(() => {
     getAllCars();
   }, []);
@@ -26,7 +20,7 @@ function Cars({
           sectionsColor={['#4BBFC3', '#7BAABE', 'whitesmoke', '#81e4da']}
           continuousVertical
           navigation
-          render={({ state, fullpageApi }) => (
+          render={() => (
             <div id="fullpage-wrapper">
               {cars.map((car) => (
                 <Car car={car} />
@@ -52,4 +46,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchCars());
   },
 });
+
+Cars.propTypes = {
+  carsState: PropTypes.shape({
+    isFetching: PropTypes.bool,
+  }).isRequired,
+  cars: PropTypes.instanceOf(Array).isRequired,
+  getAllCars: PropTypes.func.isRequired,
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Cars);

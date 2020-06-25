@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router, Route, Switch, Link,
-} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './User.css';
 import { connect } from 'react-redux';
 import UserBookings from '../UserBookings/UserBookings';
@@ -72,6 +71,21 @@ function User({
     </div>
   );
 }
+
+User.propTypes = {
+  userStatus: PropTypes.shape({
+    user: PropTypes.instanceOf(Object),
+    books: PropTypes.instanceOf(Object),
+    userId: PropTypes.number,
+    deleting_booking: PropTypes.bool,
+  }).isRequired,
+  getUserBookings: PropTypes.func.isRequired,
+  carsStatus: PropTypes.shape({
+    booking_created: PropTypes.bool,
+  }).isRequired,
+  removeBookingCreated: PropTypes.func.isRequired,
+  makeDeletingBookFalse: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   carsStatus: state.carsReducer,

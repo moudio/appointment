@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './UserBookings.css';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -104,6 +105,22 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(bookUpdateAction(bookId));
   },
 });
+
+UserBookings.propTypes = {
+  deleteBooking: PropTypes.func.isRequired,
+  updateBooking: PropTypes.func.isRequired,
+  userState: PropTypes.shape({
+    books: PropTypes.instanceOf(Object),
+    cars: PropTypes.instanceOf(Object),
+    should_go_to_update: PropTypes.bool,
+    carToUpdate: PropTypes.instanceOf(Object),
+    redirect_after_patching: PropTypes.bool,
+    book_to_destroy: PropTypes.instanceOf(Object),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default connect(
   mapStateToProps,

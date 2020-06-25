@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { patchBookFromUpdateComponent } from '../../actions/actions';
@@ -9,13 +10,13 @@ function UpdateBooking({ userStatus, patchBook, history }) {
   const { bookToUpdate, carToUpdate } = userStatus;
   function handleDatePicking() {
     const datePicker = document.querySelector('#date');
-    datePicker.min = new Date().toISOString().split('T')[0];
+    [datePicker.min] = [new Date().toISOString().split('T')[0]];
   }
 
   function handleUpdateBook(bookId) {
     let date = document.querySelector('#date').value;
     if (!date) {
-      date = new Date().toISOString().split('T')[0];
+      [date] = [new Date().toISOString().split('T')[0]];
     }
     const book = {
       book_id: bookId,
@@ -89,6 +90,7 @@ function UpdateBooking({ userStatus, patchBook, history }) {
             </div>
             <button
               className="book-drive-button"
+              type="button"
               onClick={() => {
                 handleUpdateBook(bookToUpdate.id);
                 scrollToTop();
@@ -120,6 +122,21 @@ function UpdateBooking({ userStatus, patchBook, history }) {
     </div>
   );
 }
+UpdateBooking.propTypes = {
+  userStatus: PropTypes.shape({
+    bookToUpdate: PropTypes.instanceOf(Object),
+    carToUpdate: PropTypes.instanceOf(Object),
+    should_go_to_update: PropTypes.bool,
+    redirect_after_patching: PropTypes.bool,
+    patching_book_success: PropTypes.bool,
+    is_patching_book: PropTypes.bool,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  patchBook: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   userStatus: state.userReducer,
 });
