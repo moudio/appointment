@@ -63,7 +63,7 @@ export const loginStatus = () => (dispatch) => {
         });
       }, 1000);
     })
-    .catch((error) => {
+    .catch(() => {
       setTimeout(() => {
         dispatch({
           type: FAIL_STATUS_FETCH,
@@ -92,8 +92,7 @@ export const handleLogin = (user) => (dispatch) => {
           });
         }
       }, 1000);
-    })
-    .catch((error) => console.log('api errors', error));
+    });
 };
 
 export const signupUser = (user) => (dispatch) => {
@@ -120,8 +119,7 @@ export const signupUser = (user) => (dispatch) => {
           });
         }
       }, 1000);
-    })
-    .catch((error) => console.log(error));
+    });
 };
 
 export const getOneCar = (carId) => (dispatch) => {
@@ -129,14 +127,11 @@ export const getOneCar = (carId) => (dispatch) => {
     type: IS_FETCHING_CAR,
   });
   setTimeout(() => {
-    axios
-      .get(`http://localhost:3001/api/v1/cars/${carId}`)
-      .then((response) => dispatch({
-        type: ONE_CAR_FETCH_SUCCESS,
-        carToShow: response.data,
-        redirect: true,
-      }))
-      .catch((error) => console.log(error));
+    axios.get(`http://localhost:3001/api/v1/cars/${carId}`).then((response) => dispatch({
+      type: ONE_CAR_FETCH_SUCCESS,
+      carToShow: response.data,
+      redirect: true,
+    }));
   }, 1000);
 };
 
@@ -167,15 +162,12 @@ export const createBooking = (book) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  axios
-    .delete('http://localhost:3001/logout')
-    .then((response) => {
-      dispatch({
-        type: LOGGED_OUT,
-        logged_out: response.data.logged_out,
-      });
-    })
-    .catch((error) => console.log(error));
+  axios.delete('http://localhost:3001/logout').then((response) => {
+    dispatch({
+      type: LOGGED_OUT,
+      logged_out: response.data.logged_out,
+    });
+  });
 };
 
 export const makeBookingPropertyFalse = () => ({

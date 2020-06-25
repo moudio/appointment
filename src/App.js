@@ -76,6 +76,7 @@ App.propTypes = {
   carsState: PropTypes.shape({
     cars: PropTypes.instanceOf(Array),
     isFetching: PropTypes.bool,
+    carToShow: PropTypes.instanceOf(Object),
   }).isRequired,
 
   userStatus: PropTypes.shape({

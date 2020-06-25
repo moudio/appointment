@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Car.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -35,6 +36,21 @@ function Car({
     </div>
   );
 }
+
+Car.propTypes = {
+  car: PropTypes.instanceOf(Object).isRequired,
+  carsState: PropTypes.shape({
+    cars: PropTypes.instanceOf(Array),
+    isFetching: PropTypes.bool,
+    carToShow: PropTypes.instanceOf(Object),
+    redirect: PropTypes.bool,
+  }).isRequired,
+  getCar: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  makeRedirectFalse: PropTypes.func.isRequired,
+};
 const mapStateToProps = (state) => ({
   carsState: state.carsReducer,
 });
