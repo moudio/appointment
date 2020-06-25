@@ -24,6 +24,9 @@ function UpdateBooking({ userStatus, patchBook, history }) {
     };
     patchBook(book);
   }
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 
   if (userStatus.should_go_to_update) {
     userStatus.should_go_to_update = false;
@@ -35,54 +38,57 @@ function UpdateBooking({ userStatus, patchBook, history }) {
 
   return (
     <div className="carBooking">
-      <div className={`car-img ${carToUpdate.alt}`}></div>
-      <div className="car-content">
-        <h2>{carToUpdate.model}</h2>
-        <div className="details">
-          <ul class="car-details">
-            <li>Speed: {carToUpdate.speed}</li>
-            <li>Acceleration: {carToUpdate.acceleration}</li>
-            <li>Height: {carToUpdate.height}</li>
-            <li>Width: {carToUpdate.width}</li>
-            <li>Length: {carToUpdate.length}</li>
-          </ul>
-          <label htmlFor="date">Pick a date</label>
-          <div className="pick-date">
-            <input
-              type="date"
-              name="date"
-              id="date"
-              onClick={handleDatePicking}
-            />
+      <h2>{carToUpdate.model}</h2>
+      <div className="carBooking-main">
+        <div className={`car-img ${carToUpdate.alt}`}></div>
+        <div className="car-content">
+          <div className="details">
+            <ul class="car-details">
+              <li>Speed: {carToUpdate.speed}</li>
+              <li>Acceleration: {carToUpdate.acceleration}</li>
+              <li>Height: {carToUpdate.height}</li>
+              <li>Width: {carToUpdate.width}</li>
+              <li>Length: {carToUpdate.length}</li>
+            </ul>
+            <label htmlFor="date">Pick a date</label>
+            <div className="pick-date">
+              <input
+                type="date"
+                name="date"
+                id="date"
+                onClick={handleDatePicking}
+              />
+            </div>
+            <div className="pick-city">
+              <label htmlFor="city"> Choose a city </label>
+              <select name="city" id="city">
+                <option value="Dakar" selected>
+                  Dakar
+                </option>
+                <option value="Paris">Paris</option>
+                <option value="New York">New York</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Berlin">Berlin</option>
+                <option value="London">London</option>
+              </select>
+            </div>
+            <button
+              className="book-drive-button"
+              onClick={() => {
+                handleUpdateBook(bookToUpdate.id);
+                scrollToTop();
+              }}
+            >
+              Update Booking
+            </button>
           </div>
-          <div className="pick-city">
-            <label htmlFor="city"> Choose a city </label>
-            <select name="city" id="city">
-              <option value="Dakar" selected>
-                Dakar
-              </option>
-              <option value="Paris">Paris</option>
-              <option value="New York">New York</option>
-              <option value="Beijing">Beijing</option>
-              <option value="Berlin">Berlin</option>
-              <option value="London">London</option>
-            </select>
-          </div>
-          <button
-            className="book-drive-button"
-            onClick={() => {
-              handleUpdateBook(bookToUpdate.id);
-            }}
-          >
-            Update Booking
-          </button>
         </div>
       </div>
       {userStatus.is_patching_book ? (
-        <div className="creating-booking">
+        <div className="updating-booking">
           <h2>Updating Your Booking...</h2>
           <div className="animation-picture">
-            <img src={Loading} alt="Creating your booking" />
+            <img src={Loading} alt="Updating your booking" />
           </div>
         </div>
       ) : null}

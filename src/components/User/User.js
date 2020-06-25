@@ -41,7 +41,7 @@ function User({
             <img src={profile} alt="profile" className="picture-img" />
           </div>
           <div className="profile-details">
-            <h1>{user.username}</h1>
+            <h1>Welcome, {user.username}</h1>
             <p>Car lover</p>
           </div>
         </div>
@@ -53,9 +53,11 @@ function User({
                 <UserBookings />
               </>
             ) : (
-              <h2>
-                You have no bookings yet, <Link to="/">Create one!</Link>{' '}
-              </h2>
+              <div className="no-booking-yet">
+                <p>
+                  You have no bookings yet, <Link to="/">Create one!</Link>{' '}
+                </p>
+              </div>
             )}
           </div>
         </div>

@@ -57,3 +57,9 @@
   text-decoration: underline;
   text-decoration-color: blue;
 }
+
+.no-booking-yet p {
+  font-size: 25px;
+  background-color: black;
+  color: white;
+}

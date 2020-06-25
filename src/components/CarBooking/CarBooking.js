@@ -51,6 +51,10 @@ function CarBooking({
     console.log('booking creation fail');
   }
 
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   function handleDatePicking() {
     let datePicker = document.querySelector('#date');
     datePicker.min = new Date().toISOString().split('T')[0];
@@ -58,52 +62,55 @@ function CarBooking({
 
   return (
     <div className="carBooking">
-      <div className={`car-img ${car.alt}`}></div>
-      <div className="car-content">
-        <h2>{car.model}</h2>
-        <div className="details">
-          <ul class="car-details">
-            <li>Speed: {car.speed}</li>
-            <li>Acceleration: {car.acceleration}</li>
-            <li>Height: {car.height}</li>
-            <li>Width: {car.width}</li>
-            <li>Length: {car.length}</li>
-          </ul>
-          <label htmlFor="date">Pick a date</label>
-          <div className="pick-date">
-            <input
-              type="date"
-              name="date"
-              id="date"
-              onClick={handleDatePicking}
-            />
+      <h2>{car.model}</h2>
+      <div className="carBooking-main">
+        <div className={`car-img ${car.alt}`}></div>
+        <div className="car-content">
+          <div className="details">
+            <ul class="car-details">
+              <li>Speed: {car.speed}</li>
+              <li>Acceleration: {car.acceleration}</li>
+              <li>Height: {car.height}</li>
+              <li>Width: {car.width}</li>
+              <li>Length: {car.length}</li>
+            </ul>
+            <label htmlFor="date">Pick a date</label>
+            <div className="pick-date">
+              <input
+                type="date"
+                name="date"
+                id="date"
+                onClick={handleDatePicking}
+              />
+            </div>
+            <div className="pick-city">
+              <label htmlFor="city"> Choose a city </label>
+              <select name="city" id="city">
+                <option value="Dakar" selected>
+                  Dakar
+                </option>
+                <option value="Paris">Paris</option>
+                <option value="New York">New York</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Berlin">Berlin</option>
+                <option value="London">London</option>
+              </select>
+            </div>
+            <button
+              className="book-drive-button"
+              onClick={() => {
+                scrollToTop();
+                handleBooking();
+              }}
+            >
+              Book a drive
+            </button>
           </div>
-          <div className="pick-city">
-            <label htmlFor="city"> Choose a city </label>
-            <select name="city" id="city">
-              <option value="Dakar" selected>
-                Dakar
-              </option>
-              <option value="Paris">Paris</option>
-              <option value="New York">New York</option>
-              <option value="Beijing">Beijing</option>
-              <option value="Berlin">Berlin</option>
-              <option value="London">London</option>
-            </select>
-          </div>
-          <button
-            className="book-drive-button"
-            onClick={() => {
-              handleBooking();
-            }}
-          >
-            Book a drive
-          </button>
         </div>
       </div>
       {carsState.creating_booking ? (
         <div className="creating-booking">
-          <h2>Creating Your Booking...</h2>
+          <h2 className="creating-booking-title">Creating Your Booking...</h2>
           <div className="animation-picture">
             <img src={Loading} alt="Creating your booking" />
           </div>
@@ -122,7 +129,7 @@ function CarBooking({
       ) : null}
       <div className="back-to-cars-link-div">
         <Link to="/" className="back-to-cars-link">
-          Back to cars
+          {'<< '} Back to cars
         </Link>
       </div>
     </div>
