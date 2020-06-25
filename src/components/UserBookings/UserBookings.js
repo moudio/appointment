@@ -21,7 +21,6 @@ function UserBookings({ deleteBooking, userState, updateBooking, history }) {
   if (userState.should_go_to_update) {
     console.log('should go to the update page!');
     history.push(`/update/${userState.carToUpdate.alt}`);
-    // userState.should_go_to_update = false;
     userState.redirect_after_patching = false;
   }
 

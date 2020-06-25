@@ -64,3 +64,38 @@
   justify-content: space-between;
   min-height: 100px;
 }
+
+@media (max-width: 460px) {
+  .bookings h1 {
+    font-size: 25px;
+  }
+  .booking {
+    flex-direction: column;
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .booking-content,
+  .booking-buttons {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .booking-content p {
+    justify-content: center;
+  }
+
+  .booking-buttons {
+    margin: 5px auto;
+  }
+
+  .bookings {
+    padding: 0;
+  }
+
+  .see-all-cars-link {
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}

@@ -22,19 +22,19 @@ function App({ carsState, userStatus, history }) {
       <div className="App" data-testid="App">
         <Navigation />
         <Switch>
-          {userStatus.isLoggedIn ? (
-            <Route
-              exact
-              path="/"
-              render={(props) => <Cars cars={carsState.cars} {...props} />}
-            />
-          ) : (
+          {/* {userStatus.isLoggedIn ? ( */}
+          <Route
+            exact
+            path="/"
+            render={(props) => <Cars cars={carsState.cars} {...props} />}
+          />
+          {/* ) : (
             <Route
               exact
               path="/login"
               render={(props) => <Login {...props} />}
             />
-          )}
+          )} */}
           <Route exact path="/login" render={(props) => <Login {...props} />} />
           <Route
             exact
