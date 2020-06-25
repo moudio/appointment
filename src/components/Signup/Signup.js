@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './Signup.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,7 @@ import { signupUser } from '../../actions/actions';
 import Errors from '../Errors/Errors';
 import loading from '../../Images/loading.gif';
 
-function Register({ dispatchSignup, signupStatus, history }) {
+function Signup({ dispatchSignup, signupStatus, history }) {
   useEffect(() => {
     if (signupStatus.status === 'created') {
       history.push('/user');
@@ -93,6 +94,18 @@ function Register({ dispatchSignup, signupStatus, history }) {
   );
 }
 
+Signup.propTypes = {
+  signupStatus: PropTypes.shape({
+    status: PropTypes.string,
+    signupErrors: PropTypes.instanceOf(Array),
+    isChecking: PropTypes.bool,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  dispatchSignup: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   signupStatus: state.userReducer,
 });
@@ -103,4 +116,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
