@@ -12,6 +12,7 @@
     "bootstrap": "^4.5.0",
     "http-proxy-middleware": "^1.0.4",
     "msw": "^0.19.3",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootbox": "^1.1.1",
     "react-bootstrap": "^1.0.1",

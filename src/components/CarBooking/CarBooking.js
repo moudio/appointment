@@ -56,7 +56,7 @@ function CarBooking({
   }
 
   function handleDatePicking() {
-    let datePicker = document.querySelector('#date');
+    const datePicker = document.querySelector('#date');
     datePicker.min = new Date().toISOString().split('T')[0];
   }
 
@@ -64,15 +64,30 @@ function CarBooking({
     <div className="carBooking">
       <h2>{car.model}</h2>
       <div className="carBooking-main">
-        <div className={`car-img ${car.alt}`}></div>
+        <div className={`car-img ${car.alt}`} />
         <div className="car-content">
           <div className="details">
-            <ul class="car-details">
-              <li>Speed: {car.speed}</li>
-              <li>Acceleration: {car.acceleration}</li>
-              <li>Height: {car.height}</li>
-              <li>Width: {car.width}</li>
-              <li>Length: {car.length}</li>
+            <ul className="car-details">
+              <li>
+                Speed:
+                {car.speed}
+              </li>
+              <li>
+                Acceleration:
+                {car.acceleration}
+              </li>
+              <li>
+                Height:
+                {car.height}
+              </li>
+              <li>
+                Width:
+                {car.width}
+              </li>
+              <li>
+                Length:
+                {car.length}
+              </li>
             </ul>
             <label htmlFor="date">Pick a date</label>
             <div className="pick-date">
@@ -119,17 +134,19 @@ function CarBooking({
       {carsState.booking_fail_message ? (
         <div className="booking-fail-message">
           <p>{carsState.booking_fail_message}</p>
-          <button class="btn btn-success" onClick={() => redirectToDashboard()}>
+          <button className="btn btn-success" onClick={() => redirectToDashboard()}>
             Go To Your Dashboard
           </button>
-          <button class="btn btn-info" onClick={() => redirectToCars()}>
+          <button className="btn btn-info" onClick={() => redirectToCars()}>
             Book Other Cars
           </button>
         </div>
       ) : null}
       <div className="back-to-cars-link-div">
         <Link to="/" className="back-to-cars-link">
-          {'<< '} Back to cars
+          {'<< '}
+          {' '}
+          Back to cars
         </Link>
       </div>
     </div>
@@ -151,5 +168,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(withRouter(CarBooking));

@@ -1,5 +1,5 @@
-import * as ACTION_TYPE from '../actions/actions';
 import { act } from 'react-dom/test-utils';
+import * as ACTION_TYPE from '../actions/actions';
 
 const defaultUserState = {
   user: {},

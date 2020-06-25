@@ -40,15 +40,30 @@ function UpdateBooking({ userStatus, patchBook, history }) {
     <div className="carBooking">
       <h2>{carToUpdate.model}</h2>
       <div className="carBooking-main">
-        <div className={`car-img ${carToUpdate.alt}`}></div>
+        <div className={`car-img ${carToUpdate.alt}`} />
         <div className="car-content">
           <div className="details">
-            <ul class="car-details">
-              <li>Speed: {carToUpdate.speed}</li>
-              <li>Acceleration: {carToUpdate.acceleration}</li>
-              <li>Height: {carToUpdate.height}</li>
-              <li>Width: {carToUpdate.width}</li>
-              <li>Length: {carToUpdate.length}</li>
+            <ul className="car-details">
+              <li>
+                Speed:
+                {carToUpdate.speed}
+              </li>
+              <li>
+                Acceleration:
+                {carToUpdate.acceleration}
+              </li>
+              <li>
+                Height:
+                {carToUpdate.height}
+              </li>
+              <li>
+                Width:
+                {carToUpdate.width}
+              </li>
+              <li>
+                Length:
+                {carToUpdate.length}
+              </li>
             </ul>
             <label htmlFor="date">Pick a date</label>
             <div className="pick-date">
@@ -117,5 +132,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(withRouter(UpdateBooking));

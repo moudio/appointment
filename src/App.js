@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 import { connect } from 'react-redux';
 import {
@@ -16,7 +17,7 @@ import User from './components/User/User';
 import CarBooking from './components/CarBooking/CarBooking';
 import UpdateBooking from './components/UpdateBooking/UpdateBooking';
 
-function App({ carsState, userStatus, history }) {
+function App({ carsState, userStatus }) {
   return (
     <Router>
       <div className="App" data-testid="App">
@@ -56,19 +57,32 @@ function App({ carsState, userStatus, history }) {
               render={(props) => (
                 <CarBooking {...props} car={carsState.carToShow} />
               )}
-            ></Route>
+            />
           ) : (
             <Redirect push to={{ pathname: '/login' }} />
           )}
           <Route exact path="/update/:car_model">
             {' '}
-            <UpdateBooking />{' '}
+            <UpdateBooking />
+            {' '}
           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
+
+App.propTypes = {
+  carsState: PropTypes.shape({
+    cars: PropTypes.instanceOf(Array),
+    isFetching: PropTypes.bool,
+  }).isRequired,
+
+  userStatus: PropTypes.shape({
+    user: PropTypes.instanceOf(Object),
+    isLoggedIn: PropTypes.bool,
+  }).isRequired,
+};
 
 const mapStateToProps = (state) => ({
   carsState: state.carsReducer,

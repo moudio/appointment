@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Switch, Link,
+} from 'react-router-dom';
 import './User.css';
+import { connect } from 'react-redux';
 import UserBookings from '../UserBookings/UserBookings';
 import profile from '../../Images/profile.jpg';
-import { connect } from 'react-redux';
 import {
   makeBookingPropertyFalse,
   fetchUserBookings,
   makeDeleteBookPropFalse,
 } from '../../actions/actions';
+
 function User({
   userStatus,
   getUserBookings,
@@ -19,7 +22,6 @@ function User({
   const { user, books } = userStatus;
 
   useEffect(() => {
-    console.log('useEffect called');
     getUserBookings(user.id);
   }, []);
 
@@ -32,7 +34,6 @@ function User({
     makeDeletingBookFalse();
   }
 
-  console.log('books are ', books);
   return (
     <div className="user-div">
       <div className="profile">
@@ -41,12 +42,15 @@ function User({
             <img src={profile} alt="profile" className="picture-img" />
           </div>
           <div className="profile-details">
-            <h1>Welcome, {user.username}</h1>
+            <h1>
+              Welcome,
+              {user.username}
+            </h1>
             <p>Car lover</p>
           </div>
         </div>
         <div className="profile-content">
-          <div className="profile-content-navigation"></div>
+          <div className="profile-content-navigation" />
           <div className="books">
             {books && books.length > 0 ? (
               <>
@@ -55,7 +59,10 @@ function User({
             ) : (
               <div className="no-booking-yet">
                 <p>
-                  You have no bookings yet, <Link to="/">Create one!</Link>{' '}
+                  You have no bookings yet,
+                  {' '}
+                  <Link to="/">Create one!</Link>
+                  {' '}
                 </p>
               </div>
             )}

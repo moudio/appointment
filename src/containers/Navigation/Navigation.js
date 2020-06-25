@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../../actions/actions';
 import './Navigation.css';
 
-export class Navigation extends Component {
+class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,16 +17,16 @@ export class Navigation extends Component {
   toggleIcon() {
     this.state.menu === 'breadcrumb'
       ? this.setState({
-          menu: 'close',
-        })
+        menu: 'close',
+      })
       : this.setState({
-          menu: 'breadcrumb',
-        });
+        menu: 'breadcrumb',
+      });
   }
 
   closeOnListClick() {
     const allNavLinks = Array.from(
-      document.querySelectorAll('ul.menu-list li a')
+      document.querySelectorAll('ul.menu-list li a'),
     );
     allNavLinks.forEach((navLink) => {
       navLink.addEventListener('click', () => {

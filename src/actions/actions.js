@@ -35,21 +35,17 @@ export const fetchCars = () => (dispatch) => {
 
   axios
     .get('http://localhost:3001/api/v1/cars')
-    .then((cars) =>
-      setTimeout(() => {
-        dispatch({
-          type: FETCH_SUCCESS,
-          cars: cars.data,
-        });
-      }, 1000)
-    )
-    .catch(() =>
-      setTimeout(() => {
-        dispatch({
-          type: FETCH_FAILURE,
-        });
-      }, 1000)
-    );
+    .then((cars) => setTimeout(() => {
+      dispatch({
+        type: FETCH_SUCCESS,
+        cars: cars.data,
+      });
+    }, 1000))
+    .catch(() => setTimeout(() => {
+      dispatch({
+        type: FETCH_FAILURE,
+      });
+    }, 1000));
 };
 
 export const loginStatus = () => (dispatch) => {
@@ -108,7 +104,7 @@ export const signupUser = (user) => (dispatch) => {
     .post(
       'http://localhost:3001/api/v1/users',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
     .then((response) => {
       setTimeout(() => {
@@ -135,13 +131,11 @@ export const getOneCar = (carId) => (dispatch) => {
   setTimeout(() => {
     axios
       .get(`http://localhost:3001/api/v1/cars/${carId}`)
-      .then((response) =>
-        dispatch({
-          type: ONE_CAR_FETCH_SUCCESS,
-          carToShow: response.data,
-          redirect: true,
-        })
-      )
+      .then((response) => dispatch({
+        type: ONE_CAR_FETCH_SUCCESS,
+        carToShow: response.data,
+        redirect: true,
+      }))
       .catch((error) => console.log(error));
   }, 1000);
 };
@@ -156,7 +150,7 @@ export const createBooking = (book) => (dispatch) => {
       .post(
         'http://localhost:3001/api/v1/books/',
         { book },
-        { withCredentials: true }
+        { withCredentials: true },
       )
       .then((response) => {
         if (response.data.status === 'book_created') {

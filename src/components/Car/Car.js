@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom';
 
 import { getOneCar, redirectFalse } from '../../actions/actions';
 
-function Car({ car, getCar, carsState, history, makeRedirectFalse }) {
+function Car({
+  car, getCar, carsState, history, makeRedirectFalse,
+}) {
   function manageOneCarFetch(carId) {
     getCar(carId);
   }
