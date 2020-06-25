@@ -1,24 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Alert from './Alert/Alert';
 import Errors from '../Errors/Errors';
 import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
 
-function Login(props) {
+function Login({ userInfos, handleLoginProps, history }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       username: document.querySelector("input[type='text']").value,
       password: document.querySelector("input[type='password']").value,
     };
-    props.handleLogin(user);
+    handleLoginProps(user);
   };
 
-  if (props.userInfos.isLoggedIn) {
-    props.history.push('/user');
+  if (userInfos.isLoggedIn) {
+    history.push('/user');
   }
   return (
     <>
@@ -28,10 +28,10 @@ function Login(props) {
         </div>
         <div className="form-container">
           <form onSubmit={handleSubmit}>
-            {props.userInfos.loginErrors ? (
-              <Errors errors={props.userInfos.loginErrors} />
+            {userInfos.loginErrors ? (
+              <Errors errors={userInfos.loginErrors} />
             ) : null}
-            {props.userInfos.isChecking ? (
+            {userInfos.isChecking ? (
               <img src={loading} alt="loading" className="loading-gif" />
             ) : null}
             <div className="form-group">
@@ -63,11 +63,23 @@ function Login(props) {
   );
 }
 
+Login.propTypes = {
+  userInfos: PropTypes.shape({
+    loginErrors: PropTypes.instanceOf(Array),
+    isLoggedIn: PropTypes.bool.isRequired,
+    isChecking: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleLoginProps: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
 const mapStateToProps = (state) => ({
   userInfos: state.userReducer,
 });
 const mapDispatchToProps = (dispatch) => ({
-  handleLogin: (user) => {
+  handleLoginProps: (user) => {
     dispatch(handleLogin(user));
   },
 });

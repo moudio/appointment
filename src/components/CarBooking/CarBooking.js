@@ -1,11 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import {
-  createBooking,
-  makeBookingPropertyFalse,
-  resetBookingFailParams,
-} from '../../actions/actions';
+import { createBooking, resetBookingFailParams } from '../../actions/actions';
 import Loading from '../../Images/loading_white.gif';
 import './CarBooking.css';
 
@@ -15,13 +12,12 @@ function CarBooking({
   user,
   carsState,
   history,
-  removeBookingCreated,
   resetBookingFail,
 }) {
   function handleBooking() {
     let date = document.querySelector('#date').value;
     if (!date) {
-      date = new Date().toISOString().split('T')[0];
+      [date] = [new Date().toISOString().split('T')[0]];
     }
 
     const book = {
@@ -47,17 +43,13 @@ function CarBooking({
     history.push('/user');
   }
 
-  if (carsState.booking_creation_fail) {
-    console.log('booking creation fail');
-  }
-
   function scrollToTop() {
     window.scrollTo(0, 0);
   }
 
   function handleDatePicking() {
     const datePicker = document.querySelector('#date');
-    datePicker.min = new Date().toISOString().split('T')[0];
+    [datePicker.min] = [new Date().toISOString().split('T')[0]];
   }
 
   return (
@@ -112,6 +104,7 @@ function CarBooking({
               </select>
             </div>
             <button
+              type="button"
               className="book-drive-button"
               onClick={() => {
                 scrollToTop();
@@ -134,10 +127,18 @@ function CarBooking({
       {carsState.booking_fail_message ? (
         <div className="booking-fail-message">
           <p>{carsState.booking_fail_message}</p>
-          <button className="btn btn-success" onClick={() => redirectToDashboard()}>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => redirectToDashboard()}
+          >
             Go To Your Dashboard
           </button>
-          <button className="btn btn-info" onClick={() => redirectToCars()}>
+          <button
+            className="btn btn-info"
+            type="button"
+            onClick={() => redirectToCars()}
+          >
             Book Other Cars
           </button>
         </div>
@@ -165,6 +166,25 @@ const mapStateToProps = (state) => ({
   carsState: state.carsReducer,
   user: state.userReducer.user,
 });
+
+CarBooking.propTypes = {
+  car: PropTypes.instanceOf(Object).isRequired,
+  postBooking: PropTypes.func.isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
+  carsState: PropTypes.shape({
+    cars: PropTypes.instanceOf(Array),
+    isFetching: PropTypes.bool,
+    carToShow: PropTypes.instanceOf(Object),
+    redirect: PropTypes.bool,
+    booking_created: PropTypes.bool,
+    creating_booking: PropTypes.bool,
+    booking_fail_message: PropTypes.string,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  resetBookingFail: PropTypes.func.isRequired,
+};
 
 export default connect(
   mapStateToProps,
