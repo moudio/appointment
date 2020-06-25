@@ -19,10 +19,15 @@ function CarBooking({
   resetBookingFail,
 }) {
   function handleBooking() {
+    let date = document.querySelector('#date').value;
+    if (!date) {
+      date = new Date().toISOString().split('T')[0];
+    }
+
     const book = {
       car_id: car.id,
       user_id: user.id,
-      date: document.querySelector('#date').value,
+      date,
       city: document.querySelector('#city').value,
     };
     postBooking(book);

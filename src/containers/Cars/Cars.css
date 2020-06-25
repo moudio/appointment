@@ -35,8 +35,9 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(53, 53, 54, 0.96);
 }
 
 .loading-div img {
-  max-width: 45px;
+  width: 120px;
 }

@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { patchBookFromUpdateComponent } from '../../actions/actions';
+import './UpdateBooking.css';
 import Loading from '../../Images/loading_white.gif';
+
 function UpdateBooking({ userStatus, patchBook, history }) {
-  console.log(userStatus);
   const { bookToUpdate, carToUpdate } = userStatus;
   function handleDatePicking() {
     const datePicker = document.querySelector('#date');
@@ -12,12 +13,20 @@ function UpdateBooking({ userStatus, patchBook, history }) {
   }
 
   function handleUpdateBook(bookId) {
+    let date = document.querySelector('#date').value;
+    if (!date) {
+      date = new Date().toISOString().split('T')[0];
+    }
     const book = {
       book_id: bookId,
-      date: document.querySelector('#date').value,
+      date,
       city: document.querySelector('#city').value,
     };
     patchBook(book);
+  }
+
+  if (userStatus.should_go_to_update) {
+    userStatus.should_go_to_update = false;
   }
 
   if (userStatus.redirect_after_patching) {
@@ -78,7 +87,7 @@ function UpdateBooking({ userStatus, patchBook, history }) {
         </div>
       ) : null}
       {userStatus.patching_book_success ? (
-        <div className="booking-fail-message">
+        <div className="booking-update-success-message">
           Your booking has been successfully updated
         </div>
       ) : null}

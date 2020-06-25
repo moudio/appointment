@@ -45,13 +45,14 @@
 }
 
 .disappear {
-  left: 100px;
+  display: none;
 }
 
 .appear {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: block;
 }
 
 .Navigation ul li a {

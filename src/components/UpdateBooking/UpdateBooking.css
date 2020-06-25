@@ -1,0 +1,13 @@
+.booking-update-success-message {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(53, 53, 54, 0.96);
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+}

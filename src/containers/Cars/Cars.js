@@ -6,7 +6,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import { Header, Footer, SectionsContainer, Section } from 'react-fullpage';
 import './Cars.css';
 import Car from '../../components/Car/Car';
-import Loading from '../../Images/loading.gif';
+import Loading from '../../Images/loading_white.gif';
 import { fetchCars } from '../../actions/actions';
 
 function Cars({ carsState, cars, history, getAllCars }) {
