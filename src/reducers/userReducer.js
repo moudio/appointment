@@ -3,10 +3,17 @@ import * as ACTION_TYPE from '../actions/actions';
 const defaultUserState = {
   user: {},
   isLoggedIn: false,
+  loadingBeforeWelcome: true,
 };
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
+    case ACTION_TYPE.END_LOADING_BEFORE_WELCOME:
+      return {
+        ...state,
+        loadingBeforeWelcome: false,
+      };
+
     case ACTION_TYPE.IS_FETCHING_USER:
       return {
         ...state,

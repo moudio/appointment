@@ -6,9 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import { getOneCar, redirectFalse } from '../../actions/actions';
 
-function Car({
-  car, getCar, carsState, history, makeRedirectFalse,
-}) {
+function Car({ car, getCar, carsState, history, makeRedirectFalse }) {
   function manageOneCarFetch(carId) {
     getCar(carId);
   }
@@ -23,7 +21,7 @@ function Car({
         <div className={`picture section-${car.alt}`} />
         <div className="content">
           <h2>{car.model}</h2>
-          <p>{car.description}</p>
+          <p className="car-description">{car.description}</p>
           <button
             type="button"
             className="book-ride"

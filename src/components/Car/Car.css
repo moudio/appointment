@@ -32,6 +32,14 @@
 
 .content h2 {
   font-size: 4rem;
+  background-color: black;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+}
+
+.content button {
+  font-size: large;
 }
 
 .content {
@@ -40,6 +48,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.content .car-description {
+  font-size: 35px;
 }
 
 .picture {
@@ -64,6 +75,9 @@
     background-color: rgba(0, 0, 0, 0.2);
   }
   .content h2 {
+    font-size: 3rem;
+  }
+  .content .car-description {
     font-size: 2rem;
   }
 }
@@ -78,6 +92,19 @@
   }
   .content {
     width: 100%;
-    background-color: beige;
+  }
+}
+
+@media (max-width: 150px) {
+  .content h2 {
+    font-size: 1.5rem;
+  }
+  .content p {
+    font-size: 15px;
+    display: none;
+  }
+
+  .content .book-ride {
+    font-size: 10px;
   }
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+export const END_LOADING_BEFORE_WELCOME = 'END_LOADING_BEFORE_WELCOME';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const IS_FETCHING_CAR = 'IS_FETCHING_CAR';
@@ -28,6 +29,14 @@ export const PATCHING_BOOK = 'PATCHING_BOOK';
 export const PATCHING_BOOK_SUCCESS = 'PATCHING_BOOK_SUCCESS';
 export const REDIRECT_AFTER_PATCHING = 'REDIRECT_AFTER_PATCHING';
 
+export const endLoadingBeforeWelcomePage = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch({
+      type: END_LOADING_BEFORE_WELCOME,
+    });
+  }, 3000);
+};
+
 export const fetchCars = () => (dispatch) => {
   dispatch({
     type: IS_FETCHING_CAR,
@@ -35,17 +44,21 @@ export const fetchCars = () => (dispatch) => {
 
   axios
     .get('http://localhost:3001/api/v1/cars')
-    .then((cars) => setTimeout(() => {
-      dispatch({
-        type: FETCH_SUCCESS,
-        cars: cars.data,
-      });
-    }, 1000))
-    .catch(() => setTimeout(() => {
-      dispatch({
-        type: FETCH_FAILURE,
-      });
-    }, 1000));
+    .then((cars) =>
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_SUCCESS,
+          cars: cars.data,
+        });
+      }, 1000)
+    )
+    .catch(() =>
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_FAILURE,
+        });
+      }, 1000)
+    );
 };
 
 export const loginStatus = () => (dispatch) => {
@@ -103,7 +116,7 @@ export const signupUser = (user) => (dispatch) => {
     .post(
       'http://localhost:3001/api/v1/users',
       { user },
-      { withCredentials: true },
+      { withCredentials: true }
     )
     .then((response) => {
       setTimeout(() => {
@@ -127,11 +140,13 @@ export const getOneCar = (carId) => (dispatch) => {
     type: IS_FETCHING_CAR,
   });
   setTimeout(() => {
-    axios.get(`http://localhost:3001/api/v1/cars/${carId}`).then((response) => dispatch({
-      type: ONE_CAR_FETCH_SUCCESS,
-      carToShow: response.data,
-      redirect: true,
-    }));
+    axios.get(`http://localhost:3001/api/v1/cars/${carId}`).then((response) =>
+      dispatch({
+        type: ONE_CAR_FETCH_SUCCESS,
+        carToShow: response.data,
+        redirect: true,
+      })
+    );
   }, 1000);
 };
 
@@ -145,7 +160,7 @@ export const createBooking = (book) => (dispatch) => {
       .post(
         'http://localhost:3001/api/v1/books/',
         { book },
-        { withCredentials: true },
+        { withCredentials: true }
       )
       .then((response) => {
         if (response.data.status === 'book_created') {

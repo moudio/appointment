@@ -84,10 +84,10 @@ class Navigation extends Component {
           </div>
           <ul className="menu-list disappear">
             <li>
-              <Link to="/cars">Cars</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/cars">Cars</Link>
             </li>
             {loggedIn ? null : (
               <li>
@@ -99,7 +99,13 @@ class Navigation extends Component {
                 <Link to="/user">Your Account</Link>
               </li>
             ) : null}
-            {loggedIn ? <li onClick={handleLogout}>Logout</li> : null}
+            {loggedIn ? (
+              <li>
+                <Link to="/" onClick={handleLogout}>
+                  Logout
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
       </>
