@@ -15,18 +15,21 @@ class Navigation extends Component {
   }
 
   toggleIcon() {
-    this.state.menu === 'breadcrumb'
-      ? this.setState({
+    const { menu } = this.state;
+    if (menu === 'breadcrumb') {
+      this.setState({
         menu: 'close',
-      })
-      : this.setState({
+      });
+    } else {
+      this.setState({
         menu: 'breadcrumb',
       });
+    }
   }
 
   closeOnListClick() {
     const allNavLinks = Array.from(
-      document.querySelectorAll('ul.menu-list li a'),
+      document.querySelectorAll('ul.menu-list li a')
     );
     allNavLinks.forEach((navLink) => {
       navLink.addEventListener('click', () => {
@@ -54,11 +57,14 @@ class Navigation extends Component {
   }
 
   render() {
+    const { loggedIn, handleLogout } = this.props;
+    const { menu } = this.state;
+
     return (
       <>
         <nav className="Navigation">
           <div className="menu-icon">
-            {this.state.menu === 'breadcrumb' ? (
+            {menu === 'breadcrumb' ? (
               <AiOutlineMenu
                 className="breadcrumb"
                 onClick={() => {
@@ -78,23 +84,22 @@ class Navigation extends Component {
           </div>
           <ul className="menu-list disappear">
             <li>
-              <Link to="/">Cars</Link>
+              <Link to="/cars">Cars</Link>
             </li>
-            {this.props.logged_in ? null : (
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            {loggedIn ? null : (
               <li>
                 <Link to="/login">Login</Link>
               </li>
             )}
-            {this.props.logged_in ? (
+            {loggedIn ? (
               <li>
                 <Link to="/user">Your Account</Link>
               </li>
             ) : null}
-            {this.props.logged_in ? (
-              <li>
-                <Link onClick={this.props.handleLogout}>Logout</Link>
-              </li>
-            ) : null}
+            {loggedIn ? <li onClick={handleLogout}>Logout</li> : null}
           </ul>
         </nav>
       </>
@@ -103,7 +108,7 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  logged_in: state.userReducer.isLoggedIn,
+  loggedIn: state.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -111,5 +116,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(logout());
   },
 });
+
+Navigation.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

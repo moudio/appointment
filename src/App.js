@@ -9,6 +9,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { loginStatus } from './actions/actions';
+import Welcome from './components/Welcome/Welcome';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
@@ -23,10 +24,13 @@ function App({ carsState, userStatus }) {
       <div className="App" data-testid="App">
         <Navigation />
         <Switch>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
           {userStatus.isLoggedIn ? (
             <Route
               exact
-              path="/"
+              path="/cars"
               render={(props) => <Cars cars={carsState.cars} {...props} />}
             />
           ) : (
@@ -63,8 +67,7 @@ function App({ carsState, userStatus }) {
           )}
           <Route exact path="/update/:car_model">
             {' '}
-            <UpdateBooking />
-            {' '}
+            <UpdateBooking />{' '}
           </Route>
         </Switch>
       </div>
