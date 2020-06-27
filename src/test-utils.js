@@ -1,19 +1,23 @@
 import React from 'react';
 import { render as rtlRender } from '@testing-library/react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import {
-  defaultCarState as reducerInitialState,
-  carsReducer,
-} from './reducers/carReducer';
-
+import reducer from './reducers/index';
 function render(
   ui,
   {
-    initialState = reducerInitialState,
-    store = createStore(carsReducer, initialState),
+    initialState = {
+      userReducer: {
+        user: {},
+        isLoggedIn: false,
+        loadingBeforeWelcome: true,
+      },
+      carsReducer: { cars: [], isFetching: false },
+    },
+    store = createStore(reducer, initialState),
     ...renderOptions
-  } = [],
+  } = []
 ) {
   function Wrapper({ children }) {
     return <Provider store={store}>{children}</Provider>;

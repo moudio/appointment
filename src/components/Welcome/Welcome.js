@@ -8,12 +8,14 @@ import './Welcome.css';
 
 function Welcome({ userStatus, endLoadingWelcome }) {
   if (userStatus.loadingBeforeWelcome) {
-    endLoadingWelcome();
+    setTimeout(() => {
+      endLoadingWelcome();
+    }, 3000);
   }
   return (
     <div className="Welcome">
       {userStatus.loadingBeforeWelcome ? (
-        <div className="loading-welcome">
+        <div className="loading-welcome" data-testid="welcome-loading">
           <img src={loadingBars} alt="bars" className="loading-bars" />
         </div>
       ) : (
