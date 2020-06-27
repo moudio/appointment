@@ -20,7 +20,7 @@ function Welcome({ userStatus, endLoadingWelcome }) {
         </div>
       ) : (
         <div className="welcome-inner">
-          <div className="jumbotron">
+          <div className="jumbotron" data-testid="jumbotron">
             <h1 className="display-4">The Cars You Have Always Wanted</h1>
             <p className="lead description">
               {' '}

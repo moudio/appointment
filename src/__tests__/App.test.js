@@ -10,6 +10,9 @@ test('can render with redux with defaults', () => {
   expect(screen.getAllByAltText('bars')[0]).toBeInTheDocument();
 });
 
-test('can render the loading page', () => {
-  render(<App />, { initialState: { userReducer: {} } });
+test('can render the loading page after the loadinganimation has bet set to false', () => {
+  render(<App />, {
+    initialState: { userReducer: { loadingBeforeWelcome: false } },
+  });
+  expect(screen.getByTestId('jumbotron')).toBeInTheDocument();
 });
