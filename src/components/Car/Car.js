@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Car.css';
@@ -6,7 +7,9 @@ import { withRouter } from 'react-router-dom';
 
 import { getOneCar, redirectFalse } from '../../actions/actions';
 
-function Car({ car, getCar, carsState, history, makeRedirectFalse }) {
+function Car({
+  car, getCar, carsState, history, makeRedirectFalse,
+}) {
   function manageOneCarFetch(carId) {
     getCar(carId);
   }

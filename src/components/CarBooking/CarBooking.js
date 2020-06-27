@@ -145,7 +145,9 @@ function CarBooking({
       ) : null}
       <div className="back-to-cars-link-div">
         <Link to="/cars" className="back-to-cars-link">
-          {'<< '} Back to cars
+          {'<< '}
+          {' '}
+          Back to cars
         </Link>
       </div>
     </div>
@@ -186,5 +188,5 @@ CarBooking.propTypes = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(withRouter(CarBooking));

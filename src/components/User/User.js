@@ -58,7 +58,10 @@ function User({
             ) : (
               <div className="no-booking-yet">
                 <p>
-                  You have no bookings yet, <Link to="/cars">Create one!</Link>{' '}
+                  You have no bookings yet,
+                  {' '}
+                  <Link to="/cars">Create one!</Link>
+                  {' '}
                 </p>
               </div>
             )}

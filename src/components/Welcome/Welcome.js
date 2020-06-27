@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { endLoadingBeforeWelcomePage } from '../../actions/actions';
 import loadingBars from '../../Images/bars_welcome.gif';
 import './Welcome.css';
+
 function Welcome({ userStatus, endLoadingWelcome }) {
   if (userStatus.loadingBeforeWelcome) {
     endLoadingWelcome();
@@ -26,7 +27,8 @@ function Welcome({ userStatus, endLoadingWelcome }) {
             <hr className="my-4" />
             <p className="lead">
               <Link class="btn btn-black" to="/cars" role="button">
-                Learn More{' >> '}
+                Learn More
+                {' >> '}
               </Link>
             </p>
           </div>
@@ -36,7 +38,13 @@ function Welcome({ userStatus, endLoadingWelcome }) {
   );
 }
 
-Welcome.propTypes = {};
+Welcome.propTypes = {
+  userStatus: PropTypes.shape({
+    loadingBeforeWelcome: PropTypes.bool,
+  }).isRequired,
+
+  endLoadingWelcome: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   userStatus: state.userReducer,

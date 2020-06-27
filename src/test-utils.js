@@ -3,9 +3,9 @@ import { render as rtlRender } from '@testing-library/react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import {
-  defaultState as reducerInitialState,
+  defaultCarState as reducerInitialState,
   carsReducer,
-} from './reducers/car_reducer';
+} from './reducers/carReducer';
 
 function render(
   ui,

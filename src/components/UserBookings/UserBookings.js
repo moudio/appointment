@@ -8,12 +8,14 @@ import { MdLocationCity } from 'react-icons/md';
 import Loading from '../../Images/loading_white.gif';
 import { cancelBooking, bookUpdateAction } from '../../actions/actions';
 
-function UserBookings({ deleteBooking, userState, updateBooking, history }) {
+function UserBookings({
+  deleteBooking, userState, updateBooking, history,
+}) {
   const { books, cars } = userState;
 
   function handleCancelBooking(bookingId) {
     const shouldDelete = window.confirm(
-      'Do you really want to delete this booking?'
+      'Do you really want to delete this booking?',
     );
     if (shouldDelete) {
       deleteBooking(bookingId);
@@ -37,17 +39,25 @@ function UserBookings({ deleteBooking, userState, updateBooking, history }) {
         <div className="booking">
           <div className="booking-content">
             <p className="car-model">
-              <AiTwotoneCar /> <span>{cars[index].model}</span>
+              <AiTwotoneCar />
+              {' '}
+              <span>{cars[index].model}</span>
             </p>
             <p className="booking-city">
               <MdLocationCity />
 
-              <span>{book.city} </span>
+              <span>
+                {book.city}
+                {' '}
+              </span>
             </p>
             <p className="booking-date">
               {' '}
               <AiOutlineFieldTime />
-              <span>{book.date} </span>
+              <span>
+                {book.date}
+                {' '}
+              </span>
             </p>
           </div>
           <div className="booking-buttons">
@@ -114,5 +124,5 @@ UserBookings.propTypes = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(withRouter(UserBookings));

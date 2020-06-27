@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
@@ -67,7 +68,8 @@ function App({ carsState, userStatus }) {
           )}
           <Route exact path="/update/:car_model">
             {' '}
-            <UpdateBooking />{' '}
+            <UpdateBooking />
+            {' '}
           </Route>
         </Switch>
       </div>
