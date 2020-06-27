@@ -22,7 +22,7 @@ function Login({ userInfos, handleLoginProps, history }) {
   }
   return (
     <>
-      <div className="login-div">
+      <div className="login-div" data-testid="login-div">
         <div className="sidebar">
           <h1>Login to your account </h1>
         </div>

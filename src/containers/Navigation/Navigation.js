@@ -29,7 +29,7 @@ class Navigation extends Component {
 
   closeOnListClick() {
     const allNavLinks = Array.from(
-      document.querySelectorAll('ul.menu-list li a'),
+      document.querySelectorAll('ul.menu-list li a')
     );
     allNavLinks.forEach((navLink) => {
       navLink.addEventListener('click', () => {
@@ -67,6 +67,7 @@ class Navigation extends Component {
             {menu === 'breadcrumb' ? (
               <AiOutlineMenu
                 className="breadcrumb"
+                data-testid="breadcrumb"
                 onClick={() => {
                   this.toggleMenu();
                   this.toggleIcon();
@@ -87,7 +88,9 @@ class Navigation extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/cars">Cars</Link>
+              <Link to="/cars" className="cars-link">
+                Cars
+              </Link>
             </li>
             {loggedIn ? null : (
               <li>
@@ -124,7 +127,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Navigation.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool,
   handleLogout: PropTypes.func.isRequired,
 };
 
