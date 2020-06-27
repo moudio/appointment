@@ -16,18 +16,20 @@ function Welcome({ userStatus, endLoadingWelcome }) {
           <img src={loadingBars} alt="bars" className="loading-bars" />
         </div>
       ) : (
-        <div className="jumbotron">
-          <h1 className="display-4">The Cars You Have Always Wanted</h1>
-          <p className="lead description">
-            {' '}
-            Discover Our Unique Car Selection And Book For A Drive Right Away!
-          </p>
-          <hr className="my-4" />
-          <p className="lead">
-            <Link class="btn btn-black" to="/cars" role="button">
-              Learn More{' >> '}
-            </Link>
-          </p>
+        <div className="welcome-inner">
+          <div className="jumbotron">
+            <h1 className="display-4">The Cars You Have Always Wanted</h1>
+            <p className="lead description">
+              {' '}
+              Discover Our Unique Car Selection And Book For A Drive Right Away!
+            </p>
+            <hr className="my-4" />
+            <p className="lead">
+              <Link class="btn btn-black" to="/cars" role="button">
+                Learn More{' >> '}
+              </Link>
+            </p>
+          </div>
         </div>
       )}
     </div>

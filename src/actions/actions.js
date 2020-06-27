@@ -44,14 +44,14 @@ export const fetchCars = () => (dispatch) => {
 
   axios
     .get('http://localhost:3001/api/v1/cars')
-    .then((cars) =>
+    .then((cars) => {
       setTimeout(() => {
         dispatch({
           type: FETCH_SUCCESS,
           cars: cars.data,
         });
-      }, 1000)
-    )
+      }, 1000);
+    })
     .catch(() =>
       setTimeout(() => {
         dispatch({

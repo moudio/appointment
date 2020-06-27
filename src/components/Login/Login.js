@@ -67,7 +67,7 @@ Login.propTypes = {
   userInfos: PropTypes.shape({
     loginErrors: PropTypes.instanceOf(Array),
     isLoggedIn: PropTypes.bool.isRequired,
-    isChecking: PropTypes.bool.isRequired,
+    isChecking: PropTypes.bool,
   }).isRequired,
   handleLoginProps: PropTypes.func.isRequired,
   history: PropTypes.shape({
