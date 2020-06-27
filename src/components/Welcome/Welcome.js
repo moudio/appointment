@@ -26,7 +26,7 @@ function Welcome({ userStatus, endLoadingWelcome }) {
             </p>
             <hr className="my-4" />
             <p className="lead">
-              <Link class="btn btn-black" to="/cars" role="button">
+              <Link className="btn btn-black" to="/cars" role="button">
                 Learn More
                 {' >> '}
               </Link>
