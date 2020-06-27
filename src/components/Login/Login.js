@@ -39,6 +39,7 @@ function Login({ userInfos, handleLoginProps, history }) {
               <input
                 type="text"
                 name="username"
+                data-testid="username-login-field"
                 className="form-control"
                 placeholder="User Name"
               />
@@ -50,6 +51,7 @@ function Login({ userInfos, handleLoginProps, history }) {
                 name="password"
                 className="form-control"
                 placeholder="Password"
+                data-testid="password-login-field"
               />
             </div>
             <button type="submit" className="btn btn-black">
@@ -72,7 +74,7 @@ Login.propTypes = {
   handleLoginProps: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }).isRequired,
+  }),
 };
 
 const mapStateToProps = (state) => ({

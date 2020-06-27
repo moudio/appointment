@@ -1,10 +1,10 @@
 import React from 'react';
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 
 import { render, fireEvent, screen } from '../test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import App from '../App';
-import { getByRole, getByTestId } from '@testing-library/react';
+// import { getByRole, getByTestId } from '@testing-library/react';
 
 test('can render with redux with defaults', () => {
   render(<App />);
