@@ -7,7 +7,7 @@ import Errors from '../Errors/Errors';
 import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
 
-function Login({ userInfos, handleLoginProps, history }) {
+export function Login({ userInfos, handleLoginProps, history }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
@@ -54,7 +54,11 @@ function Login({ userInfos, handleLoginProps, history }) {
                 data-testid="password-login-field"
               />
             </div>
-            <button type="submit" className="btn btn-black">
+            <button
+              type="submit"
+              className="btn btn-black"
+              data-testid="submit-login"
+            >
               Login
             </button>
             <Link to="/signup">Create Account</Link>
@@ -68,7 +72,7 @@ function Login({ userInfos, handleLoginProps, history }) {
 Login.propTypes = {
   userInfos: PropTypes.shape({
     loginErrors: PropTypes.instanceOf(Array),
-    isLoggedIn: PropTypes.bool.isRequired,
+    isLoggedIn: PropTypes.bool,
     isChecking: PropTypes.bool,
   }).isRequired,
   handleLoginProps: PropTypes.func.isRequired,
