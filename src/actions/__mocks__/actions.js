@@ -1,9 +1,24 @@
+// import { LOGGED_OUT, USER_LOGGED_IN } from '../actions';
+
+// export const handleLoginProps = () => {
+//   console.log('login called');
+//   return Promise.resolve({
+//     logged_in: true,
+//     user: { username: 'MouhamadouDiouf', password: 'password' },
+//     cars: [],
+//     books: [],
+//   });
+// };
+
 export const handleLogin = () => {
   return Promise.resolve({
-    logged_in: true,
-    user: { username: 'MouhamadouDiouf', password: 'password' },
-    cars: [],
-    books: [],
+    type: 'USER_LOGGED_IN',
+    data: {
+      logged_in: true,
+      user: { username: 'MouhamadouDiouf', password: 'password' },
+      cars: [],
+      books: [],
+    },
   });
 };
 

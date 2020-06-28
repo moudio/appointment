@@ -29,7 +29,7 @@ class Navigation extends Component {
 
   closeOnListClick() {
     const allNavLinks = Array.from(
-      document.querySelectorAll('ul.menu-list li a'),
+      document.querySelectorAll('ul.menu-list li a')
     );
     allNavLinks.forEach((navLink) => {
       navLink.addEventListener('click', () => {
@@ -94,7 +94,9 @@ class Navigation extends Component {
             </li>
             {loggedIn ? null : (
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login" data-testid="login">
+                  Login
+                </Link>
               </li>
             )}
             {loggedIn ? (
