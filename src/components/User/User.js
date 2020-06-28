@@ -34,7 +34,7 @@ function User({
   }
 
   return (
-    <div className="user-div">
+    <div className="user-div" data-testid="user-dashboard">
       <div className="profile">
         <div className="profile-header">
           <div className="picture-div">

@@ -30,6 +30,7 @@ function UpdateBooking({ userStatus, patchBook, history }) {
   }
 
   if (userStatus.should_go_to_update) {
+    /* eslint-disable no-param-reassign */
     userStatus.should_go_to_update = false;
   }
 

@@ -14,6 +14,7 @@ function UserBookings({
   const { books, cars } = userState;
 
   function handleCancelBooking(bookingId) {
+    /* eslint-disable no-alert */
     const shouldDelete = window.confirm(
       'Do you really want to delete this booking?',
     );
@@ -23,8 +24,8 @@ function UserBookings({
   }
 
   if (userState.should_go_to_update) {
-    console.log('should go to the update page!');
     history.push(`/update/${userState.carToUpdate.alt}`);
+    /* eslint-disable no-param-reassign */
     userState.redirect_after_patching = false;
   }
 

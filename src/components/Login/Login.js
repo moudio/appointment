@@ -7,7 +7,7 @@ import Errors from '../Errors/Errors';
 import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
 
-export function Login({ userInfos, handleLoginProps, history }) {
+function Login({ userInfos, handleLoginProps, history }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
@@ -35,9 +35,10 @@ export function Login({ userInfos, handleLoginProps, history }) {
               <img src={loading} alt="loading" className="loading-gif" />
             ) : null}
             <div className="form-group">
-              <label>User Name</label>
+              <label htmlFor="username">User Name</label>
               <input
                 type="text"
+                id="username"
                 name="username"
                 data-testid="username-login-field"
                 className="form-control"
@@ -45,10 +46,11 @@ export function Login({ userInfos, handleLoginProps, history }) {
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label htmlFor="password">Password</label>
               <input
                 type="password"
                 name="password"
+                id="password"
                 className="form-control"
                 placeholder="Password"
                 data-testid="password-login-field"
@@ -78,7 +80,7 @@ Login.propTypes = {
   handleLoginProps: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
