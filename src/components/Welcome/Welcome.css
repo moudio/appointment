@@ -28,10 +28,6 @@
   .jumbotron p {
     font-size: 20p;
   }
-
-  .jumbotron {
-    padding: 0;
-  }
 }
 
 @media (max-width: 450px) {
