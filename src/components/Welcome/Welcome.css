@@ -65,9 +65,3 @@
     width: 60px;
   }
 }
-
-@media (max-width: 400px) {
-  .loading-bars {
-    width: 40px;
-  }
-}
