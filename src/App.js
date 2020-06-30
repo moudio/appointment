@@ -1,7 +1,5 @@
-// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
-import './App.css';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -18,6 +16,7 @@ import Navigation from './containers/Navigation/Navigation';
 import User from './components/User/User';
 import CarBooking from './components/CarBooking/CarBooking';
 import UpdateBooking from './components/UpdateBooking/UpdateBooking';
+import './App.css';
 
 function App({ carsState, userStatus }) {
   return (
@@ -68,8 +67,7 @@ function App({ carsState, userStatus }) {
           )}
           <Route exact path="/update/:car_model">
             {' '}
-            <UpdateBooking />
-            {' '}
+            <UpdateBooking />{' '}
           </Route>
         </Switch>
       </div>
