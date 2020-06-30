@@ -38,7 +38,7 @@ export const fetchCars = () => (dispatch) => {
   });
 
   axios
-    .get('https://appointcar.netlify.app/api/v1/cars')
+    .get(' https://appointrails.herokuapp.com/api/v1/cars')
     .then((cars) => {
       setTimeout(() => {
         dispatch({
@@ -62,7 +62,7 @@ export const loginStatus = () => (dispatch) => {
   });
 
   axios
-    .get('https://appointcar.netlify.app/logged_in')
+    .get(' https://appointrails.herokuapp.com/logged_in')
     .then((status) => {
       setTimeout(() => {
         dispatch({
@@ -86,7 +86,7 @@ export const handleLogin = (user) => (dispatch) => {
   });
   axios
     .post(
-      'https://appointcar.netlify.app/login',
+      ' https://appointrails.herokuapp.com/login',
       { user },
       { withCredentials: true }
     )
@@ -113,7 +113,7 @@ export const signupUser = (user) => (dispatch) => {
   });
   axios
     .post(
-      'https://appointcar.netlify.app/api/v1/users',
+      ' https://appointrails.herokuapp.com/api/v1/users',
       { user },
       { withCredentials: true }
     )
@@ -140,7 +140,7 @@ export const getOneCar = (carId) => (dispatch) => {
   });
   setTimeout(() => {
     axios
-      .get(`https://appointcar.netlify.app/api/v1/cars/${carId}`)
+      .get(` https://appointrails.herokuapp.com/api/v1/cars/${carId}`)
       .then((response) =>
         dispatch({
           type: ONE_CAR_FETCH_SUCCESS,
@@ -159,7 +159,7 @@ export const createBooking = (book) => (dispatch) => {
   setTimeout(() => {
     axios
       .post(
-        'https://appointcar.netlify.app/api/v1/books/',
+        ' https://appointrails.herokuapp.com/api/v1/books/',
         { book },
         { withCredentials: true }
       )
@@ -178,12 +178,14 @@ export const createBooking = (book) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  axios.delete('https://appointcar.netlify.app/logout').then((response) => {
-    dispatch({
-      type: LOGGED_OUT,
-      logged_out: response.data.logged_out,
+  axios
+    .delete(' https://appointrails.herokuapp.com/logout')
+    .then((response) => {
+      dispatch({
+        type: LOGGED_OUT,
+        logged_out: response.data.logged_out,
+      });
     });
-  });
 };
 
 export const makeBookingPropertyFalse = () => ({
@@ -201,7 +203,7 @@ export const cancelBooking = (bookId) => (dispatch) => {
   });
   setTimeout(() => {
     axios
-      .delete(`https://appointcar.netlify.app/api/v1/books/${bookId}`)
+      .delete(` https://appointrails.herokuapp.com/api/v1/books/${bookId}`)
       .then(() => {
         dispatch({
           type: BOOK_DELETED,
@@ -212,7 +214,7 @@ export const cancelBooking = (bookId) => (dispatch) => {
 
 export const fetchUserBookings = (userId) => (dispatch) => {
   axios
-    .get(`https://appointcar.netlify.app/users/${userId}/books_cars`)
+    .get(` https://appointrails.herokuapp.com/users/${userId}/books_cars`)
     .then((response) => {
       dispatch({
         type: FETCH_USER_BOOKS_AND_CARS,
@@ -236,7 +238,7 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
   });
 
   axios
-    .get(`https://appointcar.netlify.app/api/v1/books/${bookId}`)
+    .get(` https://appointrails.herokuapp.com/api/v1/books/${bookId}`)
     .then((response) => {
       dispatch({
         type: FOUND_BOOK_FOR_UPDATE,
@@ -253,9 +255,12 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
 
   setTimeout(() => {
     axios
-      .patch(`https://appointcar.netlify.app/api/v1/books/${book.book_id}`, {
-        book,
-      })
+      .patch(
+        ` https://appointrails.herokuapp.com/api/v1/books/${book.book_id}`,
+        {
+          book,
+        }
+      )
       .then((response) => {
         if (response.data.status === 'patched') {
           dispatch({
