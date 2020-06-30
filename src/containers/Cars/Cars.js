@@ -24,7 +24,7 @@ function Cars({ carsState, cars, getAllCars }) {
           render={() => (
             <div id="fullpage-wrapper">
               {cars.map((car) => (
-                <Car car={car} />
+                <Car key={`${car.alt}-${new Date().getTime()}`} car={car} />
               ))}
             </div>
           )}
