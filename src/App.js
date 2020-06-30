@@ -28,7 +28,7 @@ function App({ carsState, userStatus }) {
           <Route exact path="/">
             <Welcome />
           </Route>
-          {userStatus.isLoggedIn ? (
+          {!userStatus.isLoggedIn ? (
             <Route
               exact
               path="/cars"
@@ -68,8 +68,7 @@ function App({ carsState, userStatus }) {
           )}
           <Route exact path="/update/:car_model">
             {' '}
-            <UpdateBooking />
-            {' '}
+            <UpdateBooking />{' '}
           </Route>
         </Switch>
       </div>
