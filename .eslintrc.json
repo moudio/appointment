@@ -8,6 +8,7 @@
         "plugin:react/recommended",
         "airbnb"
     ],
+
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
