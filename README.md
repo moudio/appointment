@@ -26,7 +26,7 @@ This is the last capstone project I built while being a sofware developer studen
 
 The web application uses React as the front-end language and Ruby on Rails as the back-end language. 
 
-I built the Ruby On Rails backend language so that the two separate web apps can communicate smoothly.  
+I built the Ruby On Rails backend API so that the two separate web apps can communicate smoothly.  
 
 
 ## Developed by
