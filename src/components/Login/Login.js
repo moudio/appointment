@@ -10,7 +10,6 @@ import loading from '../../Images/loading.gif';
 function Login({ userInfos, handleLoginProps, history }) {
   useEffect(() => {
     if (document.querySelector('.menu-icon')) {
-      console.log('hello');
       document.querySelector('.menu-icon').classList.add('menu-white');
     }
   });
