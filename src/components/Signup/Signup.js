@@ -53,6 +53,7 @@ function Signup({ dispatchSignup, signupStatus, history }) {
                     placeholder="Username"
                     className="form-control"
                     type="text"
+                    required
                   />
                 </div>
               </div>
@@ -64,6 +65,7 @@ function Signup({ dispatchSignup, signupStatus, history }) {
                     className="form-control"
                     id="password"
                     placeholder="Password"
+                    required
                   />
                 </div>
               </div>
@@ -75,6 +77,7 @@ function Signup({ dispatchSignup, signupStatus, history }) {
                     className="form-control"
                     id="passwordConfirmation"
                     placeholder="Password Confirmation"
+                    required
                   />
                 </div>
               </div>

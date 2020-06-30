@@ -43,6 +43,7 @@ function Login({ userInfos, handleLoginProps, history }) {
                 data-testid="username-login-field"
                 className="form-control"
                 placeholder="User Name"
+                required
               />
             </div>
             <div className="form-group">
@@ -53,7 +54,9 @@ function Login({ userInfos, handleLoginProps, history }) {
                 id="password"
                 className="form-control"
                 placeholder="Password"
+                autoComplete="password"
                 data-testid="password-login-field"
+                required
               />
             </div>
             <button
