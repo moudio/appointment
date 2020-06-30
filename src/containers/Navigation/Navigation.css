@@ -65,9 +65,14 @@
 }
 
 @media (max-width: 750px) {
+  .menu-white .breadcrumb,
+  .menu-white .close-icon {
+    color: white;
+    font-size: 65px;
+  }
+
   .menu-icon .breadcrumb,
   .menu-icon .close-icon {
-    color: white;
     font-size: 65px;
   }
 
@@ -77,5 +82,11 @@
 
   .menu-list li a {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .carBooking h2 {
+    padding-top: 20px;
   }
 }

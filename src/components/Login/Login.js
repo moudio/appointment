@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,12 @@ import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
 
 function Login({ userInfos, handleLoginProps, history }) {
+  useEffect(() => {
+    if (document.querySelector('.menu-icon')) {
+      console.log('hello');
+      document.querySelector('.menu-icon').classList.add('menu-white');
+    }
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {

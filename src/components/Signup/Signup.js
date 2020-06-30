@@ -9,6 +9,9 @@ import loading from '../../Images/loading.gif';
 
 function Signup({ dispatchSignup, signupStatus, history }) {
   useEffect(() => {
+    if (document.querySelector('.menu-icon')) {
+      document.querySelector('.menu-icon').classList.add('menu-white');
+    }
     if (signupStatus.status === 'created') {
       history.push('/user');
     }
