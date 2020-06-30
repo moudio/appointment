@@ -85,12 +85,17 @@ function Signup({ dispatchSignup, signupStatus, history }) {
                 </div>
               </div>
 
-              <div className="form-row">
-                <button type="submit" className="btn btn-black">
-                  Create Account
-                </button>
-                or
-                <Link to="/login">Login</Link>
+              <div className="form-row create-login">
+                <div className="login-button-div">
+                  <button type="submit" className="btn btn-black">
+                    Create Account
+                  </button>
+                </div>
+
+                <div className="or-login">
+                  <span>or</span>
+                  <Link to="/login"> Login</Link>
+                </div>
               </div>
             </form>
           </div>
@@ -102,7 +107,7 @@ function Signup({ dispatchSignup, signupStatus, history }) {
 
 Signup.propTypes = {
   signupStatus: PropTypes.shape({
-    status: PropTypes.string,
+    status: PropTypes.number,
     signupErrors: PropTypes.instanceOf(Array),
     isChecking: PropTypes.bool,
   }).isRequired,

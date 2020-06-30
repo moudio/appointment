@@ -26,6 +26,11 @@ img.loading-gif {
   margin: 20px;
 }
 
+.create-login {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 767px) {
   .register {
     height: 100%;

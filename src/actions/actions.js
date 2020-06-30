@@ -38,7 +38,7 @@ export const fetchCars = () => (dispatch) => {
   });
 
   axios
-    .get('http://localhost:3001/api/v1/cars')
+    .get('https://appointcar.netlify.app/api/v1/cars')
     .then((cars) => {
       setTimeout(() => {
         dispatch({
@@ -62,7 +62,7 @@ export const loginStatus = () => (dispatch) => {
   });
 
   axios
-    .get('http://localhost:3001/logged_in')
+    .get('https://appointcar.netlify.app/logged_in')
     .then((status) => {
       setTimeout(() => {
         dispatch({
@@ -85,7 +85,11 @@ export const handleLogin = (user) => (dispatch) => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('http://localhost:3001/login', { user }, { withCredentials: true })
+    .post(
+      'https://appointcar.netlify.app/login',
+      { user },
+      { withCredentials: true }
+    )
     .then((response) => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
@@ -109,7 +113,7 @@ export const signupUser = (user) => (dispatch) => {
   });
   axios
     .post(
-      'http://localhost:3001/api/v1/users',
+      'https://appointcar.netlify.app/api/v1/users',
       { user },
       { withCredentials: true }
     )
@@ -135,13 +139,15 @@ export const getOneCar = (carId) => (dispatch) => {
     type: IS_FETCHING_CAR,
   });
   setTimeout(() => {
-    axios.get(`http://localhost:3001/api/v1/cars/${carId}`).then((response) =>
-      dispatch({
-        type: ONE_CAR_FETCH_SUCCESS,
-        carToShow: response.data,
-        redirect: true,
-      })
-    );
+    axios
+      .get(`https://appointcar.netlify.app/api/v1/cars/${carId}`)
+      .then((response) =>
+        dispatch({
+          type: ONE_CAR_FETCH_SUCCESS,
+          carToShow: response.data,
+          redirect: true,
+        })
+      );
   }, 1000);
 };
 
@@ -153,7 +159,7 @@ export const createBooking = (book) => (dispatch) => {
   setTimeout(() => {
     axios
       .post(
-        'http://localhost:3001/api/v1/books/',
+        'https://appointcar.netlify.app/api/v1/books/',
         { book },
         { withCredentials: true }
       )
@@ -172,7 +178,7 @@ export const createBooking = (book) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  axios.delete('http://localhost:3001/logout').then((response) => {
+  axios.delete('https://appointcar.netlify.app/logout').then((response) => {
     dispatch({
       type: LOGGED_OUT,
       logged_out: response.data.logged_out,
@@ -194,17 +200,19 @@ export const cancelBooking = (bookId) => (dispatch) => {
     book_to_destroy: bookId,
   });
   setTimeout(() => {
-    axios.delete(`http://localhost:3001/api/v1/books/${bookId}`).then(() => {
-      dispatch({
-        type: BOOK_DELETED,
+    axios
+      .delete(`https://appointcar.netlify.app/api/v1/books/${bookId}`)
+      .then(() => {
+        dispatch({
+          type: BOOK_DELETED,
+        });
       });
-    });
   }, 1000);
 };
 
 export const fetchUserBookings = (userId) => (dispatch) => {
   axios
-    .get(`http://localhost:3001/users/${userId}/books_cars`)
+    .get(`https://appointcar.netlify.app/users/${userId}/books_cars`)
     .then((response) => {
       dispatch({
         type: FETCH_USER_BOOKS_AND_CARS,
@@ -227,13 +235,15 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
     type: FETCHING_BOOK_FOR_UPDATE,
   });
 
-  axios.get(`http://localhost:3001/api/v1/books/${bookId}`).then((response) => {
-    dispatch({
-      type: FOUND_BOOK_FOR_UPDATE,
-      book: response.data.book,
-      car: response.data.car,
+  axios
+    .get(`https://appointcar.netlify.app/api/v1/books/${bookId}`)
+    .then((response) => {
+      dispatch({
+        type: FOUND_BOOK_FOR_UPDATE,
+        book: response.data.book,
+        car: response.data.car,
+      });
     });
-  });
 };
 
 export const patchBookFromUpdateComponent = (book) => (dispatch) => {
@@ -243,7 +253,9 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
 
   setTimeout(() => {
     axios
-      .patch(`http://localhost:3001/api/v1/books/${book.book_id}`, { book })
+      .patch(`https://appointcar.netlify.app/api/v1/books/${book.book_id}`, {
+        book,
+      })
       .then((response) => {
         if (response.data.status === 'patched') {
           dispatch({

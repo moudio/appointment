@@ -25,6 +25,7 @@ function User({
     if (document.querySelector('.menu-icon')) {
       document.querySelector('.menu-icon').classList.remove('menu-white');
     }
+    // eslint-disable-next-line
   }, []);
 
   if (carsStatus.booking_created === true) {
@@ -61,7 +62,10 @@ function User({
             ) : (
               <div className="no-booking-yet">
                 <p>
-                  You have no bookings yet, <Link to="/cars">Create one!</Link>{' '}
+                  You have no bookings yet,
+                  {' '}
+                  <Link to="/cars">Create one!</Link>
+                  {' '}
                 </p>
               </div>
             )}
