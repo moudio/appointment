@@ -48,6 +48,7 @@ const userReducer = (state = defaultUserState, action) => {
         isChecking: false,
         cars: action.data.cars,
         books: action.data.books,
+        id: action.data.user_id,
       };
     case ACTION_TYPE.LOGIN_ERROR:
       return {
@@ -66,6 +67,7 @@ const userReducer = (state = defaultUserState, action) => {
         status: action.data.status,
         isChecking: false,
         cars: action.data.cars,
+        id: action.data.user_id,
       };
     case ACTION_TYPE.SIGNUP_ERROR:
       return {

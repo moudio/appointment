@@ -29,7 +29,6 @@ export const PATCHING_BOOK = 'PATCHING_BOOK';
 export const PATCHING_BOOK_SUCCESS = 'PATCHING_BOOK_SUCCESS';
 export const REDIRECT_AFTER_PATCHING = 'REDIRECT_AFTER_PATCHING';
 let TOKEN = null;
-
 export const endLoadingBeforeWelcomePage = () => ({
   type: END_LOADING_BEFORE_WELCOME,
 });
@@ -92,7 +91,6 @@ export const handleLogin = (user) => (dispatch) => {
   axios
     .post('http://localhost:3001/login', { user }, { withCredentials: true })
     .then((response) => {
-      console.log(response);
       setTimeout(() => {
         if (response.data.logged_in === true) {
           TOKEN = response.data.token;

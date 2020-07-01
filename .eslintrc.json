@@ -1,12 +1,12 @@
 {
     "env": {
         "browser": true,
-        "es6": true,
-        "jest": true
+        "es6": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
-
-
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -21,17 +21,6 @@
     "plugins": [
         "react"
     ],
-   
-
-  "ignorePatterns": [ "build/*" ] , 
-  "settings": {
-    "react": {
-      "createClass": "createReactClass", 
-                                       
-      "pragma": "React", 
-      "version": "detect" 
+    "rules": {
     }
-  }
-
-    
 }

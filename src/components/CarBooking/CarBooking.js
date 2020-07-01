@@ -9,7 +9,7 @@ import './CarBooking.css';
 function CarBooking({
   car,
   postBooking,
-  user,
+  id,
   carsState,
   history,
   resetBookingFail,
@@ -22,7 +22,7 @@ function CarBooking({
 
     const book = {
       car_id: car.id,
-      user_id: user.id,
+      user_id: id,
       date,
       city: document.querySelector('#city').value,
     };
@@ -35,7 +35,7 @@ function CarBooking({
   }
 
   function redirectToCars() {
-    history.push('/');
+    history.push('/cars');
     resetBookingFail();
   }
 
@@ -145,9 +145,7 @@ function CarBooking({
       ) : null}
       <div className="back-to-cars-link-div">
         <Link to="/cars" className="back-to-cars-link">
-          {'<< '}
-          {' '}
-          Back to cars
+          {'<< '} Back to cars
         </Link>
       </div>
     </div>
@@ -164,13 +162,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 const mapStateToProps = (state) => ({
   carsState: state.carsReducer,
-  user: state.userReducer.user,
+  id: state.userReducer.id,
 });
 
 CarBooking.propTypes = {
   car: PropTypes.instanceOf(Object).isRequired,
   postBooking: PropTypes.func.isRequired,
-  user: PropTypes.instanceOf(Object).isRequired,
   carsState: PropTypes.shape({
     cars: PropTypes.instanceOf(Array),
     isFetching: PropTypes.bool,
@@ -180,6 +177,7 @@ CarBooking.propTypes = {
     creating_booking: PropTypes.bool,
     booking_fail_message: PropTypes.string,
   }).isRequired,
+  id: PropTypes.number.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
@@ -188,5 +186,5 @@ CarBooking.propTypes = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(withRouter(CarBooking));

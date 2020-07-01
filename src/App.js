@@ -83,7 +83,6 @@ App.propTypes = {
   }).isRequired,
 
   userStatus: PropTypes.shape({
-    user: PropTypes.instanceOf(Object),
     isLoggedIn: PropTypes.bool,
   }).isRequired,
 };

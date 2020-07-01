@@ -33,7 +33,7 @@ function User({
   }
 
   if (userStatus.deleting_booking === false) {
-    getUserBookings(user.id);
+    getUserBookings(user);
     makeDeletingBookFalse();
   }
 
@@ -45,7 +45,10 @@ function User({
             <img src={profile} alt="profile" className="picture-img" />
           </div>
           <div className="profile-details">
-            <h1>Welcome, {` ${user}`}</h1>
+            <h1>
+              Welcome,
+              {` ${user}`}
+            </h1>
             <p>Car lover</p>
           </div>
         </div>
@@ -72,7 +75,7 @@ function User({
 
 User.propTypes = {
   userStatus: PropTypes.shape({
-    user: PropTypes.instanceOf(Object),
+    user: PropTypes.string,
     books: PropTypes.instanceOf(Object),
     userId: PropTypes.number,
     deleting_booking: PropTypes.bool,
