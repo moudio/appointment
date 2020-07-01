@@ -26,6 +26,11 @@
 .btn-black {
   background-color: black;
   color: white;
+  margin: 10px 20px;
+}
+
+.btn-black:hover {
+  color: lightgray;
 }
 
 @media (min-width: 850px) {

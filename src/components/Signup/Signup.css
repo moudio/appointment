@@ -31,6 +31,16 @@ img.loading-gif {
   justify-content: center;
 }
 
+.or-login {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.or-login span {
+  margin: 0 5px;
+}
+
 @media (max-width: 767px) {
   .register {
     height: 100%;
