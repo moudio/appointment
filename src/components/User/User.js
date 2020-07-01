@@ -21,7 +21,7 @@ function User({
   const { user, books } = userStatus;
 
   useEffect(() => {
-    getUserBookings(user.id);
+    getUserBookings(user);
     if (document.querySelector('.menu-icon')) {
       document.querySelector('.menu-icon').classList.remove('menu-white');
     }
@@ -45,7 +45,7 @@ function User({
             <img src={profile} alt="profile" className="picture-img" />
           </div>
           <div className="profile-details">
-            <h1>Welcome, {` ${user.username}`}</h1>
+            <h1>Welcome, {` ${user}`}</h1>
             <p>Car lover</p>
           </div>
         </div>
@@ -94,8 +94,8 @@ const mapDispatchToProps = (dispatch) => ({
   removeBookingCreated: () => {
     dispatch(makeBookingPropertyFalse());
   },
-  getUserBookings: (userId) => {
-    dispatch(fetchUserBookings(userId));
+  getUserBookings: (username) => {
+    dispatch(fetchUserBookings(username));
   },
   makeDeletingBookFalse: () => {
     dispatch(makeDeleteBookPropFalse());
