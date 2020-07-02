@@ -21,8 +21,7 @@ function Signup({ dispatchSignup, signupStatus, history }) {
     const user = {
       username: document.querySelector('#username').value,
       password: document.querySelector('#password').value,
-      password_confirmation: document.querySelector('#passwordConfirmation')
-        .value,
+      password_confirmation: document.querySelector('#passwordConfirmation').value,
     };
     dispatchSignup(user);
   }
@@ -42,9 +41,7 @@ function Signup({ dispatchSignup, signupStatus, history }) {
           <div className="col-md-8 py-5 border">
             <h4 className="pb-4">Please fill with your details</h4>
             <form onSubmit={handleSignup}>
-              {signupStatus.status === 500 ? (
-                <Errors errors={signupStatus.signupErrors} />
-              ) : null}
+              {signupStatus.status === 500 ? <Errors errors={signupStatus.signupErrors} /> : null}
               {signupStatus.isChecking ? (
                 <img src={loading} alt="loading" className="loading-gif" />
               ) : null}

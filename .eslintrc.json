@@ -5,8 +5,9 @@
         "jest": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        // "plugin:react/recommended",
+        "airbnb", 
+        "prettier"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -20,11 +21,14 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", 
+        "prettier"
     ],
     "rules": {
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
    "react/jsx-props-no-spreading": "off",
-   "jsx-a11y/label-has-associated-control": "off"
+   "jsx-a11y/label-has-associated-control": "off",
+       "prettier/prettier": ["error"]
+
     }
 }

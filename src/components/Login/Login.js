@@ -33,9 +33,7 @@ function Login({ userInfos, handleLoginProps, history }) {
         </div>
         <div className="form-container">
           <form onSubmit={handleSubmit}>
-            {userInfos.loginErrors ? (
-              <Errors errors={userInfos.loginErrors} />
-            ) : null}
+            {userInfos.loginErrors ? <Errors errors={userInfos.loginErrors} /> : null}
             {userInfos.isChecking ? (
               <img src={loading} alt="loading" className="loading-gif" />
             ) : null}
@@ -64,11 +62,7 @@ function Login({ userInfos, handleLoginProps, history }) {
                 required
               />
             </div>
-            <button
-              type="submit"
-              className="btn btn-black"
-              data-testid="submit-login"
-            >
+            <button type="submit" className="btn btn-black" data-testid="submit-login">
               Login
             </button>
             <Link to="/signup">Create Account</Link>

@@ -69,12 +69,7 @@ function UpdateBooking({ userStatus, patchBook, history }) {
             </ul>
             <label htmlFor="date">Pick a date</label>
             <div className="pick-date">
-              <input
-                type="date"
-                name="date"
-                id="date"
-                onClick={handleDatePicking}
-              />
+              <input type="date" name="date" id="date" onClick={handleDatePicking} />
             </div>
             <div className="pick-city">
               <label htmlFor="city"> Choose a city </label>
@@ -148,7 +143,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(UpdateBooking));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateBooking));

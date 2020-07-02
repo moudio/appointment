@@ -28,9 +28,7 @@ class Navigation extends Component {
   }
 
   closeOnListClick() {
-    const allNavLinks = Array.from(
-      document.querySelectorAll('ul.menu-list li a'),
-    );
+    const allNavLinks = Array.from(document.querySelectorAll('ul.menu-list li a'));
     allNavLinks.forEach((navLink) => {
       navLink.addEventListener('click', () => {
         const menu = document.querySelector('.menu-list');

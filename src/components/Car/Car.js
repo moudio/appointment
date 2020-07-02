@@ -6,9 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import { getOneCar, redirectFalse } from '../../actions/actions';
 
-function Car({
-  car, getCar, carsState, history, makeRedirectFalse,
-}) {
+function Car({ car, getCar, carsState, history, makeRedirectFalse }) {
   function manageOneCarFetch(carId) {
     getCar(carId);
   }
@@ -24,11 +22,7 @@ function Car({
         <div className="content">
           <h2>{car.model}</h2>
           <p className="car-description">{car.description}</p>
-          <button
-            type="button"
-            className="book-ride"
-            onClick={() => manageOneCarFetch(car.id)}
-          >
+          <button type="button" className="book-ride" onClick={() => manageOneCarFetch(car.id)}>
             Book a ride
           </button>
         </div>
