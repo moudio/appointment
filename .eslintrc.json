@@ -20,7 +20,9 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", 
+        "import/react"
+
     ],
     "rules": {
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -29,10 +31,13 @@
 
     },   
 
-  "settings": {
-      "import/resolver": "webpack"
-    }
-  
+ "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js",".jsx"]
+          }
+        }
+    } 
 
 
 
