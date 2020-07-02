@@ -38,7 +38,7 @@ export const fetchCars = () => (dispatch) => {
   });
 
   axios
-    .get('http://localhost:3001/api/v1/cars', {
+    .get('https://appointrails.herokuapp.com/api/v1/cars', {
       headers: { Authorization: TOKEN },
     })
     .then((cars) => {
@@ -49,11 +49,13 @@ export const fetchCars = () => (dispatch) => {
         });
       }, 1000);
     })
-    .catch(() => setTimeout(() => {
-      dispatch({
-        type: FETCH_FAILURE,
-      });
-    }, 1000));
+    .catch(() =>
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_FAILURE,
+        });
+      }, 1000)
+    );
 };
 
 export const loginStatus = () => (dispatch) => {
@@ -62,7 +64,7 @@ export const loginStatus = () => (dispatch) => {
   });
 
   axios
-    .get('http://localhost:3001/logged_in', {
+    .get('https://appointrails.herokuapp.com/logged_in', {
       headers: { Authorization: TOKEN },
     })
     .then((status) => {
@@ -87,7 +89,11 @@ export const handleLogin = (user) => (dispatch) => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('http://localhost:3001/login', { user }, { withCredentials: true })
+    .post(
+      'https://appointrails.herokuapp.com/login',
+      { user },
+      { withCredentials: true }
+    )
     .then((response) => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
@@ -112,9 +118,9 @@ export const signupUser = (user) => (dispatch) => {
   });
   axios
     .post(
-      'http://localhost:3001/api/v1/users',
+      'https://appointrails.herokuapp.com/api/v1/users',
       { user },
-      { withCredentials: true },
+      { withCredentials: true }
     )
     .then((response) => {
       setTimeout(() => {
@@ -140,14 +146,16 @@ export const getOneCar = (carId) => (dispatch) => {
   });
   setTimeout(() => {
     axios
-      .get(`http://localhost:3001/api/v1/cars/${carId}`, {
+      .get(`https://appointrails.herokuapp.com/api/v1/cars/${carId}`, {
         headers: { Authorization: TOKEN },
       })
-      .then((response) => dispatch({
-        type: ONE_CAR_FETCH_SUCCESS,
-        carToShow: response.data,
-        redirect: true,
-      }));
+      .then((response) =>
+        dispatch({
+          type: ONE_CAR_FETCH_SUCCESS,
+          carToShow: response.data,
+          redirect: true,
+        })
+      );
   }, 1000);
 };
 
@@ -159,11 +167,11 @@ export const createBooking = (book) => (dispatch) => {
   setTimeout(() => {
     axios
       .post(
-        'http://localhost:3001/api/v1/books/',
+        'https://appointrails.herokuapp.com/api/v1/books/',
         { book },
         { headers: { Authorization: TOKEN } },
 
-        { withCredentials: true },
+        { withCredentials: true }
       )
       .then((response) => {
         if (response.data.status === 'book_created') {
@@ -181,7 +189,7 @@ export const createBooking = (book) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   axios
-    .delete('http://localhost:3001/logout', {
+    .delete('https://appointrails.herokuapp.com/logout', {
       headers: { Authorization: TOKEN },
     })
     .then((response) => {
@@ -208,7 +216,7 @@ export const cancelBooking = (bookId) => (dispatch) => {
   });
   setTimeout(() => {
     axios
-      .delete(`http://localhost:3001/api/v1/books/${bookId}`, {
+      .delete(`https://appointrails.herokuapp.com/api/v1/books/${bookId}`, {
         headers: { Authorization: TOKEN },
       })
       .then(() => {
@@ -221,7 +229,7 @@ export const cancelBooking = (bookId) => (dispatch) => {
 
 export const fetchUserBookings = (username) => (dispatch) => {
   axios
-    .get(`http://localhost:3001/users/${username}/books_cars`, {
+    .get(`https://appointrails.herokuapp.com/users/${username}/books_cars`, {
       headers: { Authorization: TOKEN },
     })
     .then((response) => {
@@ -247,7 +255,7 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
   });
 
   axios
-    .get(`http://localhost:3001/api/v1/books/${bookId}`, {
+    .get(`https://appointrails.herokuapp.com/api/v1/books/${bookId}`, {
       headers: { Authorization: TOKEN },
     })
     .then((response) => {
@@ -267,11 +275,11 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
   setTimeout(() => {
     axios
       .patch(
-        `http://localhost:3001/api/v1/books/${book.book_id}`,
+        `https://appointrails.herokuapp.com/api/v1/books/${book.book_id}`,
         {
           book,
         },
-        { headers: { Authorization: TOKEN } },
+        { headers: { Authorization: TOKEN } }
       )
       .then((response) => {
         if (response.data.status === 'patched') {

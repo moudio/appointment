@@ -10,6 +10,7 @@
     "@testing-library/react": "^9.5.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "http-proxy-middleware": "^1.0.4",
     "msw": "^0.19.3",
     "prop-types": "^15.7.2",
@@ -28,9 +29,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
-    "save-dev": "0.0.1-security",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2"
+    "save-dev": "0.0.1-security"
   },
   "scripts": {
     "start": "react-scripts start",
