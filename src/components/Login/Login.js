@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -39,29 +38,33 @@ function Login({ userInfos, handleLoginProps, history }) {
               <img src={loading} alt="loading" className="loading-gif" />
             ) : null}
             <div className="form-group">
-              <label htmlFor="username">User Name</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                data-testid="username-login-field"
-                className="form-control"
-                placeholder="User Name"
-                required
-              />
+              <label htmlFor="username">
+                User Name
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  data-testid="username-login-field"
+                  className="form-control"
+                  placeholder="User Name"
+                  required
+                />
+              </label>
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="form-control"
-                placeholder="Password"
-                autoComplete="password"
-                data-testid="password-login-field"
-                required
-              />
+              <label htmlFor="password">
+                Password
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="form-control"
+                  placeholder="Password"
+                  autoComplete="password"
+                  data-testid="password-login-field"
+                  required
+                />
+              </label>
             </div>
             <button type="submit" className="btn btn-black" data-testid="submit-login">
               Login

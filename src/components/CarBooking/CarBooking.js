@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -82,27 +81,33 @@ function CarBooking({
                 {car.length}
               </li>
             </ul>
-            <label htmlFor="date">Pick a date</label>
-            <div className="pick-date">
-              <input
-                type="date"
-                name="date"
-                id="date"
-                onClick={handleDatePicking}
-              />
-            </div>
+            <label htmlFor="date">
+              Pick a date
+              <div className="pick-date">
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  onClick={handleDatePicking}
+                />
+              </div>
+            </label>
+
             <div className="pick-city">
-              <label htmlFor="city"> Choose a city </label>
-              <select name="city" id="city">
-                <option value="Dakar" selected>
-                  Dakar
-                </option>
-                <option value="Paris">Paris</option>
-                <option value="New York">New York</option>
-                <option value="Beijing">Beijing</option>
-                <option value="Berlin">Berlin</option>
-                <option value="London">London</option>
-              </select>
+              <label htmlFor="city">
+                {' '}
+                Choose a city
+                <select name="city" id="city">
+                  <option value="Dakar" selected>
+                    Dakar
+                  </option>
+                  <option value="Paris">Paris</option>
+                  <option value="New York">New York</option>
+                  <option value="Beijing">Beijing</option>
+                  <option value="Berlin">Berlin</option>
+                  <option value="London">London</option>
+                </select>
+              </label>
             </div>
             <button
               type="button"
