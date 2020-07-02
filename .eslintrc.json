@@ -26,17 +26,12 @@
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
    "react/jsx-props-no-spreading": "off",
    "jsx-a11y/label-has-associated-control": "off",
-       "prettier/prettier": ["error"]
 
     },    
   "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx"],
-        "paths": ["./src"]
-      }
+      "import/resolver": "webpack"
     }
-  }
+  
 
 
 
