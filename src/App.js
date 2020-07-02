@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Switch, Route, Redirect,
+} from 'react-router-dom';
 import { loginStatus } from './actions/actions';
 import Welcome from './components/Welcome/Welcome';
 import Cars from './containers/Cars/Cars';
@@ -26,13 +28,13 @@ function App({ carsState, userStatus }) {
             <Route
               exact
               path="/cars"
-              render={(props) => <Cars cars={carsState.cars} {...props} />}
+              render={props => <Cars cars={carsState.cars} {...props} />}
             />
           ) : (
-            <Route exact path="/login" render={(props) => <Login {...props} />} />
+            <Route exact path="/login" render={props => <Login {...props} />} />
           )}
-          <Route exact path="/login" render={(props) => <Login {...props} />} />
-          <Route exact path="/signup" render={(props) => <Signup {...props} />} />
+          <Route exact path="/login" render={props => <Login {...props} />} />
+          <Route exact path="/signup" render={props => <Signup {...props} />} />
 
           <Route exact path="/user">
             {userStatus.isLoggedIn ? <User /> : <Redirect push to={{ pathname: '/login' }} />}
@@ -41,7 +43,7 @@ function App({ carsState, userStatus }) {
             <Route
               exact
               path="/cars/:car"
-              render={(props) => <CarBooking {...props} car={carsState.carToShow} />}
+              render={props => <CarBooking {...props} car={carsState.carToShow} />}
             />
           ) : (
             <Redirect push to={{ pathname: '/login' }} />
@@ -49,7 +51,7 @@ function App({ carsState, userStatus }) {
           <Route exact path="/update/:car_model">
             {' '}
             <UpdateBooking />
-{' '}
+            {' '}
           </Route>
         </Switch>
       </div>
@@ -69,12 +71,12 @@ App.propTypes = {
   }).isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   carsState: state.carsReducer,
   userStatus: state.userReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   checkLoginStatus: () => dispatch(loginStatus()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

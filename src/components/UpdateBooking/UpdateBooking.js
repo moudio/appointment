@@ -133,12 +133,12 @@ UpdateBooking.propTypes = {
   patchBook: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userStatus: state.userReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  patchBook: (book) => {
+const mapDispatchToProps = dispatch => ({
+  patchBook: book => {
     dispatch(patchBookFromUpdateComponent(book));
   },
 });

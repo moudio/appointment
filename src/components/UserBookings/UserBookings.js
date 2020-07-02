@@ -8,7 +8,9 @@ import { MdLocationCity } from 'react-icons/md';
 import Loading from '../../Images/loading_white.gif';
 import { cancelBooking, bookUpdateAction } from '../../actions/actions';
 
-function UserBookings({ deleteBooking, userState, updateBooking, history }) {
+function UserBookings({
+  deleteBooking, userState, updateBooking, history,
+}) {
   const { books, cars } = userState;
 
   function handleCancelBooking(bookingId) {
@@ -43,17 +45,17 @@ function UserBookings({ deleteBooking, userState, updateBooking, history }) {
               <MdLocationCity />
 
               <span>
-{book.city}
-{' '}
- </span>
+                {book.city}
+                {' '}
+              </span>
             </p>
             <p className="booking-date">
               {' '}
               <AiOutlineFieldTime />
               <span>
-{book.date}
-{' '}
- </span>
+                {book.date}
+                {' '}
+              </span>
             </p>
           </div>
           <div className="booking-buttons">
@@ -86,14 +88,14 @@ function UserBookings({ deleteBooking, userState, updateBooking, history }) {
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userState: state.userReducer,
 });
-const mapDispatchToProps = (dispatch) => ({
-  deleteBooking: (bookId) => {
+const mapDispatchToProps = dispatch => ({
+  deleteBooking: bookId => {
     dispatch(cancelBooking(bookId));
   },
-  updateBooking: (bookId) => {
+  updateBooking: bookId => {
     dispatch(bookUpdateAction(bookId));
   },
 });

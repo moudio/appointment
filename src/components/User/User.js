@@ -62,8 +62,10 @@ function User({
             ) : (
               <div className="no-booking-yet">
                 <p>
-                  You have no bookings yet, <Link to="/cars">Create one!</Link>
-{' '}
+                  You have no bookings yet,
+                  {' '}
+                  <Link to="/cars">Create one!</Link>
+                  {' '}
                 </p>
               </div>
             )}
@@ -89,16 +91,16 @@ User.propTypes = {
   makeDeletingBookFalse: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   carsStatus: state.carsReducer,
   userStatus: state.userReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   removeBookingCreated: () => {
     dispatch(makeBookingPropertyFalse());
   },
-  getUserBookings: (username) => {
+  getUserBookings: username => {
     dispatch(fetchUserBookings(username));
   },
   makeDeletingBookFalse: () => {

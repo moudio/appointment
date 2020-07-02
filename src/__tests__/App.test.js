@@ -43,7 +43,7 @@ describe('tesing the ui', () => {
         <Provider store={store}>
           <App />
         </Provider>,
-        component
+        component,
       );
     });
     expect(screen.getByAltText('bars')).toBeInTheDocument();
@@ -55,7 +55,7 @@ describe('tesing the ui', () => {
         <Provider store={store}>
           <App />
         </Provider>,
-        component
+        component,
       );
     });
     expect(screen.getByTestId('welcome-loading')).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe('tesing the ui', () => {
       <Provider store={store}>
         <App />
       </Provider>,
-      component
+      component,
     );
     fireEvent.click(screen.getByText(/login/i));
     expect(screen.getByTestId('login-div')).toBeInTheDocument();
@@ -77,7 +77,7 @@ describe('tesing the ui', () => {
       <Provider store={store}>
         <App />
       </Provider>,
-      component
+      component,
     );
     fireEvent.click(screen.getByTestId('login'));
     await userEvent.type(screen.getByTestId('username-login-field'), 'User');
@@ -99,7 +99,7 @@ describe('tesing the ui', () => {
       <Provider store={newStore}>
         <App />
       </Provider>,
-      component
+      component,
     );
     expect(screen.getByTestId('user-dashboard')).toBeInTheDocument();
   });

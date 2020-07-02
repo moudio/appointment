@@ -32,7 +32,7 @@ let TOKEN = null;
 export const endLoadingBeforeWelcomePage = () => ({
   type: END_LOADING_BEFORE_WELCOME,
 });
-export const fetchCars = () => (dispatch) => {
+export const fetchCars = () => dispatch => {
   dispatch({
     type: IS_FETCHING_CAR,
   });
@@ -41,7 +41,7 @@ export const fetchCars = () => (dispatch) => {
     .get('https://appointrails.herokuapp.com/api/v1/cars', {
       headers: { Authorization: TOKEN },
     })
-    .then((cars) => {
+    .then(cars => {
       setTimeout(() => {
         dispatch({
           type: FETCH_SUCCESS,
@@ -49,16 +49,14 @@ export const fetchCars = () => (dispatch) => {
         });
       }, 1000);
     })
-    .catch(() =>
-      setTimeout(() => {
-        dispatch({
-          type: FETCH_FAILURE,
-        });
-      }, 1000)
-    );
+    .catch(() => setTimeout(() => {
+      dispatch({
+        type: FETCH_FAILURE,
+      });
+    }, 1000));
 };
 
-export const loginStatus = () => (dispatch) => {
+export const loginStatus = () => dispatch => {
   dispatch({
     type: IS_FETCHING_USER,
   });
@@ -67,7 +65,7 @@ export const loginStatus = () => (dispatch) => {
     .get('https://appointrails.herokuapp.com/logged_in', {
       headers: { Authorization: TOKEN },
     })
-    .then((status) => {
+    .then(status => {
       setTimeout(() => {
         dispatch({
           type: LOGIN_STATUS,
@@ -84,13 +82,13 @@ export const loginStatus = () => (dispatch) => {
     });
 };
 
-export const handleLogin = (user) => (dispatch) => {
+export const handleLogin = user => dispatch => {
   dispatch({
     type: IS_FETCHING_USER,
   });
   axios
     .post('https://appointrails.herokuapp.com/login', { user }, { withCredentials: true })
-    .then((response) => {
+    .then(response => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
           TOKEN = response.data.token;
@@ -108,13 +106,13 @@ export const handleLogin = (user) => (dispatch) => {
     });
 };
 
-export const signupUser = (user) => (dispatch) => {
+export const signupUser = user => dispatch => {
   dispatch({
     type: IS_FETCHING_USER,
   });
   axios
     .post('https://appointrails.herokuapp.com/api/v1/users', { user }, { withCredentials: true })
-    .then((response) => {
+    .then(response => {
       setTimeout(() => {
         if (response.data.status === 'created') {
           TOKEN = response.data.token;
@@ -132,7 +130,7 @@ export const signupUser = (user) => (dispatch) => {
     });
 };
 
-export const getOneCar = (carId) => (dispatch) => {
+export const getOneCar = carId => dispatch => {
   dispatch({
     type: IS_FETCHING_CAR,
   });
@@ -141,17 +139,15 @@ export const getOneCar = (carId) => (dispatch) => {
       .get(`https://appointrails.herokuapp.com/api/v1/cars/${carId}`, {
         headers: { Authorization: TOKEN },
       })
-      .then((response) =>
-        dispatch({
-          type: ONE_CAR_FETCH_SUCCESS,
-          carToShow: response.data,
-          redirect: true,
-        })
-      );
+      .then(response => dispatch({
+        type: ONE_CAR_FETCH_SUCCESS,
+        carToShow: response.data,
+        redirect: true,
+      }));
   }, 1000);
 };
 
-export const createBooking = (book) => (dispatch) => {
+export const createBooking = book => dispatch => {
   dispatch({
     type: CREATING_BOOKING,
   });
@@ -163,9 +159,9 @@ export const createBooking = (book) => (dispatch) => {
         { book },
         { headers: { Authorization: TOKEN } },
 
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then((response) => {
+      .then(response => {
         if (response.data.status === 'book_created') {
           dispatch({
             type: BOOKING_CREATED,
@@ -179,12 +175,12 @@ export const createBooking = (book) => (dispatch) => {
   }, 1000);
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => dispatch => {
   axios
     .delete('https://appointrails.herokuapp.com/logout', {
       headers: { Authorization: TOKEN },
     })
-    .then((response) => {
+    .then(response => {
       TOKEN = null;
       dispatch({
         type: LOGGED_OUT,
@@ -201,7 +197,7 @@ export const redirectFalse = () => ({
   type: REDIRECT_FALSE,
 });
 
-export const cancelBooking = (bookId) => (dispatch) => {
+export const cancelBooking = bookId => dispatch => {
   dispatch({
     type: DELETING_BOOKING,
     book_to_destroy: bookId,
@@ -219,12 +215,12 @@ export const cancelBooking = (bookId) => (dispatch) => {
   }, 1000);
 };
 
-export const fetchUserBookings = (username) => (dispatch) => {
+export const fetchUserBookings = username => dispatch => {
   axios
     .get(`https://appointrails.herokuapp.com/users/${username}/books_cars`, {
       headers: { Authorization: TOKEN },
     })
-    .then((response) => {
+    .then(response => {
       dispatch({
         type: FETCH_USER_BOOKS_AND_CARS,
         books: response.data.books,
@@ -241,7 +237,7 @@ export const makeDeleteBookPropFalse = () => ({
   type: MAKE_DELETE_BOOK_PROP_FALSE,
 });
 
-export const bookUpdateAction = (bookId) => (dispatch) => {
+export const bookUpdateAction = bookId => dispatch => {
   dispatch({
     type: FETCHING_BOOK_FOR_UPDATE,
   });
@@ -250,7 +246,7 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
     .get(`https://appointrails.herokuapp.com/api/v1/books/${bookId}`, {
       headers: { Authorization: TOKEN },
     })
-    .then((response) => {
+    .then(response => {
       dispatch({
         type: FOUND_BOOK_FOR_UPDATE,
         book: response.data.book,
@@ -259,7 +255,7 @@ export const bookUpdateAction = (bookId) => (dispatch) => {
     });
 };
 
-export const patchBookFromUpdateComponent = (book) => (dispatch) => {
+export const patchBookFromUpdateComponent = book => dispatch => {
   dispatch({
     type: PATCHING_BOOK,
   });
@@ -271,9 +267,9 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
         {
           book,
         },
-        { headers: { Authorization: TOKEN } }
+        { headers: { Authorization: TOKEN } },
       )
-      .then((response) => {
+      .then(response => {
         if (response.data.status === 'patched') {
           dispatch({
             type: PATCHING_BOOK_SUCCESS,

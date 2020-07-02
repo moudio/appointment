@@ -6,7 +6,9 @@ import { createBooking, resetBookingFailParams } from '../../actions/actions';
 import Loading from '../../Images/loading_white.gif';
 import './CarBooking.css';
 
-function CarBooking({ car, postBooking, id, carsState, history, resetBookingFail }) {
+function CarBooking({
+  car, postBooking, id, carsState, history, resetBookingFail,
+}) {
   function handleBooking() {
     let date = document.querySelector('#date').value;
     if (!date) {
@@ -126,15 +128,15 @@ function CarBooking({ car, postBooking, id, carsState, history, resetBookingFail
       <div className="back-to-cars-link-div">
         <Link to="/cars" className="back-to-cars-link">
           {'<< '}
-{' '}
-Back to cars
-</Link>
+          {' '}
+          Back to cars
+        </Link>
       </div>
     </div>
   );
 }
-const mapDispatchToProps = (dispatch) => ({
-  postBooking: (book) => {
+const mapDispatchToProps = dispatch => ({
+  postBooking: book => {
     dispatch(createBooking(book));
   },
 
@@ -142,7 +144,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(resetBookingFailParams());
   },
 });
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   carsState: state.carsReducer,
   id: state.userReducer.id,
 });
