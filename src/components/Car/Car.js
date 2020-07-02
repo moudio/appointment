@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Car.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { getOneCar, redirectFalse } from '../../actions/actions';
+import './Car.css';
 
 function Car({
   car, getCar, carsState, history, makeRedirectFalse,

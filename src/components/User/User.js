@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './User.css';
 import { connect } from 'react-redux';
 import UserBookings from '../UserBookings/UserBookings';
 import profile from '../../Images/profile.jpg';
@@ -10,6 +9,7 @@ import {
   fetchUserBookings,
   makeDeleteBookPropFalse,
 } from '../../actions/actions';
+import './User.css';
 
 function User({
   userStatus,

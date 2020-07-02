@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './Login.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Errors from '../Errors/Errors';
 import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
+import './Login.css';
 
 function Login({ userInfos, handleLoginProps, history }) {
   useEffect(() => {

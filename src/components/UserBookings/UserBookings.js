@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './UserBookings.css';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AiOutlineFieldTime, AiTwotoneCar } from 'react-icons/ai';
 import { MdLocationCity } from 'react-icons/md';
 import Loading from '../../Images/loading_white.gif';
 import { cancelBooking, bookUpdateAction } from '../../actions/actions';
+import './UserBookings.css';
 
 function UserBookings({
   deleteBooking, userState, updateBooking, history,

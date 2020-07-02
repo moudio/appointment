@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './Signup.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signupUser } from '../../actions/actions';
 import Errors from '../Errors/Errors';
 import loading from '../../Images/loading.gif';
+import './Signup.css';
 
 function Signup({ dispatchSignup, signupStatus, history }) {
   useEffect(() => {
