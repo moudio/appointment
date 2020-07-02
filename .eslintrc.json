@@ -5,9 +5,8 @@
         "jest": true
     },
     "extends": [
-        // "plugin:react/recommended",
-        "airbnb", 
-        "prettier"
+        "plugin:react/recommended",
+        "airbnb"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -21,8 +20,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react", 
-        "prettier"
+        "react"
     ],
     "rules": {
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -34,7 +32,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "extensions": [".js", ".jsx"],
+        "paths": ["./src"]
       }
     }
   }
