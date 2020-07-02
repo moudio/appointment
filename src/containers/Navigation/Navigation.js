@@ -29,7 +29,7 @@ class Navigation extends Component {
 
   closeOnListClick() {
     const allNavLinks = Array.from(document.querySelectorAll('ul.menu-list li a'));
-    allNavLinks.forEach((navLink) => {
+    allNavLinks.forEach(navLink => {
       navLink.addEventListener('click', () => {
         const menu = document.querySelector('.menu-list');
         if (menu.classList.contains('appear')) {
@@ -116,11 +116,11 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedIn: state.userReducer.isLoggedIn,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   handleLogout: () => {
     dispatch(logout());
   },

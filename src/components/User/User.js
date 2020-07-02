@@ -91,16 +91,16 @@ User.propTypes = {
   makeDeletingBookFalse: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   carsStatus: state.carsReducer,
   userStatus: state.userReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   removeBookingCreated: () => {
     dispatch(makeBookingPropertyFalse());
   },
-  getUserBookings: (username) => {
+  getUserBookings: username => {
     dispatch(fetchUserBookings(username));
   },
   makeDeletingBookFalse: () => {
