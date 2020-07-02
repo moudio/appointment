@@ -49,13 +49,11 @@ export const fetchCars = () => (dispatch) => {
         });
       }, 1000);
     })
-    .catch(() =>
-      setTimeout(() => {
-        dispatch({
-          type: FETCH_FAILURE,
-        });
-      }, 1000)
-    );
+    .catch(() => setTimeout(() => {
+      dispatch({
+        type: FETCH_FAILURE,
+      });
+    }, 1000));
 };
 
 export const loginStatus = () => (dispatch) => {
@@ -92,7 +90,7 @@ export const handleLogin = (user) => (dispatch) => {
     .post(
       'https://appointrails.herokuapp.com/login',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
     .then((response) => {
       setTimeout(() => {
@@ -120,7 +118,7 @@ export const signupUser = (user) => (dispatch) => {
     .post(
       'https://appointrails.herokuapp.com/api/v1/users',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
     .then((response) => {
       setTimeout(() => {
@@ -149,13 +147,11 @@ export const getOneCar = (carId) => (dispatch) => {
       .get(`https://appointrails.herokuapp.com/api/v1/cars/${carId}`, {
         headers: { Authorization: TOKEN },
       })
-      .then((response) =>
-        dispatch({
-          type: ONE_CAR_FETCH_SUCCESS,
-          carToShow: response.data,
-          redirect: true,
-        })
-      );
+      .then((response) => dispatch({
+        type: ONE_CAR_FETCH_SUCCESS,
+        carToShow: response.data,
+        redirect: true,
+      }));
   }, 1000);
 };
 
@@ -171,7 +167,7 @@ export const createBooking = (book) => (dispatch) => {
         { book },
         { headers: { Authorization: TOKEN } },
 
-        { withCredentials: true }
+        { withCredentials: true },
       )
       .then((response) => {
         if (response.data.status === 'book_created') {
@@ -279,7 +275,7 @@ export const patchBookFromUpdateComponent = (book) => (dispatch) => {
         {
           book,
         },
-        { headers: { Authorization: TOKEN } }
+        { headers: { Authorization: TOKEN } },
       )
       .then((response) => {
         if (response.data.status === 'patched') {

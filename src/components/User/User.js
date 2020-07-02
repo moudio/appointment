@@ -62,10 +62,7 @@ function User({
             ) : (
               <div className="no-booking-yet">
                 <p>
-                  You have no bookings yet,
-                  {' '}
-                  <Link to="/cars">Create one!</Link>
-                  {' '}
+                  You have no bookings yet, <Link to="/cars">Create one!</Link>{' '}
                 </p>
               </div>
             )}
@@ -78,8 +75,8 @@ function User({
 
 User.propTypes = {
   userStatus: PropTypes.shape({
-    user: PropTypes.string,
     books: PropTypes.instanceOf(Object),
+    user: PropTypes.instanceOf(Object),
     userId: PropTypes.number,
     deleting_booking: PropTypes.bool,
   }).isRequired,
