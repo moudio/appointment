@@ -10,6 +10,7 @@ import { fetchCars } from '../../actions/actions';
 function Cars({ carsState, cars, getAllCars }) {
   useEffect(() => {
     getAllCars();
+    // eslint-disable-next-line
   }, []);
 
   return (

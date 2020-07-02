@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,7 +8,12 @@ import Loading from '../../Images/loading_white.gif';
 import './CarBooking.css';
 
 function CarBooking({
-  car, postBooking, id, carsState, history, resetBookingFail,
+  car,
+  postBooking,
+  id,
+  carsState,
+  history,
+  resetBookingFail,
 }) {
   function handleBooking() {
     let date = document.querySelector('#date').value;
@@ -78,7 +84,12 @@ function CarBooking({
             </ul>
             <label htmlFor="date">Pick a date</label>
             <div className="pick-date">
-              <input type="date" name="date" id="date" onClick={handleDatePicking} />
+              <input
+                type="date"
+                name="date"
+                id="date"
+                onClick={handleDatePicking}
+              />
             </div>
             <div className="pick-city">
               <label htmlFor="city"> Choose a city </label>
@@ -117,10 +128,18 @@ function CarBooking({
       {carsState.booking_fail_message ? (
         <div className="booking-fail-message">
           <p>{carsState.booking_fail_message}</p>
-          <button type="button" className="btn btn-success" onClick={() => redirectToDashboard()}>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => redirectToDashboard()}
+          >
             Go To Your Dashboard
           </button>
-          <button className="btn btn-info" type="button" onClick={() => redirectToCars()}>
+          <button
+            className="btn btn-info"
+            type="button"
+            onClick={() => redirectToCars()}
+          >
             Book Other Cars
           </button>
         </div>
@@ -168,4 +187,7 @@ CarBooking.propTypes = {
   resetBookingFail: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CarBooking));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(CarBooking));
