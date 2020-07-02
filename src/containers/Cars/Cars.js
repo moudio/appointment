@@ -23,7 +23,6 @@ function Cars({ carsState, cars, getAllCars }) {
           navigation
           render={() => (
             <div id="fullpage-wrapper">
-              {console.log('cars', cars)}
               {cars.map((car) => (
                 <Car key={car.alt} car={car} />
               ))}

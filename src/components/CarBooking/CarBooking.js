@@ -81,12 +81,12 @@ function CarBooking({
                 {car.length}
               </li>
             </ul>
-            <label htmlFor="date">Pick a date</label>
+            <label htmlFor="input-date">Pick a date</label>
             <div className="pick-date">
               <input
                 type="date"
                 name="date"
-                id="date"
+                id="input-date"
                 onClick={handleDatePicking}
               />
             </div>
