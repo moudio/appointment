@@ -33,7 +33,8 @@
     "arrow-parens": ["error", "as-needed"],
      "import/no-named-as-default": 0,
        "jsx-a11y/href-no-hash": [0],
-"jsx-a11y/img-has-alt": [0]
+"jsx-a11y/img-has-alt": [0], 
+"import/extensions": 0
     }
 
 }
