@@ -5,7 +5,8 @@
         "jest": true
     },
     "extends": [
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "airbnb"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -19,19 +20,10 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react", 
-        "jsx-a11y", 
-        "import"
+        "react"
     ],
     "rules": {
         "react/jsx-props-no-spreading": "off",
-"react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
-"import/no-unresolved": "off",
-"no-shadow": "off",
-"arrow-parens": ["error", "as-needed"],
-"import/no-named-as-default": 0,
-"jsx-a11y/href-no-hash": [0],
-"jsx-a11y/img-has-alt": [0], 
-"import/extensions": 0
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }]
     }
 }

@@ -46,13 +46,13 @@ Car.propTypes = {
   }).isRequired,
   makeRedirectFalse: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   carsState: state.carsReducer,
   token: state.token,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getCar: carId => dispatch(getOneCar(carId)),
+const mapDispatchToProps = (dispatch) => ({
+  getCar: (carId) => dispatch(getOneCar(carId)),
   makeRedirectFalse: () => dispatch(redirectFalse()),
 });
 

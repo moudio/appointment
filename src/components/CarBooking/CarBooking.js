@@ -159,8 +159,8 @@ function CarBooking({
     </div>
   );
 }
-const mapDispatchToProps = dispatch => ({
-  postBooking: book => {
+const mapDispatchToProps = (dispatch) => ({
+  postBooking: (book) => {
     dispatch(createBooking(book));
   },
 
@@ -168,7 +168,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(resetBookingFailParams());
   },
 });
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   carsState: state.carsReducer,
   id: state.userReducer.id,
 });

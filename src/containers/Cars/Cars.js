@@ -23,7 +23,7 @@ function Cars({ carsState, cars, getAllCars }) {
           navigation
           render={() => (
             <div id="fullpage-wrapper">
-              {cars.map(car => (
+              {cars.map((car) => (
                 <Car key={car.alt} car={car} />
               ))}
             </div>
@@ -38,11 +38,11 @@ function Cars({ carsState, cars, getAllCars }) {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   carsState: state.carsReducer,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getAllCars: () => {
     dispatch(fetchCars());
   },

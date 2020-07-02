@@ -114,12 +114,12 @@ Signup.propTypes = {
   dispatchSignup: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   signupStatus: state.userReducer,
 });
 
-const mapDispatchToProps = dispatch => ({
-  dispatchSignup: user => {
+const mapDispatchToProps = (dispatch) => ({
+  dispatchSignup: (user) => {
     dispatch(signupUser(user));
   },
 });

@@ -13,7 +13,7 @@ function Login({ userInfos, handleLoginProps, history }) {
       document.querySelector('.menu-icon').classList.add('menu-white');
     }
   });
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       username: document.querySelector("input[type='text']").value,
@@ -89,11 +89,11 @@ Login.propTypes = {
   }).isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userInfos: state.userReducer,
 });
-const mapDispatchToProps = dispatch => ({
-  handleLoginProps: user => {
+const mapDispatchToProps = (dispatch) => ({
+  handleLoginProps: (user) => {
     dispatch(handleLogin(user));
   },
 });

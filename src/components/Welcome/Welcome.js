@@ -48,11 +48,11 @@ Welcome.propTypes = {
   endLoadingWelcome: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userStatus: state.userReducer,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   endLoadingWelcome: () => {
     dispatch(endLoadingBeforeWelcomePage());
   },

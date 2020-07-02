@@ -88,14 +88,14 @@ function UserBookings({
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userState: state.userReducer,
 });
-const mapDispatchToProps = dispatch => ({
-  deleteBooking: bookId => {
+const mapDispatchToProps = (dispatch) => ({
+  deleteBooking: (bookId) => {
     dispatch(cancelBooking(bookId));
   },
-  updateBooking: bookId => {
+  updateBooking: (bookId) => {
     dispatch(bookUpdateAction(bookId));
   },
 });
