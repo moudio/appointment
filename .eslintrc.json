@@ -1,17 +1,15 @@
 {
     "env": {
         "browser": true,
-        "es6": true, 
-        "jest": true
+        "es6": true
     },
     "extends": [
         "plugin:react/recommended",
         "airbnb"
     ],
-    "root": true,
     "globals": {
         "Atomics": "readonly",
-        "SiharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -26,15 +24,14 @@
         "import"
     ],
     "rules": {
-   "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
-    "import/no-unresolved": "off",
-    "no-shadow": "off",
-    "arrow-parens": ["error", "as-needed"],
-     "import/no-named-as-default": 0,
-       "jsx-a11y/href-no-hash": [0],
+        "react/jsx-props-no-spreading": "off",
+"react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+"import/no-unresolved": "off",
+"no-shadow": "off",
+"arrow-parens": ["error", "as-needed"],
+"import/no-named-as-default": 0,
+"jsx-a11y/href-no-hash": [0],
 "jsx-a11y/img-has-alt": [0], 
 "import/extensions": 0
     }
-
 }
