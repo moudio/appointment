@@ -17,6 +17,8 @@
 - npm
 - CSS
 - ES6
+- Jest
+- React Testing Library
 
 ## Live Version 
 <a href="https://appointcar.netlify.app/" target="_blank" > Live version </a>
