@@ -29,6 +29,10 @@ export const PATCHING_BOOK = 'PATCHING_BOOK';
 export const PATCHING_BOOK_SUCCESS = 'PATCHING_BOOK_SUCCESS';
 export const REDIRECT_AFTER_PATCHING = 'REDIRECT_AFTER_PATCHING';
 let TOKEN = null;
+   let headers = {
+      'Content-Type': 'application/json'
+    };
+
 export const endLoadingBeforeWelcomePage = () => ({
   type: END_LOADING_BEFORE_WELCOME,
 });
@@ -38,7 +42,7 @@ export const fetchCars = () => dispatch => {
   });
 
   axios
-    .get('https://appointrails.herokuapp.com/api/v1/cars', {
+    .get('http://localhost:3001/api/v1/cars', {
       headers: { Authorization: TOKEN },
     })
     .then(cars => {
@@ -62,7 +66,7 @@ export const loginStatus = () => dispatch => {
   });
 
   axios
-    .get('https://appointrails.herokuapp.com/logged_in', {
+    .get('http://localhost:3001/logged_in', {
       headers: { Authorization: TOKEN },
     })
     .then(status => {
@@ -87,7 +91,14 @@ export const handleLogin = user => dispatch => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('https://appointrails.herokuapp.com/login', { user }, { withCredentials: true })
+    .post('http://localhost:3001/login', { user }, { 
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: headers,
+      redirect: 'follow',
+      referrer: 'no-referrer',
+      credentials: 'include'})
     .then(response => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
@@ -111,7 +122,7 @@ export const signupUser = user => dispatch => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('https://appointrails.herokuapp.com/api/v1/users', { user }, { withCredentials: true })
+    .post('http://localhost:3001/api/v1/users', { user }, { withCredentials: true })
     .then(response => {
       setTimeout(() => {
         if (response.data.status === 'created') {
@@ -136,7 +147,7 @@ export const getOneCar = carId => dispatch => {
   });
   setTimeout(() => {
     axios
-      .get(`https://appointrails.herokuapp.com/api/v1/cars/${carId}`, {
+      .get(`http://localhost:3001/api/v1/cars/${carId}`, {
         headers: { Authorization: TOKEN },
       })
       .then(response => dispatch({
@@ -155,7 +166,7 @@ export const createBooking = book => dispatch => {
   setTimeout(() => {
     axios
       .post(
-        'https://appointrails.herokuapp.com/api/v1/books/',
+        'http://localhost:3001/api/v1/books/',
         { book },
         { headers: { Authorization: TOKEN } },
 
@@ -177,7 +188,7 @@ export const createBooking = book => dispatch => {
 
 export const logout = () => dispatch => {
   axios
-    .delete('https://appointrails.herokuapp.com/logout', {
+    .delete('http://localhost:3001/logout', {
       headers: { Authorization: TOKEN },
     })
     .then(response => {
@@ -204,7 +215,7 @@ export const cancelBooking = bookId => dispatch => {
   });
   setTimeout(() => {
     axios
-      .delete(`https://appointrails.herokuapp.com/api/v1/books/${bookId}`, {
+      .delete(`http://localhost:3001/api/v1/books/${bookId}`, {
         headers: { Authorization: TOKEN },
       })
       .then(() => {
@@ -217,7 +228,7 @@ export const cancelBooking = bookId => dispatch => {
 
 export const fetchUserBookings = username => dispatch => {
   axios
-    .get(`https://appointrails.herokuapp.com/users/${username}/books_cars`, {
+    .get(`http://localhost:3001/users/${username}/books_cars`, {
       headers: { Authorization: TOKEN },
     })
     .then(response => {
@@ -243,7 +254,7 @@ export const bookUpdateAction = bookId => dispatch => {
   });
 
   axios
-    .get(`https://appointrails.herokuapp.com/api/v1/books/${bookId}`, {
+    .get(`http://localhost:3001/api/v1/books/${bookId}`, {
       headers: { Authorization: TOKEN },
     })
     .then(response => {
@@ -263,7 +274,7 @@ export const patchBookFromUpdateComponent = book => dispatch => {
   setTimeout(() => {
     axios
       .patch(
-        `https://appointrails.herokuapp.com/api/v1/books/${book.book_id}`,
+        `http://localhost:3001/api/v1/books/${book.book_id}`,
         {
           book,
         },
