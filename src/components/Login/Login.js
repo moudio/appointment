@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Errors from '../Errors/Errors';
-import { handleLogin, tryLoginWithCookie } from '../../actions/actions';
+import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
 import './Login.css';
 
-function Login({ userInfos, handleLoginProps, history, tryLogin }) {
+function Login({
+  userInfos, handleLoginProps, history,
+}) {
   useEffect(() => {
-tryLogin()
     if (document.querySelector('.menu-icon')) {
       document.querySelector('.menu-icon').classList.add('menu-white');
     }
@@ -97,9 +98,7 @@ const mapDispatchToProps = dispatch => ({
   handleLoginProps: user => {
     dispatch(handleLogin(user));
   },
-  tryLogin: () => {
-    dispatch(tryLoginWithCookie())
-  }
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

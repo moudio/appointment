@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
+
 export const END_LOADING_BEFORE_WELCOME = 'END_LOADING_BEFORE_WELCOME';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
@@ -29,9 +31,6 @@ export const PATCHING_BOOK = 'PATCHING_BOOK';
 export const PATCHING_BOOK_SUCCESS = 'PATCHING_BOOK_SUCCESS';
 export const REDIRECT_AFTER_PATCHING = 'REDIRECT_AFTER_PATCHING';
 let TOKEN = null;
-   let headers = {
-      'Content-Type': 'application/json'
-    };
 
 export const endLoadingBeforeWelcomePage = () => ({
   type: END_LOADING_BEFORE_WELCOME,
@@ -61,16 +60,17 @@ export const fetchCars = () => dispatch => {
 };
 
 export const tryLoginWithCookie = () => dispatch => {
-  axios.get('http://localhost:3001/cookie_login', {withCredentials: true})
-  .then(response => {
-        if (response.data.logged_in === true) {
-          TOKEN = response.data.token;
-          dispatch({
-            type: USER_LOGGED_IN,
-            data: response.data,
-          });
-        }
-})}
+  axios.get('http://localhost:3001/cookie_login', { withCredentials: true })
+    .then(response => {
+      if (response.data.logged_in === true) {
+        TOKEN = response.data.token;
+        dispatch({
+          type: USER_LOGGED_IN,
+          data: response.data,
+        });
+      }
+    });
+};
 
 export const loginStatus = () => dispatch => {
   dispatch({
@@ -80,7 +80,7 @@ export const loginStatus = () => dispatch => {
   axios
     .get('http://localhost:3001/logged_in', {
       headers: { Authorization: TOKEN },
-    }, {withCredentials: true})
+    }, { withCredentials: true })
     .then(status => {
       setTimeout(() => {
         dispatch({
@@ -103,16 +103,8 @@ export const handleLogin = user => dispatch => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('http://localhost:3001/login', { user }, 
-    { 
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: headers,
-      redirect: 'follow',
-      referrer: 'no-referrer',
-      credentials: 'include'}, 
-      {withCredentials: true})
+    .post('http://localhost:3001/login', { user },
+      { withCredentials: true })
     .then(response => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
@@ -245,7 +237,7 @@ export const fetchUserBookings = username => dispatch => {
   axios
     .get(`http://localhost:3001/users/${username}/books_cars`, {
       headers: { Authorization: TOKEN },
-    
+
     })
     .then(response => {
       dispatch({

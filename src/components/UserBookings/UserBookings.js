@@ -8,8 +8,6 @@ import Loading from '../../Images/loading_white.gif';
 import { cancelBooking, bookUpdateAction } from '../../actions/actions';
 import './UserBookings.css';
 
-
-
 function UserBookings({
   deleteBooking, userState, updateBooking, history,
 }) {
