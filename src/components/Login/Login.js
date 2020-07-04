@@ -7,7 +7,9 @@ import { handleLogin } from '../../actions/actions';
 import loading from '../../Images/loading.gif';
 import './Login.css';
 
-function Login({ userInfos, handleLoginProps, history }) {
+function Login({
+  userInfos, handleLoginProps, history,
+}) {
   useEffect(() => {
     if (document.querySelector('.menu-icon')) {
       document.querySelector('.menu-icon').classList.add('menu-white');
@@ -96,6 +98,7 @@ const mapDispatchToProps = dispatch => ({
   handleLoginProps: user => {
     dispatch(handleLogin(user));
   },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

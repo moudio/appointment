@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router, Switch, Route, Redirect,
 } from 'react-router-dom';
-import { loginStatus } from './actions/actions';
+import { loginStatus, tryLoginWithCookie } from './actions/actions';
 import Welcome from './components/Welcome/Welcome';
 import Cars from './containers/Cars/Cars';
 import Login from './components/Login/Login';
@@ -15,7 +15,12 @@ import CarBooking from './components/CarBooking/CarBooking';
 import UpdateBooking from './components/UpdateBooking/UpdateBooking';
 import './App.css';
 
-function App({ carsState, userStatus }) {
+function App({ carsState, userStatus, loginWithCookie }) {
+  useEffect(() => {
+    if (document.cookie.match('appointcar')) {
+      loginWithCookie();
+    }
+  }, []);
   return (
     <Router>
       <div className="App" data-testid="App">
@@ -69,6 +74,7 @@ App.propTypes = {
   userStatus: PropTypes.shape({
     isLoggedIn: PropTypes.bool,
   }).isRequired,
+  loginWithCookie: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -78,5 +84,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   checkLoginStatus: () => dispatch(loginStatus()),
+  loginWithCookie: () => dispatch(tryLoginWithCookie()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
