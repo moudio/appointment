@@ -60,6 +60,18 @@ export const fetchCars = () => dispatch => {
     }, 1000));
 };
 
+export const tryLoginWithCookie = () => dispatch => {
+  axios.get('http://localhost:3001/cookie_login', {withCredentials: true})
+  .then(response => {
+        if (response.data.logged_in === true) {
+          TOKEN = response.data.token;
+          dispatch({
+            type: USER_LOGGED_IN,
+            data: response.data,
+          });
+        }
+})}
+
 export const loginStatus = () => dispatch => {
   dispatch({
     type: IS_FETCHING_USER,
@@ -68,7 +80,7 @@ export const loginStatus = () => dispatch => {
   axios
     .get('http://localhost:3001/logged_in', {
       headers: { Authorization: TOKEN },
-    })
+    }, {withCredentials: true})
     .then(status => {
       setTimeout(() => {
         dispatch({
@@ -91,14 +103,16 @@ export const handleLogin = user => dispatch => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('http://localhost:3001/login', { user }, { 
+    .post('http://localhost:3001/login', { user }, 
+    { 
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
       headers: headers,
       redirect: 'follow',
       referrer: 'no-referrer',
-      credentials: 'include'})
+      credentials: 'include'}, 
+      {withCredentials: true})
     .then(response => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
@@ -190,6 +204,7 @@ export const logout = () => dispatch => {
   axios
     .delete('http://localhost:3001/logout', {
       headers: { Authorization: TOKEN },
+
     })
     .then(response => {
       TOKEN = null;
@@ -230,6 +245,7 @@ export const fetchUserBookings = username => dispatch => {
   axios
     .get(`http://localhost:3001/users/${username}/books_cars`, {
       headers: { Authorization: TOKEN },
+    
     })
     .then(response => {
       dispatch({
