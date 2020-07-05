@@ -21,6 +21,7 @@ function Cars({ carsState, cars, getAllCars }) {
           sectionsColor={['#4BBFC3', '#7BAABE', 'whitesmoke', '#81e4da']}
           continuousVertical
           navigation
+          licenseKey="7B1DAFF5-56FA4639-B05D325F-FEB6E7E2"
           render={() => (
             <div id="fullpage-wrapper">
               {cars.map(car => (

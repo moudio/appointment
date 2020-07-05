@@ -79,7 +79,7 @@ function User({
 User.propTypes = {
   userStatus: PropTypes.shape({
     books: PropTypes.instanceOf(Object),
-    user: PropTypes.instanceOf(Object),
+    user: PropTypes.string,
     userId: PropTypes.number,
     deleting_booking: PropTypes.bool,
   }).isRequired,

@@ -20,6 +20,7 @@ function App({ carsState, userStatus, loginWithCookie }) {
     if (document.cookie.match('appointcar')) {
       loginWithCookie();
     }
+    // eslint-disable-next-line
   }, []);
   return (
     <Router>
