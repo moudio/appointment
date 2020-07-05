@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-
 export const END_LOADING_BEFORE_WELCOME = 'END_LOADING_BEFORE_WELCOME';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
@@ -60,7 +59,7 @@ export const fetchCars = () => dispatch => {
 };
 
 export const tryLoginWithCookie = () => dispatch => {
-  axios.get('https://appointrails.herokuapp.com/cookie_login', { withCredentials: true })
+  axios.get('https://appointrails.herokuapp.com/cookie_login', { credentials: 'include' })
     .then(response => {
       if (response.data.logged_in === true) {
         TOKEN = response.data.token;
@@ -103,8 +102,7 @@ export const handleLogin = user => dispatch => {
     type: IS_FETCHING_USER,
   });
   axios
-    .post('https://appointrails.herokuapp.com/login', { user },
-      { withCredentials: true })
+    .post('https://appointrails.herokuapp.com/login', { user })
     .then(response => {
       setTimeout(() => {
         if (response.data.logged_in === true) {
