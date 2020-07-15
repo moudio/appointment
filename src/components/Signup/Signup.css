@@ -1,0 +1,48 @@
+img {
+  width: 100%;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../../Images/signup_background.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+
+.registration-container {
+  background-color: white;
+}
+
+.registration-sidebar {
+  background: black;
+}
+
+img.loading-gif {
+  max-width: 40px;
+  margin: 20px;
+}
+
+.create-login {
+  display: flex;
+  justify-content: center;
+}
+
+.or-login {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.or-login span {
+  margin: 0 5px;
+}
+
+@media (max-width: 767px) {
+  .register {
+    height: 100%;
+  }
+}

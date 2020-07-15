@@ -1,0 +1,65 @@
+.user-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 80vh;
+  width: 90%;
+  flex-direction: column;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 1)
+    ),
+    url('../../Images/range_rover_background.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.picture-div {
+  width: 150px;
+  margin: 0 20px;
+}
+
+.profile .picture-img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.profile-content {
+  width: 100%;
+}
+
+.profile-navigation {
+  width: 100%;
+}
+
+.nav-list {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: black;
+  margin: 30px;
+}
+
+.nav-list a:hover {
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
+.no-booking-yet p {
+  font-size: 25px;
+  background-color: black;
+  color: white;
+}

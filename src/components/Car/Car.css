@@ -1,0 +1,116 @@
+.section-velar {
+  background-image: url('../../Images/velar.png');
+}
+
+.section-evoque {
+  background-image: url('../../Images/evoque.png');
+}
+
+.section-sport {
+  background-image: url('../../Images/sport.png');
+}
+
+.section-discovery {
+  background-image: url('../../Images//discovery.png');
+}
+
+.section-velar,
+.section-evoque,
+.section-sport,
+.section-discovery {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.inner-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 4rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+}
+
+.content button {
+  font-size: large;
+}
+
+.content {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.content .car-description {
+  font-size: 35px;
+}
+
+.picture {
+  width: 60%;
+  height: 100vh;
+}
+
+.car-details {
+  padding-left: 0;
+}
+
+@media (max-width: 650px) {
+  .inner-section {
+    flex-direction: column;
+  }
+  .picture {
+    width: 100%;
+    height: 200px;
+  }
+  .content {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .content h2 {
+    font-size: 3rem;
+  }
+  .content .car-description {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .content .car-description {
+    display: none;
+  }
+}
+
+@media (max-width: 299px) {
+  .inner-section {
+    flex-direction: column;
+  }
+  .picture {
+    width: 100%;
+    height: 150px;
+  }
+  .content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 150px) {
+  .content h2 {
+    font-size: 1.5rem;
+  }
+  .content p {
+    font-size: 15px;
+    display: none;
+  }
+
+  .content .book-ride {
+    font-size: 10px;
+  }
+}

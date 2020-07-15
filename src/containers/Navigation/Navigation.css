@@ -1,0 +1,86 @@
+.Navigation {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+}
+
+.full-width {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.Navigation ul {
+  position: absolute;
+  list-style-type: none;
+  font-size: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.Navigation ul li {
+  padding: 20px 0;
+  color: white;
+}
+
+.menu-icon {
+  font-size: 50px;
+  text-align: right;
+  color: black;
+}
+
+.menu-icon .close-icon {
+  color: white;
+}
+
+.menu-icon svg {
+  padding: 20px;
+}
+
+.menu-icon .breadcrumb,
+.menu-icon .close-icon {
+  cursor: pointer;
+  background: none;
+  font-size: 75px;
+}
+
+.disappear {
+  display: none;
+}
+
+.appear {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.Navigation ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.Navigation ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 750px) {
+  .menu-white .breadcrumb,
+  .menu-white .close-icon {
+    color: white;
+    font-size: 65px;
+  }
+
+  .menu-icon .breadcrumb,
+  .menu-icon .close-icon {
+    font-size: 65px;
+  }
+
+  .sidebar h1 {
+    font-size: 20px;
+  }
+
+  .menu-list li a {
+    font-size: 20px;
+  }
+}
