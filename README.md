@@ -23,9 +23,9 @@
 <a href="https://appointcar.netlify.app/" target="_blank" > Live version </a>
 
 ## Usage 
-Clone the project: 
+### Clone the project: 
  - git clone https://github.com/MouhaDiouf/appointment
- Run the project
+ ### Run the project
  - to install the dependencies run the command : npm install 
  - after installation, run the command: npm start
 
