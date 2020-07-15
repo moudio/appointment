@@ -23,7 +23,7 @@
 <a href="https://appointcar.netlify.app/" target="_blank" > Live version </a>
 
 ## Description 
-This is the last capstone project I built while being a sofware developer student at Microverse. It's a web application where the user can create an account, browse through available cars and book cars for a date and location.
+This is the last capstone project I built while being a software developer student at Microverse. It's a web application where the user can create an account, browse through available cars, and book cars for a date and location.
 
 The web application uses React as the front-end language and Ruby on Rails as the back-end language. 
 
