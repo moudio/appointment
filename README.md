@@ -16,7 +16,6 @@
 - Eslint
 - npm
 - CSS
-- ES6
 - Jest
 - React Testing Library
 
