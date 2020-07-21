@@ -40,6 +40,7 @@ I built the Ruby On Rails backend API so that the two separate web apps can comm
 ## Developed by
 
 Mouhamadou Diouf ( <a href="https://github.com/MouhaDiouf"> @mouhad </a>)
+
 Let's connect on: 
 
 -  <a href="https://www.linkedin.com/in/mouha-diouf/" target="_blank" > LinkedIn </a>
