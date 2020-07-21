@@ -52,7 +52,7 @@ You can also check <a href="https://mouhadiouf.com/" target="_blank"> my portfol
 
 ## Potential Future Improvements 
 
-- Create an admin dashboard to manage users (deletion, update, ect)
+- Create an admin dashboard to manage users
 - Implement an auto-login using the browser cookies 
 
 
