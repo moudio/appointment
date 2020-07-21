@@ -47,6 +47,11 @@ Let's connect on:
 
 You can also check <a href="https://mouhadiouf.com/" target="_blank"> my portfolio </a>
 
+## Potential Future Improvements 
+
+- Create an admin dashboard to manage users (deletion, update, ect)
+- Implement an auto-login using the browser cookies 
+
 
 ## Contributing
 
