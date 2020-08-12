@@ -1,4 +1,4 @@
-# Building a Recipe app with React & Redux.
+# Building an Appointment app with React & Redux
 ![screenshot](./src/Images/appointment_screenshot_one.jpg)
 
 
